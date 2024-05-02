@@ -1,5 +1,7 @@
 import React from 'react';
 import '@/assets/styles/globals.css';
+import Navbar from '@/src/components/Navbar';
+import Footer from '@/src/components/Footer';
 
 type MainLayoutProps = {
     children: React.ReactNode
@@ -15,9 +17,18 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     return (
         <html lang='en'>
             <head>
-
+                <meta charSet="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
-            <body><div>{children}</div></body>
+            <body>
+                <div className="flex flex-col bg-controller text-primary bg-primary bg-opacity-50 text-white bg-center bg-cover bg-no-repeat bg-blend-overlay">
+                    <Navbar />
+                    <div className="container mx-auto p-4 h-screen">
+                        {children}
+                    </div>
+                    <Footer />
+                </div>
+            </body>
         </html>
     )
 }
