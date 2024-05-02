@@ -11,6 +11,7 @@ const config: Config = {
       primary: '#071324',
       secondary: '#040b15',
       btnPrimary: '#d4e3f7',
+      block: '#23252a',
     },
     backgroundImage: {
       'controller': 'url("/images/background.png")',
@@ -25,11 +26,12 @@ const config: Config = {
     colors: {
       primary: '#d4e3f7',
       secondary: '#7faae6',
-      dark: '#1d4f95',
+      dark: '#464a53',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
     },
     extend: {
       spacing: {

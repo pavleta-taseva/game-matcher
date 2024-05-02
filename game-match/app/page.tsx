@@ -5,9 +5,9 @@ import Search from '@/src/components/Search';
 
 const HomePage = () => {
     return (
-        <div className='flex flex-col w-full h-full gap-16'>
+        <div className='flex flex-col w-full h-full gap-4'>
             <Search />
-            <div className='flex flex-col gap-8 w-1/2 self-center text-justify'>
+            <div className='flex flex-col gap-8 p-8 m-2 w-1/2 self-center text-justify bg-block opacity-90'>
                 <span className='font-bold text-3xl'>Welcome to Game Matcher</span>
                 <p> Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you're into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered.
                 </p>
