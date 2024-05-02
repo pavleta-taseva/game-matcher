@@ -44,7 +44,7 @@ const Search = () => {
                 </div>
 
                 <button type="submit"
-                    className='w-1/6 h-10 font-semibold hover:font-bold hover:opacity-75 bg-btnPrimary text-dark border rounded-md'>
+                    className='w-1/6 h-10 text-lg font-semibold hover:font-bold hover:text-xl hover:text-black hover:opacity-75 bg-btnPrimary text-dark border rounded-md'>
                     Submit
                 </button>
             </form >

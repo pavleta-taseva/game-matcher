@@ -27,6 +27,8 @@ const config: Config = {
       primary: '#d4e3f7',
       secondary: '#7faae6',
       dark: '#464a53',
+      black: '#17191c',
+      footer: '#808080'
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
