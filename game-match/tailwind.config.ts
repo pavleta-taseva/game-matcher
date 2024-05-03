@@ -81,10 +81,15 @@ const config: Config = {
       },
       animation: {
         'fade-slow': 'fadeOut 3s ease-in-out',
+        'ease-slow-in': 'easeSlowIn 1s ease-in',
       },
       keyframes: {
         fadeOut: {
           '100%': { transform: 'translateX(200%)' },
+        },
+        easeSlowIn: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
         }
       }
     }
