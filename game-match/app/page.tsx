@@ -1,13 +1,17 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import Search from '@/src/components/Search';
 
 const HomePage = () => {
+    const [effect, setEffect] = useState<boolean>(false);
+
     return (
         <div className='flex flex-col w-full h-full gap-4'>
-            <Search />
-            <div className='flex flex-col gap-8 p-8 m-2 w-1/2 self-center text-justify bg-block opacity-90'>
+
+            <Search setEffect={setEffect} />
+
+            <div className={`flex flex-col gap-4 p-8 m-2 lg:w-1/2 self-center text-justify bg-block opacity-90 shadow-grey ${effect && "animate-fade-slow"}`}>
                 <span className='font-bold text-3xl'>Welcome to Game Matcher</span>
                 <p> Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you're into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered.
                 </p>

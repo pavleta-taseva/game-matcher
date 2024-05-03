@@ -9,31 +9,37 @@ export const navLinks = [
     {
         path: '/',
         name: 'Home',
-        icon: <IoGameControllerOutline style={{ marginRight: 8 }} />
+        icon: <IoGameControllerOutline style={{ marginRight: 8 }} />,
+        isLoggedIn: false
     },
     {
         path: '/profile',
         name: 'Profile',
-        icon: <GiEgyptianProfile style={{ marginRight: 8 }} />
+        icon: <GiEgyptianProfile style={{ marginRight: 8 }} />,
+        isLoggedIn: true
     },
     {
         path: '/register',
         name: 'Sign up',
-        icon: <IoMdPersonAdd style={{ marginRight: 8 }} />
+        icon: <IoMdPersonAdd style={{ marginRight: 8 }} />,
+        isLoggedIn: false
     },
     {
         path: '/favorites',
         name: 'Favorites',
-        icon: <MdOutlineFavoriteBorder style={{ marginRight: 8 }} />
+        icon: <MdOutlineFavoriteBorder style={{ marginRight: 8 }} />,
+        isLoggedIn: true
     },
     {
         path: '/login',
         name: 'Login',
-        icon: <RiLoginCircleLine style={{ marginRight: 8 }} />
+        icon: <RiLoginCircleLine style={{ marginRight: 8 }} />,
+        isLoggedIn: false
     },
     {
         path: '/logout',
         name: 'Logout',
-        icon: <IoMdLogOut style={{ marginRight: 8 }} />
+        icon: <IoMdLogOut style={{ marginRight: 8 }} />,
+        isLoggedIn: true
     }
 ]

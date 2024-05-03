@@ -7,34 +7,6 @@ const config: Config = {
     "./src/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
-    backgroundColor: {
-      primary: '#071324',
-      secondary: '#040b15',
-      btnPrimary: '#d4e3f7',
-      block: '#23252a',
-    },
-    backgroundImage: {
-      'controller': 'url("/images/background.png")',
-    },
-    screens: {
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
-    },
-    colors: {
-      primary: '#d4e3f7',
-      secondary: '#7faae6',
-      dark: '#464a53',
-      black: '#17191c',
-      footer: '#808080'
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-      mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
-    },
     extend: {
       spacing: {
         px: '1px',
@@ -75,6 +47,45 @@ const config: Config = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      backgroundColor: {
+        primary: '#071324',
+        secondary: '#040b15',
+        btnPrimary: '#d4e3f7',
+        block: '#23252a',
+      },
+      backgroundImage: {
+        'controller': 'url("/images/background.png")',
+      },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      colors: {
+        primary: '#d4e3f7',
+        secondary: '#7faae6',
+        dark: '#464a53',
+        black: '#17191c',
+        footer: '#808080'
+      },
+      fontFamily: {
+        sans: ['Graphik', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
+        mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
+      },
+      boxShadow: {
+        grey: '0px 0px 15px grey;'
+      },
+      animation: {
+        'fade-slow': 'fadeOut 3s ease-in-out',
+      },
+      keyframes: {
+        fadeOut: {
+          '100%': { transform: 'translateX(200%)' },
+        }
       }
     }
   },

@@ -6,15 +6,22 @@ type QueryResult = {
     name: string,
 }
 
-const Search = () => {
+interface SearchProps {
+    setEffect: (effect: boolean) => void;
+}
+
+const Search = ({ setEffect }: SearchProps) => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<QueryResult[]>([]);
 
     const searchGames = async () => {
+        setEffect(true);
+
         try {
             const response = await fetch(`https://api.rawg.io/api/games?search=${query}`);
             const resultFound = await response.json();
             setResults(resultFound);
+            setEffect(false);
         } catch (error) {
             console.error('Error searching games:', error);
         }
@@ -30,11 +37,11 @@ const Search = () => {
     };
 
     return (
-        <div className='flex flex-col gap-2 items-center justify-center w-full mt-8'>
+        <div className='flex flex-col gap-2 items-center justify-center w-full my-8'>
             <form onSubmit={handleSubmit}
                 className='flex gap-4 w-full items-center justify-center'>
-                <div className='relative flex gap-4 w-1/3 justify-center items-center'>
-                    <FaSearchPlus className='absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-dark' fontSize={20} />
+                <div className='relative flex gap-4 lg:w-1/3 justify-center items-center'>
+                    <FaSearchPlus className='absolute left-4 top-1/2 transform -translate-y-1/2 text-dark' fontSize={20} />
                     <input
                         name='searchInput'
                         type="text"
@@ -44,7 +51,7 @@ const Search = () => {
                 </div>
 
                 <button type="submit"
-                    className='w-1/6 h-10 text-lg font-semibold hover:font-bold hover:text-xl hover:text-black hover:opacity-75 bg-btnPrimary text-dark border rounded-md'>
+                    className='w-fit px-2 lg:w-1/6 h-10 text-lg font-semibold hover:font-bold hover:text-xl hover:text-black hover:opacity-75 bg-btnPrimary text-dark border rounded-md'>
                     Submit
                 </button>
             </form >
