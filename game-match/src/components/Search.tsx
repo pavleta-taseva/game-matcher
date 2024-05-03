@@ -51,7 +51,7 @@ const Search = ({ setEffect }: SearchProps) => {
                 </div>
 
                 <button type="submit"
-                    className='w-fit px-2 lg:w-1/6 h-10 text-lg font-semibold hover:font-bold hover:text-xl hover:text-black hover:opacity-75 bg-btnPrimary text-dark border rounded-md'>
+                    className='w-fit px-2 lg:w-1/6 h-10 text-lg font-bold hover:text-xl hover:text-white bg-btnSecondary text-primary border rounded-md'>
                     Submit
                 </button>
             </form >

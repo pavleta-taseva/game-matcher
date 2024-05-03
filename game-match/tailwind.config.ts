@@ -52,6 +52,7 @@ const config: Config = {
         primary: '#071324',
         secondary: '#040b15',
         btnPrimary: '#d4e3f7',
+        btnSecondary: '#7faae6',
         block: '#23252a',
       },
       backgroundImage: {

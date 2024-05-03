@@ -24,7 +24,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 <div
                     className="flex flex-col bg-controller font-mono text-primary bg-primary bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
                     <Navbar />
-                    <div className="container mx-auto p-4 h-screen">
+                    <div className="container mx-auto p-4 h-full">
                         {children}
                     </div>
                     <Footer />

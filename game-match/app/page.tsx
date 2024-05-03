@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Search from '@/src/components/Search';
-import SideMenu from '@/src/components/SideMenu';
+import LeftMenu from '@/src/components/LeftMenu';
+import RightPanel from '@/src/components/RightPanel';
 
 const HomePage = () => {
     const [effect, setEffect] = useState<boolean>(false);
@@ -12,11 +13,11 @@ const HomePage = () => {
 
             <Search setEffect={setEffect} />
 
-            <div className='flex w-full h-full gap-2 grid-rows-1 justify-between'>
+            <div className='flex gap-4 grid-rows-1 justify-between items-start'>
 
-                <SideMenu />
+                <LeftMenu />
 
-                <div className={`flex flex-col gap-4 p-8 m-2 self-center text-justify bg-block opacity-90 shadow-grey ${effect && "animate-fade-slow"}`}>
+                <div className={`flex flex-col gap-4 p-8 mx-4 text-justify bg-block opacity-90 shadow-grey select-none ${effect && "animate-fade-slow"}`}>
                     <span className='font-bold text-3xl'>Welcome to Game Matcher</span>
                     <p> Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you're into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered.
                     </p>
@@ -31,7 +32,7 @@ const HomePage = () => {
                     <p>Ready to embark on your gaming journey? Start searching now and discover a world of endless gaming possibilities with Game Matcher.</p>
                 </div>
 
-                <SideMenu effect={effect} display={effect ? 'block' : 'hidden'} />
+                <RightPanel effect={effect} display={effect ? 'block' : 'hidden'} />
             </div>
         </div>
     )
