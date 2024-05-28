@@ -6,7 +6,8 @@ import {
     gameModes,
     playerPerspectives,
     genres
-} from './filterOptions';
+} from '../utils/filterOptions';
+import CheckboxGroup from './CheckboxGroup';
 
 interface SideMenuProps {
     effect?: boolean;
@@ -25,6 +26,21 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
         }
     };
 
+    const getOptions = () => {
+        switch (selectedOption) {
+            case 'Operating System':
+                return operatingSystems;
+            case 'Game Modes':
+                return gameModes;
+            case 'Player Perspective':
+                return playerPerspectives;
+            case 'Genres':
+                return genres;
+            default:
+                return categories;
+        }
+    };
+
     return (
         <div className={`${effect && 'animate-ease-slow-in'} ${display} flex flex-col w-3/4 text-lg`}>
             <label htmlFor="categoryFilter" className='text-xl text-secondary font-semibold mb-4'>
@@ -37,100 +53,16 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                 onChange={(e) => setSelectedOption(e.target.value)}
                 defaultValue={filterOptions[0]}
             >
-                {filterOptions.map((filter) => (
+                {filterOptions.map((filter: string) => (
                     <option key={filter} value={filter}>{filter}</option>
                 ))}
             </select>
 
-            {selectedOption === 'Category' && (
-                <div className='space-y-4'>
-                    {categories.map((category) => (
-                        <div key={category} className='flex items-center'>
-                            <input
-                                type='checkbox'
-                                name='category'
-                                id={category}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCheckboxChange(category)}
-                                className='mr-2 cursor-pointer'
-                            />
-                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {selectedOption === 'Operating System' && (
-                <div className='space-y-4'>
-                    {operatingSystems.map((category) => (
-                        <div key={category} className='flex items-center'>
-                            <input
-                                type='checkbox'
-                                name='category'
-                                id={category}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCheckboxChange(category)}
-                                className='mr-2 cursor-pointer'
-                            />
-                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {selectedOption === 'Game Modes' && (
-                <div className='space-y-4'>
-                    {gameModes.map((category) => (
-                        <div key={category} className='flex items-center'>
-                            <input
-                                type='checkbox'
-                                name='category'
-                                id={category}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCheckboxChange(category)}
-                                className='mr-2 cursor-pointer'
-                            />
-                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {selectedOption === 'Player Perspective' && (
-                <div className='space-y-4'>
-                    {playerPerspectives.map((category) => (
-                        <div key={category} className='flex items-center'>
-                            <input
-                                type='checkbox'
-                                name='category'
-                                id={category}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCheckboxChange(category)}
-                                className='mr-2 cursor-pointer'
-                            />
-                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {selectedOption === 'Genres' && (
-                <div className='space-y-2'>
-                    {genres.map((category) => (
-                        <div key={category} className='flex items-center'>
-                            <input
-                                type='checkbox'
-                                name='category'
-                                id={category}
-                                checked={selectedCategories.includes(category)}
-                                onChange={() => handleCheckboxChange(category)}
-                                className='mr-2 cursor-pointer'
-                            />
-                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
-                        </div>
-                    ))}
-                </div>
-            )}
+            <CheckboxGroup
+                options={getOptions()}
+                selectedOptions={selectedCategories}
+                onChange={handleCheckboxChange}
+            />
         </div>
     )
 }

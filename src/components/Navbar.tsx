@@ -2,7 +2,7 @@
 
 import React, { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { navLinks } from './navlinks';
+import { navLinks } from '../utils/navlinks';
 import Link from 'next/link';
 
 type NavLink = {
