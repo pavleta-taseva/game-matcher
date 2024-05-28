@@ -1,31 +1,12 @@
 import React, { useState } from 'react';
 import { FaSearchPlus } from "react-icons/fa";
-
-type QueryResult = {
-    id: string,
-    name: string,
-}
-
-interface SearchProps {
-    setEffect: (effect: boolean) => void;
-}
+import { getGames } from 'services/api';
+import { QueryResult } from 'types/api';
+import { SearchProps } from 'types/components';
 
 const Search = ({ setEffect }: SearchProps) => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<QueryResult[]>([]);
-
-    const searchGames = async () => {
-        setEffect(true);
-
-        try {
-            const response = await fetch(`https://api.rawg.io/api/games?search=${query}`);
-            const resultFound = await response.json();
-            setResults(resultFound);
-            setEffect(false);
-        } catch (error) {
-            console.error('Error searching games:', error);
-        }
-    };
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
@@ -33,7 +14,8 @@ const Search = ({ setEffect }: SearchProps) => {
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        searchGames();
+        // searchGames();
+        getGames({ setEffect });
     };
 
     return (

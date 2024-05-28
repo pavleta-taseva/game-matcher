@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <div className="p-8 bg-secondary text-lg w-full h-8 gap-8 flex justify-end items-center">
             {navLinks.map((link: NavLink, index: number) => (
-                <>
+                <div key={index}>
                     {isLoggedIn === link.isLoggedIn && (
                         <Link key={index} href={link.path}>
                             <div
@@ -33,7 +33,7 @@ const Navbar = () => {
                             </div>
                         </Link>
                     )}
-                </>
+                </div>
             ))}
         </div>
     );

@@ -51,7 +51,6 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                 className='w-full mb-4 rounded-md py-2 px-2 focus:outline-none text-dark'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
-                defaultValue={filterOptions[0]}
             >
                 {filterOptions.map((filter: string) => (
                     <option key={filter} value={filter}>{filter}</option>
