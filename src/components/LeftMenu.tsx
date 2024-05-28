@@ -15,7 +15,7 @@ interface SideMenuProps {
 
 const LeftMenu = ({ effect, display }: SideMenuProps) => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-    const [selectedOption, setSelectedOption] = useState<string>('');
+    const [selectedOption, setSelectedOption] = useState<string>('Category');
 
     const handleCheckboxChange = (category: string) => {
         if (selectedCategories.includes(category)) {
@@ -27,12 +27,15 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
 
     return (
         <div className={`${effect && 'animate-ease-slow-in'} ${display} flex flex-col w-3/4 text-lg`}>
-            <label htmlFor="categoryFilter" className='text-xl text-secondary font-semibold mb-4'>Filter Games</label>
+            <label htmlFor="categoryFilter" className='text-xl text-secondary font-semibold mb-4'>
+                Filter Games
+            </label>
             <select
                 id='categoryFilter'
                 className='w-full mb-4 rounded-md py-2 px-2 focus:outline-none text-dark'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
+                defaultValue={filterOptions[0]}
             >
                 {filterOptions.map((filter) => (
                     <option key={filter} value={filter}>{filter}</option>
@@ -51,7 +54,7 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                                 onChange={() => handleCheckboxChange(category)}
                                 className='mr-2 cursor-pointer'
                             />
-                            <label htmlFor={category} className='cursor-pointer'>{category}</label>
+                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
                         </div>
                     ))}
                 </div>
@@ -69,7 +72,7 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                                 onChange={() => handleCheckboxChange(category)}
                                 className='mr-2 cursor-pointer'
                             />
-                            <label htmlFor={category} className='cursor-pointer'>{category}</label>
+                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
                         </div>
                     ))}
                 </div>
@@ -87,7 +90,7 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                                 onChange={() => handleCheckboxChange(category)}
                                 className='mr-2 cursor-pointer'
                             />
-                            <label htmlFor={category} className='cursor-pointer'>{category}</label>
+                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
                         </div>
                     ))}
                 </div>
@@ -105,7 +108,7 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                                 onChange={() => handleCheckboxChange(category)}
                                 className='mr-2 cursor-pointer'
                             />
-                            <label htmlFor={category} className='cursor-pointer'>{category}</label>
+                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
                         </div>
                     ))}
                 </div>
@@ -123,7 +126,7 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
                                 onChange={() => handleCheckboxChange(category)}
                                 className='mr-2 cursor-pointer'
                             />
-                            <label htmlFor={category} className='cursor-pointer'>{category}</label>
+                            <label htmlFor={category} className='cursor-pointer select-none'>{category}</label>
                         </div>
                     ))}
                 </div>
