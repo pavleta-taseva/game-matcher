@@ -2,22 +2,22 @@
 
 import React, { useState } from 'react';
 import Search from '@/src/components/Search';
-import LeftMenu from '@/src/components/LeftMenu';
-import RightPanel from '@/src/components/RightPanel';
+import FilterGames from '@/src/components/FilterGames';
+import GamesList from '@/src/components/GamesList';
+import { GameProps } from 'types/components';
 
 const HomePage = () => {
-    const [effect, setEffect] = useState<boolean>(false);
+    const [results, setResults] = useState<GameProps[]>();
 
     return (
         <div className='flex flex-col w-full h-full gap-4'>
 
-            <Search setEffect={setEffect} />
+            <Search setResults={setResults} />
 
-            <div className='flex gap-4 grid-rows-1 justify-between items-start'>
+            <div className='flex w-full justify-between'>
+                <FilterGames />
 
-                <LeftMenu />
-
-                <div className={`flex flex-col gap-4 p-8 mx-4 text-justify bg-block opacity-90 shadow-grey select-none ${effect && "animate-fade-slow"}`}>
+                <div className={`flex flex-col gap-4 w-8/12 p-8 text-justify bg-block opacity-90 shadow-grey select-none ${results && results.length > 0 ? 'hidden' : 'block'}`}>
                     <span className='font-bold text-3xl'>Welcome to Game Matcher</span>
                     <p> Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you are into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered.
                     </p>
@@ -31,9 +31,9 @@ const HomePage = () => {
                     <span className='font-bold text-2xl'>Get Started</span>
                     <p>Ready to embark on your gaming journey? Start searching now and discover a world of endless gaming possibilities with Game Matcher.</p>
                 </div>
-
-                <RightPanel effect={effect} display={effect ? 'block' : 'hidden'} />
             </div>
+
+            {results && results.length > 0 && <GamesList results={results} />}
         </div>
     )
 }

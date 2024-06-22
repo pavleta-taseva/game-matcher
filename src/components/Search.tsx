@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { FaSearchPlus } from "react-icons/fa";
-import { getGames } from 'services/api';
-import { QueryResult } from 'types/api';
+import { searchGames } from 'services/api';
 import { SearchProps } from 'types/components';
 
-const Search = ({ setEffect }: SearchProps) => {
+const Search = ({ setResults }: SearchProps) => {
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState<QueryResult[]>([]);
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
+        if (event.target.value === '' && setResults) setResults([]);
+        // if (event.target.value !== '') {
+        //     const query = event.target.value.toString();
+        //     searchGames({ query, setResults });
+        // }
     };
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        // searchGames();
-        getGames({ setEffect });
+        searchGames({ query, setResults });
     };
 
     return (
@@ -37,11 +39,6 @@ const Search = ({ setEffect }: SearchProps) => {
                     Submit
                 </button>
             </form >
-            <ul>
-                {results?.length > 0 && results?.map((game) => (
-                    game?.id && <li key={game?.id}>Game found: {game?.name}</li>
-                ))}
-            </ul>
         </div >
     );
 };

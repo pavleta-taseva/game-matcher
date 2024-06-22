@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CheckboxGroup from './CheckboxGroup';
 import {
     filterOptions,
     categories,
@@ -7,14 +8,8 @@ import {
     playerPerspectives,
     genres
 } from '../utils/filterOptions';
-import CheckboxGroup from './CheckboxGroup';
 
-interface SideMenuProps {
-    effect?: boolean;
-    display?: string;
-}
-
-const LeftMenu = ({ effect, display }: SideMenuProps) => {
+const FilterGames = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('Category');
 
@@ -42,13 +37,13 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
     };
 
     return (
-        <div className={`${effect && 'animate-ease-slow-in'} ${display} flex flex-col w-3/4 text-lg`}>
+        <div className='flex flex-col w-4/12 text-lg'>
             <label htmlFor="categoryFilter" className='text-xl text-secondary font-semibold mb-4'>
                 Filter Games
             </label>
             <select
                 id='categoryFilter'
-                className='w-full mb-4 rounded-md py-2 px-2 focus:outline-none text-dark'
+                className='w-11/12 mb-4 py-2 px-4 focus:outline-none text-dark rounded border-r-8 border-transparent text-base outline outline-neutral-700'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
             >
@@ -66,4 +61,4 @@ const LeftMenu = ({ effect, display }: SideMenuProps) => {
     )
 }
 
-export default LeftMenu;
+export default FilterGames;
