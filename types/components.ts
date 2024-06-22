@@ -34,7 +34,11 @@ export interface GameProps {
     saturated_color: string;
     short_screenshots: [{id: number, image: string}]
     slug: string;
-    stores: [{ id: number, store: string }]
+    stores: [
+        {store: 
+            {id: number, name: string, slug: string}
+        }
+    ];
     suggestions_count: number;
     tags: [{id: number, name: string, slug: string, language: string, games_count: number}];
     tba: boolean;

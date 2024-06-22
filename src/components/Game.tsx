@@ -35,20 +35,26 @@ const Game = ({ game }: GameDetailsProps) => {
     };
 
     return (
-        <Card sx={{ maxWidth: 345, mb: 4 }}>
+        <Card sx={{
+            maxWidth: 345,
+            mb: 4,
+            transition: 'transform 0.3s ease-in-out',
+            '&:hover': {
+                transform: 'scale(1.05)',
+            },
+        }}>
             <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
-                    </Avatar>
-                }
                 action={
                     <IconButton aria-label="settings">
                         <MoreVertIcon />
                     </IconButton>
                 }
                 title={game?.name}
-                subheader={`Released: ${game?.released}`}
+                subheader={`Release date: ${new Date(game?.released).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })}`}
             />
             <CardMedia
                 component="img"
@@ -57,11 +63,22 @@ const Game = ({ game }: GameDetailsProps) => {
                 alt={game?.name}
                 sx={{ height: '194px', objectFit: "contain" }}
             />
-            <CardContent>
+            <CardContent sx={{ gap: '20px' }}>
                 <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    <Typography style={{ fontWeight: 700 }}>Genres:</Typography>
+                    {game?.genres?.map((genre) => genre.name).join(', ') || 'No information'}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    <Typography style={{ fontWeight: 700 }}>Platform:</Typography>
+                    {game?.parent_platforms?.map((detail) => detail.platform.name).join(', ') || 'No information'}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    <Typography style={{ fontWeight: 700 }}>Metascore:</Typography>
+                    {game?.metacritic || 'No information'}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    <Typography style={{ fontWeight: 700 }}>Available on:</Typography>
+                    {game?.stores?.map((details) => details.store.name).join(', ') || 'No information'}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
