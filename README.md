@@ -18,7 +18,7 @@ Game Matcher is a web application built with Next.js and Tailwind CSS that allow
 
 ## Screenshots
 
-![Game Matcher Screenshot](path-to-screenshot.png)
+![Game Matcher Screenshot](https://mega.nz/file/dVNHWRRZ#FhWW6F5cMtsPfS4Cb1EHynY4ugc46CXSwdI7AM1T-FA)
 
 ## Getting Started
 
