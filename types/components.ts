@@ -62,7 +62,7 @@ export interface Genre {
 }
 
 export interface GenresProps {
-    genres?: string[]; 
+    genres: string[]; 
     setGenres?: (results: string[]) => void;
 }
 

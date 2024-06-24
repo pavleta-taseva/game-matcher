@@ -1,4 +1,4 @@
-const filterOptions: string[] = ['Category', 'Operating System', 'Game Modes', 'Player Perspective', 'Genres'];
+const filterOptions: string[] = ['Genres', 'Operating System', 'Game Modes', 'Player Perspective'];
 
 const operatingSystems: string[] = [
     'Windows', 'Mac OS', 'Linux', 'PlayStation', 'Xbox', 'Nintendo Switch', 'iOS', 'Android'

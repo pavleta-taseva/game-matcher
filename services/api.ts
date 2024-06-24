@@ -7,7 +7,7 @@ export const searchGames = async ({ query, setResults}: SearchProps) => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        
+
         const gamesList = await response.json();
         setResults && setResults(gamesList.results || []);
 
@@ -36,7 +36,7 @@ export const getGames = async ({ setResults }: SearchProps ) => {
     }
 };
 
-export const getGenres = async ({ setGenres }: GenresProps ) => {
+export const getGenres = async ({ genres, setGenres }: GenresProps ) => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
 
@@ -46,7 +46,7 @@ export const getGenres = async ({ setGenres }: GenresProps ) => {
         const genresList = await response.json();
         const getGenresNames = genresList?.results?.map((genre: Genre) => genre.name);
         
-        setGenres && setGenres(getGenresNames || []);
+        setGenres && setGenres(getGenresNames || genres);
 
         return getGenresNames || [];
     } catch (error) {

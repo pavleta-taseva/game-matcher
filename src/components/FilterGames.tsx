@@ -9,7 +9,7 @@ import {
 } from '../utils/filterOptions';
 
 const FilterGames = ({ genres }: GenresProps) => {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(genres);
     const [selectedOption, setSelectedOption] = useState<string>('Genres');
 
     const handleCheckboxChange = (category: string) => {

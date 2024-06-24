@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Search from '@/src/components/Search';
 import FilterGames from '@/src/components/FilterGames';
 import GamesList from '@/src/components/GamesList';
-import { GameProps, Genre } from 'types/components';
+import { GameProps } from 'types/components';
 import { getGenres } from 'services/api';
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
     const [genres, setGenres] = useState<string[]>([]);
 
     useEffect(() => {
-        getGenres({ setGenres });
+        getGenres({ genres, setGenres });
     }, []);
 
     return (

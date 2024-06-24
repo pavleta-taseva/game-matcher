@@ -2,6 +2,7 @@ import React from 'react';
 import '@/assets/styles/globals.css';
 import Navbar from '@/src/components/Navbar';
 import Footer from '@/src/components/Footer';
+import connectDB from 'config/database';
 
 type MainLayoutProps = {
     children: React.ReactNode
@@ -13,7 +14,9 @@ export const metadata = {
     keywords: 'video games, game matching, find game'
 }
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = async ({ children }: MainLayoutProps) => {
+    await connectDB();
+
     return (
         <html lang='en'>
             <head>
