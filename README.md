@@ -13,11 +13,6 @@ Game Matcher is a web application built with Next.js and Tailwind CSS that allow
 ## Features
 
 - **Game Search**: Search for games by name, genre, platform, etc.
-- **Infinite Scroll**: Load more games as you scroll down.
-- **Responsive Design**: Fully responsive and works on all devices.
-
-## Screenshots
-![Game Matcher Screenshot](https://mega.nz/file/dVNHWRRZ#FhWW6F5cMtsPfS4Cb1EHynY4ugc46CXSwdI7AM1T-FA)
 
 ## Getting Started
 
