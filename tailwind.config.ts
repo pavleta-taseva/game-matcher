@@ -7,6 +7,68 @@ const config: Config = {
     "./src/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
+    backgroundColor: {
+      dark: '#0d0d0d',
+      primary: '#071324',
+      secondary: '#040b15',
+      btnPrimary: '#d4e3f7',
+      btnSecondary: '#7faae6',
+      block: '#23252a',
+    },
+    backgroundImage: {
+      'controller': 'url("/images/background.png")',
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    colors: {
+      light: '#e9f1fb',
+      primary: '#d4e3f7',
+      secondary: '#7faae6',
+      dark: '#464a53',
+      black: '#17191c',
+      footer: '#808080',
+      card: '#0d0d0d',
+    },
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+      mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+    },
+    fontWeight: {
+      light: '300',
+      normal: '400',
+      bold: '700',
+    }, 
+    boxShadow: {
+      grey: '0px 0px 15px grey;'
+    },
+    animation: {
+      'fade-slow': 'fadeOut 3s ease-in-out',
+      'ease-slow-in': 'easeSlowIn 1s ease-in',
+    },
+    keyframes: {
+      fadeOut: {
+        '100%': { transform: 'translateX(200%)' },
+      },
+      easeSlowIn: {
+        '0%': { transform: 'translateX(100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      }
+    },
     extend: {
       spacing: {
         px: '1px',
@@ -48,53 +110,8 @@ const config: Config = {
       borderRadius: {
         '4xl': '2rem',
       },
-      backgroundColor: {
-        primary: '#071324',
-        secondary: '#040b15',
-        btnPrimary: '#d4e3f7',
-        btnSecondary: '#7faae6',
-        block: '#23252a',
-      },
-      backgroundImage: {
-        'controller': 'url("/images/background.png")',
-      },
-      screens: {
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
-      },
-      colors: {
-        primary: '#d4e3f7',
-        secondary: '#7faae6',
-        dark: '#464a53',
-        black: '#17191c',
-        footer: '#808080'
-      },
-      fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-        mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
-      },
-      boxShadow: {
-        grey: '0px 0px 15px grey;'
-      },
-      animation: {
-        'fade-slow': 'fadeOut 3s ease-in-out',
-        'ease-slow-in': 'easeSlowIn 1s ease-in',
-      },
-      keyframes: {
-        fadeOut: {
-          '100%': { transform: 'translateX(200%)' },
-        },
-        easeSlowIn: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0%)' },
-        }
-      }
-    }
   },
   plugins: [],
+  }
 };
 export default config;

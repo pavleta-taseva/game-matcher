@@ -36,7 +36,7 @@ const Search = ({ setResults }: SearchProps) => {
 
                 <button type="submit"
                     className='w-fit px-2 lg:w-1/6 h-10 text-lg font-bold hover:text-xl hover:text-white bg-btnSecondary text-primary border rounded-md'>
-                    Submit
+                    Search by name
                 </button>
             </form >
         </div >

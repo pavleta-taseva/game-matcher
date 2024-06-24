@@ -17,7 +17,7 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     return (
-        <div className="p-8 bg-secondary text-lg w-full h-8 gap-8 flex justify-end items-center">
+        <div className="p-8 bg-dark text-lg w-full h-8 gap-8 flex justify-end items-center">
             {navLinks.map((link: NavLink, index: number) => (
                 <div key={index}>
                     {isLoggedIn === link.isLoggedIn && (
