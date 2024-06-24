@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import CheckboxGroup from './CheckboxGroup';
+import { GenresProps } from 'types/components';
 import {
     filterOptions,
-    categories,
     operatingSystems,
     gameModes,
     playerPerspectives,
-    genres
 } from '../utils/filterOptions';
 
-const FilterGames = () => {
+const FilterGames = ({ genres }: GenresProps) => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-    const [selectedOption, setSelectedOption] = useState<string>('Category');
+    const [selectedOption, setSelectedOption] = useState<string>('Genres');
 
     const handleCheckboxChange = (category: string) => {
-        if (selectedCategories.includes(category)) {
+        if (selectedCategories?.includes(category)) {
             setSelectedCategories(selectedCategories.filter((c) => c !== category));
         } else {
             setSelectedCategories([...selectedCategories, category]);
@@ -30,9 +29,9 @@ const FilterGames = () => {
             case 'Player Perspective':
                 return playerPerspectives;
             case 'Genres':
-                return genres;
+                return genres || [];
             default:
-                return categories;
+                return genres;
         }
     };
 
@@ -43,7 +42,7 @@ const FilterGames = () => {
             </label>
             <select
                 id='categoryFilter'
-                className='w-11/12 mb-4 py-2 px-4 focus:outline-none text-dark rounded border-r-8 border-transparent text-base outline outline-neutral-700'
+                className='w-11/12 mb-4 py-2 px-4 focus:outline-none text-dark rounded border-transparent text-base outline outline-neutral-700'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
             >

@@ -1,13 +1,19 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from '@/src/components/Search';
 import FilterGames from '@/src/components/FilterGames';
 import GamesList from '@/src/components/GamesList';
-import { GameProps } from 'types/components';
+import { GameProps, Genre } from 'types/components';
+import { getGenres } from 'services/api';
 
 const HomePage = () => {
     const [results, setResults] = useState<GameProps[]>();
+    const [genres, setGenres] = useState<string[]>([]);
+
+    useEffect(() => {
+        getGenres({ setGenres });
+    }, []);
 
     return (
         <div className='flex flex-col w-full h-full gap-4'>
@@ -15,7 +21,7 @@ const HomePage = () => {
             <Search setResults={setResults} />
 
             <div className='flex w-full justify-between'>
-                <FilterGames />
+                <FilterGames genres={genres} />
 
                 <div className={`flex flex-col gap-4 w-8/12 p-8 text-justify bg-block opacity-90 shadow-grey select-none ${results && results.length > 0 ? 'hidden' : 'block'}`}>
                     <span className='font-bold text-3xl'>Welcome to Game Matcher</span>

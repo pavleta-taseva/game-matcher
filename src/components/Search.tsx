@@ -9,10 +9,6 @@ const Search = ({ setResults }: SearchProps) => {
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
         if (event.target.value === '' && setResults) setResults([]);
-        // if (event.target.value !== '') {
-        //     const query = event.target.value.toString();
-        //     searchGames({ query, setResults });
-        // }
     };
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {

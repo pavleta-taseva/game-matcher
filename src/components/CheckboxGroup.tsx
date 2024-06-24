@@ -1,20 +1,21 @@
 import React from 'react';
 
 interface CheckboxGroupProps {
-    options: string[];
+    options: string[] | undefined;
     selectedOptions: string[];
     onChange: (option: string) => void;
 }
 
 const CheckboxGroup = ({ options, selectedOptions, onChange }: CheckboxGroupProps) => {
-    const half = Math.ceil(options.length / 2);
-    const firstHalf = options.slice(0, half);
-    const secondHalf = options.slice(half);
+    const genresCount = options?.length || 0;
+    const half = Math.ceil(genresCount / 2);
+    const firstHalf = options?.slice(0, half);
+    const secondHalf = options?.slice(half);
 
     return (
         <div className='flex flex-wrap'>
             <div className='w-1/2 space-y-2'>
-                {firstHalf.map((option) => (
+                {firstHalf?.map((option) => (
                     <div key={option} className='flex items-center'>
                         <input
                             type='checkbox'
@@ -29,7 +30,7 @@ const CheckboxGroup = ({ options, selectedOptions, onChange }: CheckboxGroupProp
                 ))}
             </div>
             <div className='w-1/2 space-y-2'>
-                {secondHalf.map((option) => (
+                {secondHalf?.map((option) => (
                     <div key={option} className='flex items-center'>
                         <input
                             type='checkbox'

@@ -52,6 +52,20 @@ export interface SearchProps {
     setResults?: (results: GameProps[]) => void;
 }
 
+export interface Genre {
+    games: GameProps[]
+    games_count: number;
+    id: number;
+    image_background: string; 
+    name: string;
+    slug: string;
+}
+
+export interface GenresProps {
+    genres?: string[]; 
+    setGenres?: (results: string[]) => void;
+}
+
 export interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
 }
