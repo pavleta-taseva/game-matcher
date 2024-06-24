@@ -17,7 +17,7 @@ Game Matcher is a web application built with Next.js and Tailwind CSS that allow
 - **Responsive Design**: Fully responsive and works on all devices.
 
 ## Screenshots
-![Game Matcher Screenshot](https://mega.nz/file/dVNHWRRZ#FhWW6F5cMtsPfS4Cb1EHynY4ugc46CXSwdI7AM1T-FA?raw=true "Search results")
+![Game Matcher Screenshot](https://mega.nz/file/dVNHWRRZ#FhWW6F5cMtsPfS4Cb1EHynY4ugc46CXSwdI7AM1T-FA)
 
 ## Getting Started
 
