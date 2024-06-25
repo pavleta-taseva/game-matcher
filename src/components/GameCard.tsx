@@ -25,7 +25,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
-const Game = ({ game }: GameDetailsProps) => {
+const GameCard = ({ game }: GameDetailsProps) => {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -115,4 +115,4 @@ const Game = ({ game }: GameDetailsProps) => {
     );
 }
 
-export default Game;
+export default GameCard;

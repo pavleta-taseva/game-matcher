@@ -4,12 +4,19 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 import { IoMdPersonAdd } from "react-icons/io";
+import { SiAmazongames } from "react-icons/si";
 
 export const navLinks = [
     {
         path: '/',
         name: 'Home',
         icon: <IoGameControllerOutline style={{ marginRight: 8 }} />,
+        isLoggedIn: false
+    },
+    {
+        path: '/games',
+        name: 'All Games',
+        icon: <SiAmazongames style={{ marginRight: 8 }} />,
         isLoggedIn: false
     },
     {
@@ -41,5 +48,5 @@ export const navLinks = [
         name: 'Logout',
         icon: <IoMdLogOut style={{ marginRight: 8 }} />,
         isLoggedIn: true
-    }
+    },
 ]

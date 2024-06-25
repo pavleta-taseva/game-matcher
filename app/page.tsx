@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from '@/src/components/Search';
 import FilterGames from '@/src/components/FilterGames';
-import GamesList from '@/src/components/GamesList';
+import AllGames from '@/src/components/AllGames';
 import { GameProps } from 'types/components';
 import { getGenres } from 'services/api';
 
@@ -39,7 +39,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {results && results.length > 0 && <GamesList results={results} />}
+            {results && results.length > 0 && <AllGames gamesList={results} />}
         </div>
     )
 }

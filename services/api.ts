@@ -1,4 +1,4 @@
-import { SearchProps, GenresProps, Genre } from "types/components";
+import { SearchProps, GenresProps, Genre, GamesList } from "types/components";
 
 export const searchGames = async ({ query, setResults}: SearchProps) => {
     try {
@@ -18,18 +18,19 @@ export const searchGames = async ({ query, setResults}: SearchProps) => {
     }
 };
 
-export const getGames = async ({ setResults }: SearchProps ) => {
+export const getGames = async ({ setGamesList, setTotalGamesCount }: GamesList ) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page_size=30`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
 
         const gamesList = await response.json();
 
-        setResults && setResults(gamesList.results || []);
+        setGamesList && setGamesList(gamesList?.results || []);
+        setTotalGamesCount && setTotalGamesCount(gamesList?.count.toLocaleString('en'));
 
-        return gamesList.results || [];
+        return gamesList || [];
     } catch (error) {
         console.error('Error getting games:', error);
         throw error;
