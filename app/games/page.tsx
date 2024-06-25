@@ -15,7 +15,9 @@ const Games = () => {
 
     return (
         <div className='flex flex-col w-full h-full gap-4'>
-            {gamesList && gamesList?.length > 0 && <AllGames gamesList={gamesList} totalGamesCount={totalGamesCount} />}
+            {gamesList && gamesList?.length > 0 &&
+                <AllGames gamesList={gamesList} totalGamesCount={totalGamesCount} />
+            }
         </div>
     )
 }

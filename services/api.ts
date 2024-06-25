@@ -1,8 +1,8 @@
-import { SearchProps, GenresProps, Genre, GamesList } from "types/components";
+import { SearchProps, GenresProps, Genre } from "types/components";
 
-export const searchGames = async ({ query, setResults}: SearchProps) => {
+export const searchGames = async ({ query, setResults, setTotalGamesCount, currentPage }: SearchProps) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?search=${query}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?search=${query}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${currentPage}`);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -10,7 +10,7 @@ export const searchGames = async ({ query, setResults}: SearchProps) => {
 
         const gamesList = await response.json();
         setResults && setResults(gamesList.results || []);
-
+        setTotalGamesCount && setTotalGamesCount(gamesList?.count);
         return gamesList.results || [];
     } catch (error) {
         console.error('Error searching games:', error);
@@ -18,9 +18,9 @@ export const searchGames = async ({ query, setResults}: SearchProps) => {
     }
 };
 
-export const getGames = async ({ setGamesList, setTotalGamesCount }: GamesList ) => {
+export const getGames = async ({ setGamesList, setTotalGamesCount }: SearchProps ) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page_size=30`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=30&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -28,7 +28,7 @@ export const getGames = async ({ setGamesList, setTotalGamesCount }: GamesList )
         const gamesList = await response.json();
 
         setGamesList && setGamesList(gamesList?.results || []);
-        setTotalGamesCount && setTotalGamesCount(gamesList?.count.toLocaleString('en'));
+        setTotalGamesCount && setTotalGamesCount(gamesList?.count);
 
         return gamesList || [];
     } catch (error) {

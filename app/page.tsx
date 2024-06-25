@@ -10,15 +10,22 @@ import { getGenres } from 'services/api';
 const HomePage = () => {
     const [results, setResults] = useState<GameProps[]>();
     const [genres, setGenres] = useState<string[]>([]);
+    const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
 
     useEffect(() => {
         getGenres({ genres, setGenres });
-    }, []);
+    }, [totalGamesCount]);
 
     return (
         <div className='flex flex-col w-full h-full gap-4'>
 
-            <Search setResults={setResults} />
+            <Search
+                setResults={setResults}
+                setTotalGamesCount={setTotalGamesCount}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
 
             <div className='flex w-full justify-between'>
                 <FilterGames genres={genres} />
@@ -39,7 +46,9 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {results && results.length > 0 && <AllGames gamesList={results} />}
+            {results && results.length > 0 &&
+                <AllGames gamesList={results} totalGamesCount={totalGamesCount} />
+            }
         </div>
     )
 }

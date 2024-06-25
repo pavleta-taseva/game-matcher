@@ -50,14 +50,12 @@ export interface SearchProps {
     query?: string;
     results?: GameProps[]; 
     setResults?: (results: GameProps[]) => void;
-}
-
-export interface GamesList {
-    query?: string;
     gamesList?: GameProps[]; 
     setGamesList?: (results: GameProps[]) => void;
     totalGamesCount?: number;
     setTotalGamesCount?: (totalGamesCount: number) => void;
+    currentPage?: number;
+    setCurrentPage?: (currentPage: number) => void;
 }
 
 export interface Genre {
