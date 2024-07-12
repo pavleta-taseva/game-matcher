@@ -64,7 +64,7 @@ export interface SearchProps {
     setTotalGamesCount?: (totalGamesCount: number) => void;
     currentPage?: number;
     setCurrentPage?: (currentPage: number) => void;
-    genres: string[]; 
+    genres?: string[]; 
     setGenres?: (results: string[]) => void;
     isSearching?: boolean;
     setIsSearching?: (isSearching: boolean) => void;
