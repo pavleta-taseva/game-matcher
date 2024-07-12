@@ -13,10 +13,11 @@ const HomePage = () => {
     const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [isSearching, setIsSearching] = useState<boolean>(false);
+    const [isFiltered, setIsFiltered] = useState<boolean>(false);
 
     useEffect(() => {
         getGenres({ genres, setGenres });
-    }, [totalGamesCount]);
+    }, [totalGamesCount, isFiltered]);
 
     return (
         <div className='flex flex-col w-full h-full gap-4'>
@@ -28,6 +29,8 @@ const HomePage = () => {
                 setCurrentPage={setCurrentPage}
                 genres={genres}
                 setIsSearching={setIsSearching}
+                isFiltered={isFiltered}
+                setIsFiltered={setIsFiltered}
             />
 
             <div className='flex w-full justify-between'>
@@ -37,6 +40,7 @@ const HomePage = () => {
                     setTotalGamesCount={setTotalGamesCount}
                     setResults={setResults}
                     isSearching={isSearching}
+                    setIsFiltered={setIsFiltered}
                 />
 
                 <div className={`flex flex-col gap-4 w-8/12 p-8 text-justify bg-block opacity-90 shadow-grey select-none ${results && results.length > 0 ? 'hidden' : 'block'}`}>

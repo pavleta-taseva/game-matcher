@@ -68,6 +68,8 @@ export interface SearchProps {
     setGenres?: (results: string[]) => void;
     isSearching?: boolean;
     setIsSearching?: (isSearching: boolean) => void;
+    isFiltered?: boolean;
+    setIsFiltered?: (isFiltered: boolean) => void;
 }
 
 export interface CheckboxGroupProps {

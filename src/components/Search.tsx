@@ -3,13 +3,14 @@ import { FaSearchPlus } from "react-icons/fa";
 import { searchGames } from 'services/api';
 import { SearchProps } from 'types/components';
 
-const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres, setIsSearching }: SearchProps) => {
+const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres, setIsSearching, isFiltered, setIsFiltered }: SearchProps) => {
     const [query, setQuery] = useState<string>('');
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
         if (event.target.value === '' && setResults) setResults([]);
         setIsSearching && setIsSearching(true);
+        setIsFiltered && setIsFiltered(false);
     };
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -28,7 +29,7 @@ const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, g
                     <input
                         name='searchInput'
                         type="text"
-                        value={query}
+                        value={isFiltered ? '' : query}
                         onChange={handleChange} placeholder='Search games database...'
                         className='w-full h-10 pl-12 border rounded-md outline-none p-2 text-dark' />
                 </div>

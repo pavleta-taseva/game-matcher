@@ -9,7 +9,7 @@ import {
     playerPerspectives,
 } from '../utils/filterOptions';
 
-const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching }: SearchProps) => {
+const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching, setIsFiltered }: SearchProps) => {
     const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
     const [selectedOption, setSelectedOption] = useState<string>('Genres');
 
@@ -27,6 +27,7 @@ const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSe
 
         setCheckBoxValues(updatedCheckBoxValue);
         searchGames({ query: updatedCheckBoxValue.join(','), setResults, setTotalGamesCount, currentPage, genres: updatedCheckBoxValue });
+        setIsFiltered && setIsFiltered(updatedCheckBoxValue.length > 0);
     };
 
     const getOptions = () => {
