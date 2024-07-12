@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CheckboxGroup from './CheckboxGroup';
-import { GenresProps } from 'types/components';
+import { SearchProps } from 'types/components';
+import { searchGames } from 'services/api';
 import {
     filterOptions,
     operatingSystems,
@@ -8,16 +9,17 @@ import {
     playerPerspectives,
 } from '../utils/filterOptions';
 
-const FilterGames = ({ genres }: GenresProps) => {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>(genres);
+const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults }: SearchProps) => {
+    const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
     const [selectedOption, setSelectedOption] = useState<string>('Genres');
 
-    const handleCheckboxChange = (category: string) => {
-        if (selectedCategories?.includes(category)) {
-            setSelectedCategories(selectedCategories.filter((c) => c !== category));
-        } else {
-            setSelectedCategories([...selectedCategories, category]);
-        }
+    const handleCheckboxChange = (value: string) => {
+        const updatedCheckBoxValue = checkBoxValues.includes(value)
+            ? checkBoxValues.filter((category) => category !== value)
+            : [...checkBoxValues, value];
+
+        setCheckBoxValues(updatedCheckBoxValue);
+        searchGames({ query: updatedCheckBoxValue.join(','), setResults, setTotalGamesCount, currentPage, genres: updatedCheckBoxValue });
     };
 
     const getOptions = () => {
@@ -31,7 +33,7 @@ const FilterGames = ({ genres }: GenresProps) => {
             case 'Genres':
                 return genres || [];
             default:
-                return genres;
+                return genres || [];
         }
     };
 
@@ -53,7 +55,7 @@ const FilterGames = ({ genres }: GenresProps) => {
 
             <CheckboxGroup
                 options={getOptions()}
-                selectedOptions={selectedCategories}
+                checkBoxValues={checkBoxValues}
                 onChange={handleCheckboxChange}
             />
         </div>

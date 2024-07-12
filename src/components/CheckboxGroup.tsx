@@ -1,12 +1,7 @@
 import React from 'react';
+import { CheckboxGroupProps } from 'types/components';
 
-interface CheckboxGroupProps {
-    options: string[] | undefined;
-    selectedOptions: string[];
-    onChange: (option: string) => void;
-}
-
-const CheckboxGroup = ({ options, selectedOptions, onChange }: CheckboxGroupProps) => {
+const CheckboxGroup = ({ options, checkBoxValues, onChange }: CheckboxGroupProps) => {
     const genresCount = options?.length || 0;
     const half = Math.ceil(genresCount / 2);
     const firstHalf = options?.slice(0, half);
@@ -15,32 +10,32 @@ const CheckboxGroup = ({ options, selectedOptions, onChange }: CheckboxGroupProp
     return (
         <div className='flex flex-wrap'>
             <div className='w-1/2 space-y-2'>
-                {firstHalf?.map((option) => (
-                    <div key={option} className='flex items-center'>
+                {firstHalf?.map((value) => (
+                    <div key={value} className='flex items-center'>
                         <input
                             type='checkbox'
                             name='filter'
-                            id={option}
-                            checked={selectedOptions.includes(option)}
-                            onChange={() => onChange(option)}
+                            id={value}
+                            checked={checkBoxValues.includes(value)}
+                            onChange={() => onChange(value)}
                             className='mr-2 cursor-pointer'
                         />
-                        <label htmlFor={option} className='cursor-pointer select-none'>{option}</label>
+                        <label htmlFor={value} className='cursor-pointer select-none'>{value}</label>
                     </div>
                 ))}
             </div>
             <div className='w-1/2 space-y-2'>
-                {secondHalf?.map((option) => (
-                    <div key={option} className='flex items-center'>
+                {secondHalf?.map((value) => (
+                    <div key={value} className='flex items-center'>
                         <input
                             type='checkbox'
                             name='filter'
-                            id={option}
-                            checked={selectedOptions.includes(option)}
-                            onChange={() => onChange(option)}
+                            id={value}
+                            checked={checkBoxValues.includes(value)}
+                            onChange={() => onChange(value)}
                             className='mr-2 cursor-pointer'
                         />
-                        <label htmlFor={option} className='cursor-pointer select-none'>{option}</label>
+                        <label htmlFor={value} className='cursor-pointer select-none'>{value}</label>
                     </div>
                 ))}
             </div>

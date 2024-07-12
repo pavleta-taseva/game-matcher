@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchProps } from 'types/components';
 import GameCard from './GameCard';
 
-const AllGames = ({ gamesList, totalGamesCount }: SearchProps) => {
+const AllGames = ({ gamesList, totalGamesCount, genres }: SearchProps) => {
     return (
         <>
             <h2 className="text-xl text-right font-semibold text-secondary">

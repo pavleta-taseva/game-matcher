@@ -46,6 +46,14 @@ export interface GameProps {
     user_game: null;
 }
 
+export interface Genre {
+    games: GameProps[]
+    games_count: number;
+    id: number;
+    image_background: string; 
+    name: string;
+    slug: string;
+}
 export interface SearchProps {
     query?: string;
     results?: GameProps[]; 
@@ -56,20 +64,14 @@ export interface SearchProps {
     setTotalGamesCount?: (totalGamesCount: number) => void;
     currentPage?: number;
     setCurrentPage?: (currentPage: number) => void;
-}
-
-export interface Genre {
-    games: GameProps[]
-    games_count: number;
-    id: number;
-    image_background: string; 
-    name: string;
-    slug: string;
-}
-
-export interface GenresProps {
     genres: string[]; 
     setGenres?: (results: string[]) => void;
+}
+
+export interface CheckboxGroupProps {
+    options: string[] | undefined;
+    checkBoxValues: string[];
+    onChange: (option: string) => void;
 }
 
 export interface ExpandMoreProps extends IconButtonProps {

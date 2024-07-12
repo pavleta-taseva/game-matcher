@@ -3,7 +3,7 @@ import { FaSearchPlus } from "react-icons/fa";
 import { searchGames } from 'services/api';
 import { SearchProps } from 'types/components';
 
-const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage }: SearchProps) => {
+const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres }: SearchProps) => {
     const [query, setQuery] = useState<string>('');
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -13,7 +13,7 @@ const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage }:
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        searchGames({ query, setResults, setTotalGamesCount, currentPage });
+        searchGames({ query, setResults, setTotalGamesCount, currentPage, genres });
         setCurrentPage && currentPage && setCurrentPage(currentPage + 1);
     };
 

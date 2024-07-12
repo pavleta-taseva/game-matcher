@@ -25,10 +25,16 @@ const HomePage = () => {
                 setTotalGamesCount={setTotalGamesCount}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
+                genres={genres}
             />
 
             <div className='flex w-full justify-between'>
-                <FilterGames genres={genres} />
+                <FilterGames
+                    genres={genres}
+                    currentPage={currentPage}
+                    setTotalGamesCount={setTotalGamesCount}
+                    setResults={setResults}
+                />
 
                 <div className={`flex flex-col gap-4 w-8/12 p-8 text-justify bg-block opacity-90 shadow-grey select-none ${results && results.length > 0 ? 'hidden' : 'block'}`}>
                     <span className='font-bold text-3xl'>Welcome to Game Matcher</span>
@@ -47,7 +53,7 @@ const HomePage = () => {
             </div>
 
             {results && results.length > 0 &&
-                <AllGames gamesList={results} totalGamesCount={totalGamesCount} />
+                <AllGames gamesList={results} totalGamesCount={totalGamesCount} genres={genres} />
             }
         </div>
     )

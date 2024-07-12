@@ -1,4 +1,4 @@
-import { SearchProps, GenresProps, Genre } from "types/components";
+import { SearchProps, Genre } from "types/components";
 
 export const searchGames = async ({ query, setResults, setTotalGamesCount, currentPage }: SearchProps) => {
     try {
@@ -9,6 +9,7 @@ export const searchGames = async ({ query, setResults, setTotalGamesCount, curre
         }
 
         const gamesList = await response.json();
+
         setResults && setResults(gamesList.results || []);
         setTotalGamesCount && setTotalGamesCount(gamesList?.count);
         return gamesList.results || [];
@@ -37,7 +38,7 @@ export const getGames = async ({ setGamesList, setTotalGamesCount }: SearchProps
     }
 };
 
-export const getGenres = async ({ genres, setGenres }: GenresProps ) => {
+export const getGenres = async ({ genres, setGenres }: SearchProps ) => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
 
