@@ -12,6 +12,7 @@ const HomePage = () => {
     const [genres, setGenres] = useState<string[]>([]);
     const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [isSearching, setIsSearching] = useState<boolean>(false);
 
     useEffect(() => {
         getGenres({ genres, setGenres });
@@ -26,6 +27,7 @@ const HomePage = () => {
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
                 genres={genres}
+                setIsSearching={setIsSearching}
             />
 
             <div className='flex w-full justify-between'>
@@ -34,6 +36,7 @@ const HomePage = () => {
                     currentPage={currentPage}
                     setTotalGamesCount={setTotalGamesCount}
                     setResults={setResults}
+                    isSearching={isSearching}
                 />
 
                 <div className={`flex flex-col gap-4 w-8/12 p-8 text-justify bg-block opacity-90 shadow-grey select-none ${results && results.length > 0 ? 'hidden' : 'block'}`}>

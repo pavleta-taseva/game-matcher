@@ -3,18 +3,20 @@ import { FaSearchPlus } from "react-icons/fa";
 import { searchGames } from 'services/api';
 import { SearchProps } from 'types/components';
 
-const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres }: SearchProps) => {
+const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres, setIsSearching }: SearchProps) => {
     const [query, setQuery] = useState<string>('');
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
         if (event.target.value === '' && setResults) setResults([]);
+        setIsSearching && setIsSearching(true);
     };
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         searchGames({ query, setResults, setTotalGamesCount, currentPage, genres });
         setCurrentPage && currentPage && setCurrentPage(currentPage + 1);
+        setIsSearching && setIsSearching(false);
     };
 
     return (

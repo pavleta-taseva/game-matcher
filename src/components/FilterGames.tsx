@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CheckboxGroup from './CheckboxGroup';
 import { SearchProps } from 'types/components';
 import { searchGames } from 'services/api';
@@ -9,9 +9,16 @@ import {
     playerPerspectives,
 } from '../utils/filterOptions';
 
-const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults }: SearchProps) => {
+const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching }: SearchProps) => {
     const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
     const [selectedOption, setSelectedOption] = useState<string>('Genres');
+
+    useEffect(() => {
+        if (isSearching) {
+            setCheckBoxValues([]);
+            setResults && setResults([]);
+        }
+    }, [isSearching, setResults]);
 
     const handleCheckboxChange = (value: string) => {
         const updatedCheckBoxValue = checkBoxValues.includes(value)

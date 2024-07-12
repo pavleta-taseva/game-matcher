@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxGroupProps } from 'types/components';
+import { CheckboxGroupProps } from '../../types/components';
 
 const CheckboxGroup = ({ options, checkBoxValues, onChange }: CheckboxGroupProps) => {
     const genresCount = options?.length || 0;
@@ -10,32 +10,32 @@ const CheckboxGroup = ({ options, checkBoxValues, onChange }: CheckboxGroupProps
     return (
         <div className='flex flex-wrap'>
             <div className='w-1/2 space-y-2'>
-                {firstHalf?.map((value) => (
-                    <div key={value} className='flex items-center'>
+                {firstHalf?.map((option) => (
+                    <div key={option} className='flex items-center'>
                         <input
                             type='checkbox'
                             name='filter'
-                            id={value}
-                            checked={checkBoxValues.includes(value)}
-                            onChange={() => onChange(value)}
+                            id={option}
+                            checked={checkBoxValues.includes(option)}
+                            onChange={() => onChange(option)}
                             className='mr-2 cursor-pointer'
                         />
-                        <label htmlFor={value} className='cursor-pointer select-none'>{value}</label>
+                        <label htmlFor={option} className='cursor-pointer select-none'>{option}</label>
                     </div>
                 ))}
             </div>
             <div className='w-1/2 space-y-2'>
-                {secondHalf?.map((value) => (
-                    <div key={value} className='flex items-center'>
+                {secondHalf?.map((option) => (
+                    <div key={option} className='flex items-center'>
                         <input
                             type='checkbox'
                             name='filter'
-                            id={value}
-                            checked={checkBoxValues.includes(value)}
-                            onChange={() => onChange(value)}
+                            id={option}
+                            checked={checkBoxValues.includes(option)}
+                            onChange={() => onChange(option)}
                             className='mr-2 cursor-pointer'
                         />
-                        <label htmlFor={value} className='cursor-pointer select-none'>{value}</label>
+                        <label htmlFor={option} className='cursor-pointer select-none'>{option}</label>
                     </div>
                 ))}
             </div>

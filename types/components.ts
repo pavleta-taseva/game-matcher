@@ -66,6 +66,8 @@ export interface SearchProps {
     setCurrentPage?: (currentPage: number) => void;
     genres: string[]; 
     setGenres?: (results: string[]) => void;
+    isSearching?: boolean;
+    setIsSearching?: (isSearching: boolean) => void;
 }
 
 export interface CheckboxGroupProps {
