@@ -25,7 +25,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
-const GameCard = ({ game }: GameDetailsProps) => {
+const MiniCard = ({ game }: GameDetailsProps) => {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -34,16 +34,11 @@ const GameCard = ({ game }: GameDetailsProps) => {
 
     return (
         <Card sx={{
-            maxWidth: 345,
+            maxWidth: '300px',
             width: '100%',
-            mb: 4,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            transition: 'transform 0.3s ease-in-out',
-            '&:hover': {
-                transform: 'scale(1.05)',
-            },
             backgroundColor: '#040c16',
             height: '100%'
         }}>
@@ -54,9 +49,9 @@ const GameCard = ({ game }: GameDetailsProps) => {
                     </IconButton>
                 }
                 title={
-                    <span className="text-secondary text-left text-2xl">{game?.name}</span>
+                    <span className="text-secondary text-left text-xl">{game?.name}</span>
                 }
-                sx={{ display: 'flex', flexDirection: 'row', height: '100px', justifyContent: 'flex-start', alignItems: 'flex-start' }}
+                sx={{ display: 'flex', flexDirection: 'row', height: '160px', justifyContent: 'flex-between', alignItems: 'flex-start' }}
                 subheader={
                     <span className="text-primary">{`Release date: ${new Date(game?.released).toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -109,11 +104,11 @@ const GameCard = ({ game }: GameDetailsProps) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <p className='font-bold'>Tags:</p>
-                    <p>{game?.tags?.length > 0 && game?.tags?.map((tag) => tag.name).join(', ') || 'No information'}</p>
+                    <p>{game?.tags.length > 0 && game?.tags?.map((tag) => tag.name).join(', ') || 'No information'}</p>
                 </CardContent>
             </Collapse>
         </Card>
     );
 }
 
-export default GameCard;
+export default MiniCard;

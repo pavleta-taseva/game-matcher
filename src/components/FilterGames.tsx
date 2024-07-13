@@ -9,14 +9,15 @@ import {
     playerPerspectives,
 } from '../utils/filterOptions';
 
-const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching, setIsFiltered }: SearchProps) => {
+const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching, isFiltered, setIsFiltered, setTopGames }: SearchProps) => {
     const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
     const [selectedOption, setSelectedOption] = useState<string>('Genres');
 
     useEffect(() => {
-        if (isSearching) {
+        if (isSearching || !isFiltered) {
             setCheckBoxValues([]);
             setResults && setResults([]);
+            setTopGames && setTopGames([]);
         }
     }, [isSearching, setResults]);
 
@@ -27,7 +28,7 @@ const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSe
 
         setCheckBoxValues(updatedCheckBoxValue);
         searchGames({ query: updatedCheckBoxValue.join(','), setResults, setTotalGamesCount, currentPage, genres: updatedCheckBoxValue });
-        setIsFiltered && setIsFiltered(updatedCheckBoxValue.length > 0);
+        setIsFiltered && setIsFiltered(updatedCheckBoxValue?.length > 0);
     };
 
     const getOptions = () => {

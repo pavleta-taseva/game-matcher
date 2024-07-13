@@ -70,6 +70,7 @@ export interface SearchProps {
     setIsSearching?: (isSearching: boolean) => void;
     isFiltered?: boolean;
     setIsFiltered?: (isFiltered: boolean) => void;
+    setTopGames?: (topGames: GameProps[]) => void;
 }
 
 export interface CheckboxGroupProps {

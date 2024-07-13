@@ -1,23 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearchPlus } from "react-icons/fa";
 import { searchGames } from 'services/api';
 import { SearchProps } from 'types/components';
 
-const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres, setIsSearching, isFiltered, setIsFiltered }: SearchProps) => {
+const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, genres, setIsSearching, isFiltered, setIsFiltered, setTopGames }: SearchProps) => {
     const [query, setQuery] = useState<string>('');
+
+    useEffect(() => {
+        if (isFiltered) {
+            setQuery('');
+            setResults && setResults([]);
+            setTopGames && setTopGames([]);
+        }
+    }, [isFiltered, setResults, query]);
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setQuery(event.target.value);
-        if (event.target.value === '' && setResults) setResults([]);
+
+        if (event.target.value === '' && setResults && setTopGames && setIsSearching) {
+            setResults([]);
+            setTopGames([]);
+            setIsSearching(false);
+            return;
+        }
+        searchGames({ query, setResults, setTotalGamesCount, currentPage, genres });
         setIsSearching && setIsSearching(true);
         setIsFiltered && setIsFiltered(false);
     };
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+
+        if (query === '' && setResults && setIsSearching && setTopGames) {
+            setResults([]);
+            setTopGames([]);
+            setIsSearching(false);
+            return;
+        }
         searchGames({ query, setResults, setTotalGamesCount, currentPage, genres });
         setCurrentPage && currentPage && setCurrentPage(currentPage + 1);
-        setIsSearching && setIsSearching(false);
     };
 
     return (
