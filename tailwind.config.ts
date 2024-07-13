@@ -16,7 +16,7 @@ const config: Config = {
       block: '#23252a',
     },
     backgroundImage: {
-      'controller': 'url("/images/background.png")',
+      'controller': 'url("/images/background.webp")',
     },
     screens: {
       'sm': '640px',

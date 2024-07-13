@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="w-1/2 flex justify-start items-center">
                 <Link href={'/'}>
                     <div className='text-primary flex flex-row gap-2 justify-center items-center text-3xl purple-purse-regular'>
-                        <Image src={'/images/game-match-logo.png'} alt='Game match logo image' width={60} height={60} />
+                        <Image src={'/images/game-match-logo.webp'} alt='Game match logo image' width={60} height={60} />
                         GameMatch
                     </div>
                 </Link>

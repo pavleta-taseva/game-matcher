@@ -56,7 +56,7 @@ const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, g
                 </div>
 
                 <button type="submit"
-                    className='w-fit px-2 lg:w-1/6 h-10 text-lg font-bold hover:text-xl hover:text-white bg-btnSecondary text-primary border rounded-md'>
+                    className='w-fit px-2 border-2 border-neutral-50 rounded-md lg:w-1/6 h-10 text-xl font-bold hover:text-2xl bg-btnSecondary text-black'>
                     Search
                 </button>
             </form >
