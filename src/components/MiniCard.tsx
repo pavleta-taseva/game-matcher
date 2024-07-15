@@ -45,15 +45,15 @@ const MiniCard = ({ game }: GameDetailsProps) => {
             <CardHeader
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon className='text-primary' />
+                        <MoreVertIcon className='text-primaryLight' />
                     </IconButton>
                 }
                 title={
-                    <span className="text-secondary text-left text-xl">{game?.name}</span>
+                    <span className="text-secondaryBlue text-left text-xl">{game?.name}</span>
                 }
                 sx={{ display: 'flex', flexDirection: 'row', height: '160px', justifyContent: 'flex-between', alignItems: 'flex-start' }}
                 subheader={
-                    <span className="text-primary">{`Release date: ${new Date(game?.released).toLocaleDateString('en-US', {
+                    <span className="text-primaryLight">{`Release date: ${new Date(game?.released).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',
@@ -87,10 +87,10 @@ const MiniCard = ({ game }: GameDetailsProps) => {
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon className='text-primary' />
+                    <FavoriteIcon className='text-primaryLight' />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon className='text-primary' />
+                    <ShareIcon className='text-primaryLight' />
                 </IconButton>
                 <ExpandMore
                     expand={expanded}
@@ -98,7 +98,7 @@ const MiniCard = ({ game }: GameDetailsProps) => {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon className='text-primary' />
+                    <ExpandMoreIcon className='text-primaryLight' />
                 </ExpandMore>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

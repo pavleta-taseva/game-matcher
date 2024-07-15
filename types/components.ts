@@ -47,7 +47,7 @@ export interface GameProps {
 }
 
 export interface Genre {
-    games: GameProps[]
+    games: GameProps[];
     games_count: number;
     id: number;
     image_background: string; 

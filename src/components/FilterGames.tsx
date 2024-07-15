@@ -47,13 +47,13 @@ const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSe
     };
 
     return (
-        <div className='flex flex-col w-4/12 text-lg'>
-            <label htmlFor="categoryFilter" className='text-xl text-secondary font-semibold mb-4'>
+        <div className='flex flex-col w-full text-lg lg:w-4/12'>
+            <label htmlFor="categoryFilter" className='text-xl text-secondaryBlue font-semibold mb-4'>
                 Filter Games
             </label>
             <select
                 id='categoryFilter'
-                className='w-11/12 mb-4 py-2 px-4 focus:outline-none text-dark rounded border-transparent text-base outline outline-neutral-700'
+                className='w-11/12 mb-4 py-2 px-4 focus:outline-none text-primaryGrey rounded border-transparent text-base outline outline-neutral-700'
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
             >

@@ -11,7 +11,7 @@ body {
 
 p,
 span {
-  @apply text-light;
+  @apply text-primaryLight;
 }
 
 .purple-purse-regular {

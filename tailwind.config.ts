@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { colors } from './assets/styles/colors';
 
 const config: Config = {
   content: [
@@ -8,12 +9,7 @@ const config: Config = {
   ],
   theme: {
     backgroundColor: {
-      dark: '#0d0d0d',
-      primary: '#071324',
-      secondary: '#040b15',
-      btnPrimary: '#d4e3f7',
-      btnSecondary: '#7faae6',
-      block: '#23252a',
+      ...colors.background
     },
     backgroundImage: {
       'controller': 'url("/images/background.webp")',
@@ -26,13 +22,7 @@ const config: Config = {
       '2xl': '1536px',
     },
     colors: {
-      light: '#e9f1fb',
-      primary: '#d4e3f7',
-      secondary: '#7faae6',
-      dark: '#464a53',
-      black: '#17191c',
-      footer: '#808080',
-      card: '#0d0d0d',
+      ...colors.textColor
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

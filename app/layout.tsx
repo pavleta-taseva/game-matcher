@@ -22,6 +22,9 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
             <head>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="description" content="Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you are into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered." />
+                <meta name="keywords" content="games, search, gaming, add, lists" />
+                <meta name="author" content="Pavleta Taseva" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
@@ -31,7 +34,7 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
             </head>
             <body>
                 <div
-                    className="flex flex-col bg-controller font-mono text-primary bg-primary bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
+                    className="flex flex-col bg-controller font-mono text-primaryLight bg-primaryBlack bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
                     <Navbar />
                     <div className="container mx-auto p-4 h-full">
                         {children}

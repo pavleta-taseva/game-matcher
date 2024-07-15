@@ -10,43 +10,43 @@ export const navLinks = [
     {
         path: '/',
         name: 'Home',
-        icon: <IoGameControllerOutline style={{ marginRight: 8 }} />,
+        icon: <IoGameControllerOutline className='mr-2' />,
         isLoggedIn: false
     },
     {
         path: '/games',
         name: 'All Games',
-        icon: <SiAmazongames style={{ marginRight: 8 }} />,
+        icon: <SiAmazongames className='mr-2' />,
         isLoggedIn: false
     },
     {
         path: '/profile',
         name: 'Profile',
-        icon: <GiEgyptianProfile style={{ marginRight: 8 }} />,
+        icon: <GiEgyptianProfile className='mr-2' />,
         isLoggedIn: true
     },
     {
         path: '/register',
         name: 'Sign up',
-        icon: <IoMdPersonAdd style={{ marginRight: 8 }} />,
+        icon: <IoMdPersonAdd className='mr-2' />,
         isLoggedIn: false
     },
     {
         path: '/favorites',
         name: 'Favorites',
-        icon: <MdOutlineFavoriteBorder style={{ marginRight: 8 }} />,
+        icon: <MdOutlineFavoriteBorder className='mr-2' />,
         isLoggedIn: true
     },
     {
         path: '/login',
         name: 'Login',
-        icon: <RiLoginCircleLine style={{ marginRight: 8 }} />,
+        icon: <RiLoginCircleLine className='mr-2' />,
         isLoggedIn: false
     },
     {
         path: '/logout',
         name: 'Logout',
-        icon: <IoMdLogOut style={{ marginRight: 8 }} />,
+        icon: <IoMdLogOut className='mr-2' />,
         isLoggedIn: true
     },
 ]

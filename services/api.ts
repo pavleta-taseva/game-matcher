@@ -2,8 +2,8 @@ import { SearchProps, Genre } from "types/components";
 
 export const searchGames = async ({ query, setResults, setTotalGamesCount, currentPage }: SearchProps) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?search=${query}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page=${currentPage}`);
-
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?search=${query}&ordering=-rating&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
+   
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -19,18 +19,18 @@ export const searchGames = async ({ query, setResults, setTotalGamesCount, curre
     }
 };
 
-export const getGames = async ({ setGamesList, setTotalGamesCount }: SearchProps ) => {
+export const getGamesByPage = async ({ setGamesList, setTotalGamesCount, currentPage }: SearchProps ) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=30&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
-        if (!response.ok) {
+        const games = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=30&page=${currentPage}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`);
+
+        if (!games.ok) {
             throw new Error('Network response was not ok');
         }
 
-        const gamesList = await response.json();
+        const gamesList = await games.json();
 
         setGamesList && setGamesList(gamesList?.results || []);
         setTotalGamesCount && setTotalGamesCount(gamesList?.count);
-
         return gamesList || [];
     } catch (error) {
         console.error('Error getting games:', error);
