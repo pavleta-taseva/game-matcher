@@ -41,7 +41,7 @@ const HomePage = () => {
                 setTopGames={setTopGames}
             />
 
-            <div className='flex w-full flex-col gap-12 justify-center lg:justify-between'>
+            <div className='flex w-full flex-col gap-12 justify-center lg:flex-row lg:justify-between'>
                 <FilterGames
                     genres={genres}
                     currentPage={currentPage}
