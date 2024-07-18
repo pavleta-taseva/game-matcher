@@ -15,10 +15,12 @@ const Games = () => {
     }, []);
 
     return (
-        <div className='flex flex-col w-full h-full gap-4'>
-            {gamesList && gamesList?.length > 0 &&
-                <AllGames gamesList={gamesList} setGamesList={setGamesList} totalGamesCount={totalGamesCount} setTotalGamesCount={setTotalGamesCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-            }
+        <div className='w-full h-auto min-h-screen'>
+            <div className='flex flex-col w-11/12 h-full mx-auto lg:mt-24'>
+                {gamesList && gamesList?.length > 0 &&
+                    <AllGames gamesList={gamesList} setGamesList={setGamesList} totalGamesCount={totalGamesCount} setTotalGamesCount={setTotalGamesCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                }
+            </div>
         </div>
     )
 }

@@ -56,7 +56,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
                 title={
                     <span className="text-secondaryBlue text-left text-2xl">{game?.name}</span>
                 }
-                sx={{ display: 'flex', flexDirection: 'row', height: '100px', justifyContent: 'flex-start', alignItems: 'flex-start' }}
+                sx={{ display: 'flex', flexDirection: 'row', height: 'fit-content', justifyContent: 'flex-start', alignItems: 'flex-start' }}
                 subheader={
                     <span className="text-primaryLight">{`Release date: ${new Date(game?.released).toLocaleDateString('en-US', {
                         year: 'numeric',
