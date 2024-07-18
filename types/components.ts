@@ -70,7 +70,6 @@ export interface SearchProps {
     setIsSearching?: (isSearching: boolean) => void;
     isFiltered?: boolean;
     setIsFiltered?: (isFiltered: boolean) => void;
-    setTopGames?: (topGames: GameProps[]) => void;
 }
 
 export interface CheckboxGroupProps {
@@ -85,4 +84,8 @@ export interface ExpandMoreProps extends IconButtonProps {
 
 export interface GameDetailsProps {
     game: GameProps;
+}
+
+export interface LoadingSpinnerProps {
+    loading: boolean;
 }

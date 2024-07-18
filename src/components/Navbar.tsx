@@ -27,7 +27,7 @@ const Navbar = () => {
                     </div>
                 </Link>
             </div>
-            <div className="w-full gap-4 flex justify-center items-center lg:justify-end lg:w-1/2">
+            <div className="w-full gap-4 flex justify-start lg:justify-end lg:w-1/2">
                 {navLinks.map((link: NavLink, index: number) => (
                     <div key={index}>
                         {isLoggedIn === link.isLoggedIn && (
