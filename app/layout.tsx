@@ -25,6 +25,7 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
                 <meta name="description" content="Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you are into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered." />
                 <meta name="keywords" content="games, search, gaming, add, lists" />
                 <meta name="author" content="Pavleta Taseva" />
+                <meta name="google-site-verification" content="zHKR0pclLl-QAA5g95yJ9Q70AGbdErKHluQ3oZ8ki7U" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
