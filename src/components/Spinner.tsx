@@ -21,7 +21,7 @@ const Spinner = ({ loading }: LoadingSpinnerProps) => {
                 aria-label="Loading Spinner"
                 data-testid="loader"
             />
-            <h1 className='text-primaryLight text-4xl purple-purse-regular mt-4'>Loading games...</h1>
+            <h1 className='text-primaryLight text-xl lg:text-4xl purple-purse-regular mt-4'>Loading games...</h1>
         </div>
     )
 }

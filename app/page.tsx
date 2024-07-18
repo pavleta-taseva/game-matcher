@@ -47,7 +47,7 @@ const HomePage = () => {
 
                     <div className={`flex flex-col gap-4 p-8 lg:my-12 text-justify bg-secondaryGrey opacity-90 shadow-grey select-none ${(isFiltered || isSearching) ? 'hidden' : 'block'} lg:w-8/12`}>
                         <div className='text-primaryLight flex flex-row gap-2 justify-center items-center text-3xl purple-purse-regular'>
-                            <SiRepublicofgamers className='text-secondaryBlue text-4xl' />
+                            <SiRepublicofgamers className='text-secondaryBlue text-2xl lg:text-4xl' />
                             Welcome to GameMatcher
                         </div>
                         <p> Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you are into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered.

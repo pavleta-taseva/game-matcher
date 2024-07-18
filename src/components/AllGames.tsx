@@ -31,7 +31,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
     };
 
     return (
-        <div className='flex flex-col w-full h-full lg:w-11/12 justify-between self-center'>
+        <div className='flex flex-col w-full h-full lg:w-11/12 justify-between self-center mt-12 lg:mt-0'>
             <div className='flex flex-col justify-between lg:mt-12 mb-0'>
                 <Stack spacing={2}>
                     <Pagination
@@ -57,7 +57,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
                         }}
                     />
                 </Stack>
-                <h2 className="text-xl font-semibold text-secondaryBlue mb-12">
+                <h2 className="text-base lg:text-xl font-semibold text-secondaryBlue mb-12">
                     Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
                 </h2>
             </div>

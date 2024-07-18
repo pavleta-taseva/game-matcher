@@ -49,11 +49,11 @@ const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, g
                         type="text"
                         value={isFiltered ? '' : query}
                         onChange={handleChange} placeholder='Enter game name or genre...'
-                        className='w-full h-10 pl-12 border rounded-md outline-none p-2 text-primaryGrey' />
+                        className='w-full h-10 pl-12 border rounded-md outline-none p-2 text-primaryGrey text-sm' />
                 </div>
 
                 <button type="submit"
-                    className='px-2 border-2 border-neutral-50 rounded-md w-full md:w-1/6 h-10 text-xl font-bold hover:text-2xl bg-primaryBlue text-primaryDark'>
+                    className='px-2 border-2 border-neutral-50 rounded-md w-full md:w-1/6 h-10 text-base lg:text-xl font-bold bg-primaryBlue text-primaryDark hover:bg-primaryBlack hover:text-primaryLight'>
                     Search
                 </button>
             </form >

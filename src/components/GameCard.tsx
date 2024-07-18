@@ -54,7 +54,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
                     </IconButton>
                 }
                 title={
-                    <span className="text-secondaryBlue text-left text-2xl">{game?.name}</span>
+                    <span className="text-secondaryBlue text-left text-xl lg:text-2xl">{game?.name}</span>
                 }
                 sx={{ display: 'flex', flexDirection: 'row', height: 'fit-content', justifyContent: 'flex-start', alignItems: 'flex-start' }}
                 subheader={
