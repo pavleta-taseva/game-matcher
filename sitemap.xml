@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!--  created with sitemap generator https://octopus.do  -->
+
+    <url>
+        <loc>https://game-matcher.netlify.app</loc>
+        <lastmod>2024-07-18</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://game-matcher.netlify.app/games</loc>
+        <lastmod>2024-07-18</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://game-matcher.netlify.app/register</loc>
+        <lastmod>2024-07-18</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://game-matcher.netlify.app/login</loc>
+        <lastmod>2024-07-18</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
