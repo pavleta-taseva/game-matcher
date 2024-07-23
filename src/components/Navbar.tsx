@@ -18,8 +18,8 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     return (
-        <div className="p-8 bg-primaryBlack text-3xl w-full h-24 gap-12 mb-12 flex flex-col justify-between items-center lg:flex-row lg:mb-0 sm:text-base">
-            <div className="w-full flex justify-start items-center lg:w-1/2">
+        <div className="flex flex-col py-2 md:p-8 gap-4 md:gap-12 bg-primaryBlack text-3xl w-full h-28 md:h-fit justify-between items-center lg:flex-row sm:text-base">
+            <div className="w-full flex md:justify-start items-center lg:w-1/2">
                 <Link href={'/'}>
                     <div className='text-secondaryBlue flex flex-row gap-2 justify-center items-center text-3xl purple-purse-regular'>
                         <Image src={'/images/game-match-logo.webp'} alt='Game match logo image' width={60} height={60} />
@@ -27,9 +27,9 @@ const Navbar = () => {
                     </div>
                 </Link>
             </div>
-            <div className="w-full gap-4 flex justify-start lg:justify-end lg:w-1/2">
+            <div className="w-full gap-4 flex justify-center md:justify-start lg:justify-end lg:w-1/2">
                 {navLinks.map((link: NavLink, index: number) => (
-                    <div key={index}>
+                    <div key={index} className='text-2xl lg:text-base'>
                         {isLoggedIn === link.isLoggedIn && (
                             <Link key={index} href={link.path}>
                                 <div

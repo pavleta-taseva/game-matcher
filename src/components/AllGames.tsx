@@ -31,7 +31,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
     };
 
     return (
-        <div className='flex flex-col w-full h-full lg:w-11/12 justify-between self-center'>
+        <div className='flex flex-col w-full h-full mt-4 lg:mt-0 lg:w-11/12 justify-between self-center'>
             <div className='flex flex-col justify-between'>
                 <Stack spacing={2}>
                     <Pagination
@@ -46,10 +46,12 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
                                 color: colors.textColor.primaryLight,
                                 borderColor: colors.textColor.primaryLight,
                                 marginBottom: 2,
+                                fontSize: '0.7rem',
                             },
                             '& .MuiPaginationItem-root.Mui-selected': {
                                 color: colors.textColor.secondaryBlue,
                                 borderColor: colors.textColor.secondaryBlue,
+                                fontSize: '0.7rem',
                             },
                             '& .MuiPaginationItem-root:hover': {
                                 backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -57,7 +59,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
                         }}
                     />
                 </Stack>
-                <h2 className="text-base lg:text-xl font-semibold text-secondaryBlue mb-12">
+                <h2 className="text-sm lg:text-xl font-semibold text-secondaryBlue mb-12">
                     Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
                 </h2>
             </div>

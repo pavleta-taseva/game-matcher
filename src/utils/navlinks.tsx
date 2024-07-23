@@ -1,16 +1,17 @@
-import { IoGameControllerOutline } from "react-icons/io5";
+// import { IoGameControllerOutline } from "react-icons/io5";
 import { GiEgyptianProfile } from "react-icons/gi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 import { IoMdPersonAdd } from "react-icons/io";
 import { SiAmazongames } from "react-icons/si";
+import { FaHome } from "react-icons/fa";
 
 export const navLinks = [
     {
         path: '/',
         name: 'Home',
-        icon: <IoGameControllerOutline className='mr-2' />,
+        icon: <FaHome className='mr-2' />,
         isLoggedIn: false
     },
     {
