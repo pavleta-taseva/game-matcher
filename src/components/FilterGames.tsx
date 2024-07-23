@@ -46,7 +46,7 @@ const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSe
     };
 
     return (
-        <div className='flex flex-col text-lg lg:w-2/12'>
+        <div className='text-lg hidden lg:block lf:flex lg:flex-col lg:w-2/12'>
             <label htmlFor="categoryFilter" className='text-xl text-secondaryBlue font-semibold mb-4'>
                 Filter Games
             </label>

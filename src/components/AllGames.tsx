@@ -31,8 +31,8 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
     };
 
     return (
-        <div className='flex flex-col w-full h-full lg:w-11/12 justify-between self-center mt-12 lg:mt-0'>
-            <div className='flex flex-col justify-between lg:mt-12 mb-0'>
+        <div className='flex flex-col w-full h-full lg:w-11/12 justify-between self-center'>
+            <div className='flex flex-col justify-between'>
                 <Stack spacing={2}>
                     <Pagination
                         color='primary'
@@ -45,7 +45,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
                             '& .MuiPaginationItem-root': {
                                 color: colors.textColor.primaryLight,
                                 borderColor: colors.textColor.primaryLight,
-                                marginBottom: 4,
+                                marginBottom: 2,
                             },
                             '& .MuiPaginationItem-root.Mui-selected': {
                                 color: colors.textColor.secondaryBlue,

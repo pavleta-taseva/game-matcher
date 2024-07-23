@@ -35,9 +35,9 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
             </head>
             <body>
                 <div
-                    className="flex flex-col bg-controller font-mono text-primaryLight bg-primaryBlack bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
+                    className="flex flex-col bg-controller font-mono min-h-screen text-primaryLight bg-primaryBlack bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
                     <Navbar />
-                    <div className="w-full h-auto px-2 lg:px-8 py-2">
+                    <div className="w-full min-h-screen px-2 lg:px-8 py-2">
                         {children}
                     </div>
                     <Footer />
