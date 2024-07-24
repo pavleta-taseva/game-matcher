@@ -12,7 +12,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { ExpandMoreProps, GameDetailsProps } from '../../types/components';
+import { GameDetailsProps } from '../../types/components';
+import { ExpandMoreProps } from '../../types/elements';
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
     const { expand, ...other } = props;

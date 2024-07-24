@@ -1,6 +1,7 @@
-import React, { useState, CSSProperties, useEffect } from 'react';
+import React, { CSSProperties } from 'react';
 import CircleLoader from "react-spinners/CircleLoader";
-import { LoadingSpinnerProps } from '../../types/components';
+import { LoadingSpinnerProps } from 'types/components';
+import { colors } from '@/assets/styles/colors';
 
 const override: CSSProperties = {
     display: "block",
@@ -9,12 +10,10 @@ const override: CSSProperties = {
 };
 
 const Spinner = ({ loading }: LoadingSpinnerProps) => {
-    let [color, setColor] = useState("#ffffff");
-
     return (
         <div className='flex flex-col w-full h-screen rounded-lg self-center items-center justify-start py-12 px-4 bg-secondaryGrey opacity-90 shadow-grey overflow-auto'>
             <CircleLoader
-                color={color}
+                color={colors.textColor.primaryLight}
                 loading={loading}
                 cssOverride={override}
                 size={60}

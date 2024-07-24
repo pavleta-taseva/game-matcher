@@ -1,7 +1,7 @@
 import React from 'react';
 import '@/assets/styles/globals.css';
 import Navbar from '@/src/components/Navbar';
-import Footer from '@/src/components/Footer';
+import Footer from '@/src/ui/Footer';
 import connectDB from 'config/database';
 
 type MainLayoutProps = {

@@ -1,4 +1,3 @@
-import { IconButtonProps } from '@mui/material/IconButton';
 export interface GameProps {
     added: number;
     background_image: string; 
@@ -76,10 +75,6 @@ export interface CheckboxGroupProps {
     options: string[] | undefined;
     checkBoxValues: string[];
     onChange: (option: string) => void;
-}
-
-export interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
 }
 
 export interface GameDetailsProps {

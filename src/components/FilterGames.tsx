@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import CheckboxGroup from './CheckboxGroup';
+import CheckboxGroup from '@/src/ui/CheckboxGroup';
+import SelectElement from '@/src/ui/SelectElement';
 import { SearchProps } from 'types/components';
 import { searchGames } from 'services/api';
-import {
-    filterOptions,
-    operatingSystems,
-    gameModes,
-    playerPerspectives,
-} from '../utils/filterOptions';
+import { operatingSystems, gameModes, playerPerspectives } from '@/src/utils/filterOptions';
 
 const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSearching, isFiltered, setIsFiltered }: SearchProps) => {
     const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
@@ -47,19 +43,10 @@ const FilterGames = ({ genres, currentPage, setTotalGamesCount, setResults, isSe
 
     return (
         <div className='text-lg hidden lg:block lf:flex lg:flex-col lg:w-2/12'>
-            <label htmlFor="categoryFilter" className='text-xl text-secondaryBlue font-semibold mb-4'>
-                Filter Games
-            </label>
-            <select
-                id='categoryFilter'
-                className='w-9/12 mb-4 py-2 px-4 focus:outline-none text-primaryGrey rounded border-transparent text-base outline outline-neutral-700'
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-            >
-                {filterOptions.map((filter: string) => (
-                    <option key={filter} value={filter}>{filter}</option>
-                ))}
-            </select>
+            <SelectElement
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+            />
 
             <CheckboxGroup
                 options={getOptions()}

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Spinner from './Spinner';
+import Spinner from '@/src/ui/Spinner';
+import PaginationElement from '@/src/ui/PaginationElement';
 import { SearchProps } from 'types/components';
 import { getGamesByPage } from 'services/api';
-import { colors } from '../../assets/styles/colors';
 
 const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount, currentPage, setCurrentPage }: SearchProps) => {
     const [countOfGamesPerPage] = useState(30);
@@ -33,32 +31,7 @@ const AllGames = ({ gamesList, setGamesList, totalGamesCount, setTotalGamesCount
     return (
         <div className='flex flex-col w-full h-full mt-4 lg:mt-0 lg:w-11/12 justify-between self-center'>
             <div className='flex flex-col justify-between'>
-                <Stack spacing={2}>
-                    <Pagination
-                        color='primary'
-                        count={totalPages ?? 0}
-                        variant="outlined"
-                        shape="rounded"
-                        page={currentPage}
-                        onChange={handleChange}
-                        sx={{
-                            '& .MuiPaginationItem-root': {
-                                color: colors.textColor.primaryLight,
-                                borderColor: colors.textColor.primaryLight,
-                                marginBottom: 2,
-                                fontSize: '0.7rem',
-                            },
-                            '& .MuiPaginationItem-root.Mui-selected': {
-                                color: colors.textColor.secondaryBlue,
-                                borderColor: colors.textColor.secondaryBlue,
-                                fontSize: '0.7rem',
-                            },
-                            '& .MuiPaginationItem-root:hover': {
-                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            },
-                        }}
-                    />
-                </Stack>
+                <PaginationElement totalPages={totalPages} currentPage={currentPage} handleChange={handleChange} />
                 <h2 className="text-sm lg:text-xl font-semibold text-secondaryBlue mb-12">
                     Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
                 </h2>
