@@ -28,10 +28,10 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
                 <meta name="google-site-verification" content="zHKR0pclLl-QAA5g95yJ9Q70AGbdErKHluQ3oZ8ki7U" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap"
-                    rel="stylesheet"
-                />
+                <link rel="preload" href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap" as="style" />
+                <noscript>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap" />
+                </noscript>
             </head>
             <body>
                 <div

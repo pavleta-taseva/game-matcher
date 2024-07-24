@@ -31,7 +31,7 @@ const Navbar = () => {
                 {navLinks.map((link: NavLink, index: number) => (
                     <div key={index} className='text-2xl lg:text-base'>
                         {isLoggedIn === link.isLoggedIn && (
-                            <Link key={index} href={link.path}>
+                            <Link key={index} href={link.path} aria-label={link.name}>
                                 <div
                                     className={`${pathName === link.path
                                         ? 'flex items-center border-b-0 sm:border-b-2 border-primaryLight'
