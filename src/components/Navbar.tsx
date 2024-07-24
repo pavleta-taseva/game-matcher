@@ -4,7 +4,7 @@ import React, { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/image';
 
 type NavLink = {
     path: string;

@@ -8,6 +8,7 @@ export interface HomeContentProps {
 
 export interface ButtonProps {
     content: string;
+    type: "submit" | "reset" | "button" | undefined;
 }
 
 export interface SearchElementProps {

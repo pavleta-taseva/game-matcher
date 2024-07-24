@@ -1,5 +1,7 @@
 const filterOptions: string[] = ['Genres', 'Operating System', 'Game Modes', 'Player Perspective'];
 
+const genderOptions: string[] = ['female', 'male', 'other'];
+
 const operatingSystems: string[] = [
     'Windows', 'Mac OS', 'Linux', 'PlayStation', 'Xbox', 'Nintendo Switch', 'iOS', 'Android'
 ];
@@ -14,6 +16,7 @@ const playerPerspectives: string[] = [
 
 export {
     filterOptions,
+    genderOptions,
     operatingSystems,
     gameModes,
     playerPerspectives,
