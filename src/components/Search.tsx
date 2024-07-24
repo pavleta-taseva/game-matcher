@@ -44,7 +44,7 @@ const Search = ({ setResults, setTotalGamesCount, currentPage, setCurrentPage, g
             <form onSubmit={handleSubmit}
                 className='flex flex-col lg:flex-row gap-4 lg:w-11/12'>
                 <SearchElement query={query} isFiltered={isFiltered} handleChange={handleChange} />
-                <ButtonElement content='Search' />
+                <ButtonElement content='Search' type='submit' />
             </form >
         </div >
     );
