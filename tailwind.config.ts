@@ -1,33 +1,35 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 import { colors } from './assets/styles/colors';
 
 const config: Config = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,jsx,ts,tsx,mdx}",
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,jsx,ts,tsx,mdx}',
   ],
   theme: {
     backgroundColor: {
-      ...colors.background
+      ...colors.background,
     },
     backgroundImage: {
-      'controller': 'url("/images/background.webp")',
+      controller: 'url("/images/background.webp")',
     },
     screens: {
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
       '2xl': '1536px',
     },
     colors: {
-      ...colors.textColor
+      ...colors.textColor,
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-      mono: ['ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace']
+      mono: [
+        'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace',
+      ],
     },
     fontSize: {
       sm: '0.8rem',
@@ -42,9 +44,9 @@ const config: Config = {
       light: '300',
       normal: '400',
       bold: '700',
-    }, 
+    },
     boxShadow: {
-      grey: '0px 0px 15px grey;'
+      grey: '0px 0px 15px grey;',
     },
     animation: {
       'fade-slow': 'fadeOut 3s ease-in-out',
@@ -57,7 +59,7 @@ const config: Config = {
       easeSlowIn: {
         '0%': { transform: 'translateX(100%)' },
         '100%': { transform: 'translateX(0%)' },
-      }
+      },
     },
     extend: {
       spacing: {
@@ -100,8 +102,8 @@ const config: Config = {
       borderRadius: {
         '4xl': '2rem',
       },
+    },
+    plugins: [],
   },
-  plugins: [],
-  }
 };
 export default config;

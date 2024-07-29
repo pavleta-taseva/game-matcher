@@ -1,5 +1,5 @@
 @config "../../tailwind.config.ts";
-@import url("https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@ span {
 }
 
 .purple-purse-regular {
-  font-family: "Purple Purse", serif;
+  font-family: 'Purple Purse', serif;
   font-weight: 400;
   font-style: swap;
 }
