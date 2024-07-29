@@ -20,7 +20,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
-  const password = watch('password');
+  const [email, password] = watch(['email', 'password']);
 
   return (
     <div className="flex flex-col justify-center items-center p-2">
@@ -59,7 +59,7 @@ const Login = () => {
           }}
           error={errors.password}
         />
-        <ButtonElement content="Sign in" type="submit" />
+        <ButtonElement content="Sign in" type="submit" disabled={!email || !password} />
         <Link href={'/login'} className="text-base text-secondaryBlue">
           Forgot password?
         </Link>

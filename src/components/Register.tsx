@@ -31,7 +31,7 @@ const Register = () => {
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
-  const password = watch('password');
+  const [email, password, confirmPassword] = watch(['email', 'password', 'confirmPassword']);
 
   return (
     <div className="flex flex-col justify-center items-center p-2">
@@ -103,7 +103,7 @@ const Register = () => {
           register={register}
           options={genderOptions}
         />
-        <ButtonElement content="Submit" type="submit" />
+        <ButtonElement content="Submit" type="submit" disabled={!email || !password || !confirmPassword} />
       </form>
       <div className="mt-4 text-base">
         Already have an account?{' '}

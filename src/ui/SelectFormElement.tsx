@@ -24,6 +24,7 @@ const SelectFormElement = <T extends FieldValues>({
       <select
         {...register(name)}
         {...rest}
+        defaultValue={options[2]}
         className="rounded-sm text-primaryDark h-8 mb-4"
       >
         {options.map((option, index) => (
