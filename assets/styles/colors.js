@@ -14,5 +14,6 @@ export const colors = {
     secondaryBlue: "#7faae6",
     primaryGrey: "#464a53",
     primaryDark: "#17191c",
+    primaryRed: "#FF0000",
   },
 };
