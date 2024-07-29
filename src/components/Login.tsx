@@ -20,8 +20,6 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
-  const [email, password] = watch(['email', 'password']);
-
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <Image
@@ -59,14 +57,18 @@ const Login = () => {
           }}
           error={errors.password}
         />
-        <ButtonElement content="Sign in" type="submit" disabled={!email || !password} />
-        <Link href={'/login'} className="text-base text-secondaryBlue">
+        <ButtonElement
+          content="Sign in"
+          type="submit"
+          disabled={!watch('email') || !watch('password')}
+        />
+        <Link href={'/'} className="text-base text-secondaryBlue">
           Forgot password?
         </Link>
       </form>
       <div className="mt-4 text-base">
         Still not registered?{' '}
-        <Link href={'/login'} className="text-secondaryBlue text-base">
+        <Link href={'/register'} className="text-secondaryBlue text-base">
           Sign up
         </Link>
       </div>

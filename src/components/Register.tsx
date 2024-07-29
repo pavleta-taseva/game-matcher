@@ -30,9 +30,6 @@ const Register = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
-
-  const [email, password, confirmPassword] = watch(['email', 'password', 'confirmPassword']);
-
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <Image
@@ -93,7 +90,7 @@ const Register = () => {
               message:
                 'Minimum length is 8 with a mix of letters, numbers and symbols',
             },
-            validate: (value) => value === password || 'Passwords do not match',
+            validate: (value) => value === watch('password') || 'Passwords do not match',
           }}
           error={errors.confirmPassword}
         />
@@ -103,7 +100,11 @@ const Register = () => {
           register={register}
           options={genderOptions}
         />
-        <ButtonElement content="Submit" type="submit" disabled={!email || !password || !confirmPassword} />
+        <ButtonElement
+          content="Submit"
+          type="submit"
+          disabled={!watch('email') || !watch('password') || !watch('confirmPassword')}
+        />
       </form>
       <div className="mt-4 text-base">
         Already have an account?{' '}
