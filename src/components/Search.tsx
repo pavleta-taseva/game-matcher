@@ -33,7 +33,10 @@ const Search = ({
       setIsSearching(false);
       return;
     }
-    searchGames({ query, setResults, setTotalGamesCount, currentPage, genres });
+
+    const searchValue = event.target.value.toString();
+
+    searchGames({ query: searchValue, setResults, setTotalGamesCount, currentPage, genres });
     setIsSearching && setIsSearching(true);
     setIsFiltered && setIsFiltered(false);
   };
@@ -61,7 +64,7 @@ const Search = ({
           isFiltered={isFiltered}
           handleChange={handleChange}
         />
-        <ButtonElement content="Search" type="submit" />
+        <ButtonElement content="Search" type="submit" disabled={!query} />
       </form>
     </div>
   );
