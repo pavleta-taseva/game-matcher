@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import InputElement from '@/src/ui/InputElement';
 import ButtonElement from '@/src/ui/ButtonElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { getUsers } from 'services/usersAPI';
 
 interface IFormInput {
   email: string;
@@ -20,6 +21,11 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <Image

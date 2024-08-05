@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import AllGames from '@/src/components/AllGames';
-import { GameProps } from 'types/components';
-import { getGamesByPage } from 'services/api';
+import { GameProps } from '@/src/types/components';
+import { getGamesByPage } from 'services/gamesAPI';
 
 const Games = () => {
   const [gamesList, setGamesList] = useState<GameProps[]>();

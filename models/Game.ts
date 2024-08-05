@@ -39,6 +39,6 @@ const GameSchema = new Schema(
   }
 );
 
-const Game = models.user || model('Game', GameSchema);
+const Game = models.Game || model('Game', GameSchema);
 
 export default Game;

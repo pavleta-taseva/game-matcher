@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { searchGames } from 'services/api';
-import { SearchProps } from 'types/components';
+import { searchGames } from 'services/gamesAPI';
+import { SearchProps } from '@/src/types/components';
 import ButtonElement from '@/src/ui/ButtonElement';
 import SearchElement from '@/src/ui/SearchElement';
 

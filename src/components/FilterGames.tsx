@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CheckboxGroup from '@/src/ui/CheckboxGroup';
 import SelectElement from '@/src/ui/SelectElement';
-import { SearchProps } from 'types/components';
-import { searchGames } from 'services/api';
+import { SearchProps } from '@/src/types/components';
+import { searchGames } from 'services/gamesAPI';
 import {
   operatingSystems,
   gameModes,

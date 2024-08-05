@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
-import { LoadingSpinnerProps } from 'types/components';
+import { LoadingSpinnerProps } from '@/src/types/components';
 import { colors } from '@/assets/styles/colors';
 
 const override: CSSProperties = {

@@ -1,11 +1,14 @@
 'use server';
 
 import connectDB from 'config/database';
+import User from 'models/User';
 
 export const GET = async (request: Request) => {
   try {
     await connectDB();
-    return new Response(JSON.stringify({ message: 'Get request' }), {
+    const users = await User.find({});
+
+    return new Response(JSON.stringify(users), {
       status: 200,
     });
   } catch (error) {

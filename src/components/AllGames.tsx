@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
 import Spinner from '@/src/ui/Spinner';
 import PaginationElement from '@/src/ui/PaginationElement';
-import { SearchProps } from 'types/components';
-import { getGamesByPage } from 'services/api';
+import { SearchProps } from '@/src/types/components';
+import { getGamesByPage } from 'services/gamesAPI';
 
 const AllGames = ({
   gamesList,

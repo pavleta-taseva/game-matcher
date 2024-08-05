@@ -5,8 +5,8 @@ import Search from '@/src/components/Search';
 import FilterGames from '@/src/components/FilterGames';
 import AllGames from '@/src/components/AllGames';
 import HomeContent from '@/src/ui/HomeContent';
-import { GameProps } from 'types/components';
-import { getGenres } from 'services/api';
+import { GameProps } from '@/src/types/components';
+import { getGenres } from 'services/gamesAPI';
 
 const HomePage = () => {
   const [results, setResults] = useState<GameProps[]>();
