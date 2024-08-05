@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxGroupProps } from '../../types/components';
+import { CheckboxGroupProps } from '../types/components';
 
 const CheckboxGroup = ({
   options,

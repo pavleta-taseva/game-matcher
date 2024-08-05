@@ -1,6 +1,6 @@
 import React from 'react';
 import { SiRepublicofgamers } from 'react-icons/si';
-import { HomeContentProps } from 'types/elements';
+import { HomeContentProps } from '@/src/types/elements';
 
 const HomeContent = ({ isFiltered, isSearching }: HomeContentProps) => {
   return (

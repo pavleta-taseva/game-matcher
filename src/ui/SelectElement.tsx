@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectElementProps } from 'types/elements';
+import { SelectElementProps } from '@/src/types/elements';
 import { filterOptions } from '@/src/utils/filterOptions';
 
 const SelectElement = ({

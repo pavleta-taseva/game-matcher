@@ -1,4 +1,4 @@
-import { SearchProps, Genre } from 'types/components';
+import { SearchProps, Genre } from '@/src/types/components';
 
 export const searchGames = async ({
   query,

@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { colors } from '@/assets/styles/colors';
-import { PaginationElementProps } from 'types/elements';
+import { PaginationElementProps } from '@/src/types/elements';
 
 const PaginationElement = ({
   totalPages,

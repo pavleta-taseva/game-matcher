@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaSearchPlus } from 'react-icons/fa';
-import { SearchElementProps } from 'types/elements';
+import { SearchElementProps } from '@/src/types/elements';
 
 const SearchElement = ({
   query,

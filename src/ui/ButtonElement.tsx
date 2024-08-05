@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from 'types/elements';
+import { ButtonProps } from '@/src/types/elements';
 
 const ButtonElement = ({ content, type, disabled }: ButtonProps) => {
   return (
