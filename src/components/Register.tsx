@@ -20,6 +20,7 @@ interface IFormInput {
   password: string;
   confirmPassword: string;
   gender: GenderEnum;
+  username: string;
 }
 
 const Register = () => {
@@ -57,6 +58,19 @@ const Register = () => {
             },
           }}
           error={errors.email}
+        />
+        <InputElement<IFormInput>
+          label="Username"
+          name="username"
+          register={register}
+          validation={{
+            required: 'Username is required',
+            pattern: {
+              value: /^[A-Za-z0-9]*$/,
+              message: 'Invalid username',
+            },
+          }}
+          error={errors.username}
         />
         <InputElement<IFormInput>
           label="Password"
@@ -103,7 +117,7 @@ const Register = () => {
         <ButtonElement
           content="Submit"
           type="submit"
-          disabled={!watch('email') || !watch('password') || !watch('confirmPassword')}
+          disabled={!watch('email') || !watch('username') || !watch('password') || !watch('confirmPassword')}
         />
       </form>
       <div className="mt-4 text-base">
