@@ -5,5 +5,6 @@
   "template-string-converter.quoteType": "double",
   "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.quoteStyle": "single",
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+  "cSpell.words": ["signin"]
 }

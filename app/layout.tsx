@@ -42,6 +42,7 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
             href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap"
             as="style"
           />
+          <script src="https://accounts.google.com/gsi/client" async></script>
           <noscript>
             <link
               rel="stylesheet"

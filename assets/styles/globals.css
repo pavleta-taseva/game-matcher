@@ -11,7 +11,7 @@ body {
 
 p,
 span {
-  @apply text-primaryLight;
+  /* @apply text-primaryLight; */
   @apply text-base;
 }
 

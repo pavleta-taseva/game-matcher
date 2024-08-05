@@ -1,5 +1,5 @@
 import { IconButtonProps } from '@mui/material/IconButton';
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 export interface HomeContentProps {
   isFiltered: boolean;
@@ -9,7 +9,8 @@ export interface HomeContentProps {
 export interface ButtonProps {
   content: string;
   type: 'submit' | 'reset' | 'button' | undefined;
-  disabled: boolean;
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler;
 }
 
 export interface SearchElementProps {
