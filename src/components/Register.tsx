@@ -6,6 +6,7 @@ import Link from 'next/link';
 import InputElement from '@/src/ui/InputElement';
 import SelectFormElement from '@/src/ui/SelectFormElement';
 import ButtonElement from '@/src/ui/ButtonElement';
+import GoogleSignInElement from '../ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { genderOptions } from '@/src/utils/filterOptions';
 
@@ -126,6 +127,9 @@ const Register = () => {
           Log in
         </Link>
       </div>
+      <div className='text-primaryLight text-center mt-4 w-full md:w-1/2 lg:w-64'> ----------- OR ----------- </div>
+
+      <GoogleSignInElement content={'Continue with Google'} />
     </div>
   );
 };
