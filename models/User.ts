@@ -2,6 +2,10 @@ import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema(
   {
+    googleId: {
+      type: String,
+      unique: [true, 'Id already exists'],
+    },
     email: {
       type: String,
       unique: [true, 'Email already exists'],
@@ -22,6 +26,9 @@ const UserSchema = new Schema(
     },
     image: {
       type: String,
+    },
+    gender: {
+      enum: ['female', 'male', 'other'],
     },
     favorites: [
       {

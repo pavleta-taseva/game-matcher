@@ -4,8 +4,10 @@ import React, { JSX } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { FaUserCircle } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
+import profileDefault from '@/public/images/user.png';
 
 type NavLink = {
   path: string;
@@ -17,6 +19,7 @@ type NavLink = {
 const Navbar = () => {
   const pathName = usePathname();
   const { data: session } = useSession();
+  const profileImage = session?.user?.image;
 
   return (
     <div className="flex flex-col py-2 md:p-8 gap-4 md:gap-12 bg-primaryBlack text-3xl w-full h-28 md:h-fit justify-between items-center lg:flex-row sm:text-base">
@@ -33,7 +36,7 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-      <div className="w-full gap-4 flex justify-center md:justify-start lg:justify-end lg:w-1/2">
+      <div className="w-full gap-4 flex justify-center items-center md:justify-start lg:justify-end lg:w-1/2">
         {navLinks.map((link: NavLink, index: number) => (
           <div key={index} className="text-2xl lg:text-base">
             {link.session && session && (
@@ -68,6 +71,7 @@ const Navbar = () => {
             )}
           </div>
         ))}
+        <Image className='h-8 w-8 rounded-full' alt='User Image' src={profileImage || profileDefault} width={40} height={40} />
       </div>
     </div>
   );
