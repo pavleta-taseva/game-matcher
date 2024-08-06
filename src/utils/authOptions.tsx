@@ -1,7 +1,6 @@
 import GoogleProvider from 'next-auth/providers/google';
 import connectDB from 'config/database';
 import User from 'models/User';
-import { UserProps } from '@/src/types/user';
 
 const clientId = process.env.GOOGLE_CLIENT_ID || '';
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET || '';
@@ -21,17 +20,17 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user }: UserProps) {
+    async signIn({ profile }: any) {
       await connectDB();
-      const userExists = await User.findOne({ email: user.email });
+      const userExists = await User.findOne({ email: profile.email });
 
       if (!userExists) {
-        const username = user.username.slice(0, 20);
+        const username = profile.username.slice(0, 20);
 
         await User.create({
-          email: user.email,
+          email: profile.email,
           username,
-          image: user.image,
+          image: profile.image,
         })
       }
 
