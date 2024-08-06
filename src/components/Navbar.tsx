@@ -13,6 +13,7 @@ type NavLink = {
   name: string;
   icon: JSX.Element;
   session: boolean;
+  profile?: boolean;
 };
 
 const Navbar = () => {
@@ -42,7 +43,7 @@ const Navbar = () => {
       <div className="flex justify-center items-center w-full h-14 gap-4 md:justify-start lg:justify-end lg:w-1/2">
         {navLinks.map((link: NavLink, index: number) => (
           <div key={index} className="text-2xl lg:text-base">
-            {link.session && session && (
+            {(link.session || link?.profile) && session && (
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
                   onClick={() => handleLogout(link.name)}

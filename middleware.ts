@@ -16,14 +16,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  if (
-    !session &&
-    !pathname.startsWith('/login') &&
-    !pathname.startsWith('/register')
-  ) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
   return NextResponse.next();
 }
 

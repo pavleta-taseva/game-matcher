@@ -13,18 +13,21 @@ export const navLinks = [
     name: 'Home',
     icon: <FaHome className="mr-2" />,
     session: false,
+    profile: true,
   },
   {
     path: '/games',
     name: 'All Games',
     icon: <SiAmazongames className="mr-2" />,
-    session: false || true,
+    session: false,
+    profile: true,
   },
   {
     path: '/profile',
     name: 'Profile',
     icon: <GiEgyptianProfile className="mr-2" />,
     session: true,
+    profile: true,
   },
   {
     path: '/register',
@@ -37,6 +40,7 @@ export const navLinks = [
     name: 'Favorites',
     icon: <MdOutlineFavoriteBorder className="mr-2" />,
     session: true,
+    profile: true,
   },
   {
     path: '/login',
@@ -49,5 +53,6 @@ export const navLinks = [
     name: 'Logout',
     icon: <IoMdLogOut className="mr-2" />,
     session: true,
+    profile: true,
   },
 ];
