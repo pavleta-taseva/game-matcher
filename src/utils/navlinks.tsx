@@ -18,7 +18,7 @@ export const navLinks = [
     path: '/games',
     name: 'All Games',
     icon: <SiAmazongames className="mr-2" />,
-    session: false,
+    session: false || true,
   },
   {
     path: '/profile',

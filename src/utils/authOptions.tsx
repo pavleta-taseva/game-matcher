@@ -25,7 +25,7 @@ export const authOptions = {
       const userExists = await User.findOne({ email: profile.email });
 
       if (!userExists) {
-        const username = profile.username.slice(0, 20);
+        const username = profile.username.slice(0, 30);
 
         await User.create({
           email: profile.email,
