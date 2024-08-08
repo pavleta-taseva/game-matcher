@@ -4,7 +4,6 @@ import React, { JSX } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
 import { signOut, useSession } from 'next-auth/react';
-import { FaCircleUser } from "react-icons/fa6";
 import Link from 'next/link';
 import Image from 'next/image';
 
