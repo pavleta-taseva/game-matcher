@@ -78,20 +78,21 @@ const Navbar = () => {
         ))}
         <>
           {session && session.user &&
-            <div className="group/item relative">
-              <Image
-                alt="User Image"
-                className="rounded-full"
-                src={profileImage || ''}
-                width={30}
-                height={30}
-              />
-              <span className="absolute top-9 right-9 text-center text-sm text-primaryDark bg-primaryLight z-10 hidden w-auto rounded-md bg-gray-900 px-3 py-1 group-hover/item:block whitespace-nowrap">
-                {session?.user?.name}
-              </span>
-            </div>
+            <Link href={'/profile'} aria-label={'Profile'}>
+              <div className="group/item relative">
+                <Image
+                  alt="User Image"
+                  className="rounded-full"
+                  src={profileImage || ''}
+                  width={30}
+                  height={30}
+                />
+                <span className="absolute top-9 right-9 text-center text-sm text-primaryDark bg-primaryLight z-10 hidden w-auto rounded-md bg-gray-900 px-3 py-1 group-hover/item:block whitespace-nowrap">
+                  {session?.user?.name}
+                </span>
+              </div>
+            </Link>
           }
-          {!session && <FaCircleUser className='text-2xl md:text-3xl text-primaryBlue' />}
         </>
       </div>
     </div>

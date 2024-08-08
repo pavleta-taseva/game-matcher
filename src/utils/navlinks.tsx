@@ -1,5 +1,4 @@
 import React from 'react';
-import { GiEgyptianProfile } from 'react-icons/gi';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RiLoginCircleLine } from 'react-icons/ri';
 import { IoMdLogOut } from 'react-icons/io';
@@ -20,13 +19,6 @@ export const navLinks = [
     name: 'All Games',
     icon: <SiAmazongames className="mr-2" />,
     session: false,
-    profile: true,
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    icon: <GiEgyptianProfile className="mr-2" />,
-    session: true,
     profile: true,
   },
   {
