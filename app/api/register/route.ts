@@ -6,8 +6,7 @@ import connectDB from 'config/database';
 import User from 'models/User';
 import jwt from 'jsonwebtoken';
 
-// Make sure to use your own secret key, and keep it secure
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'my-secret-key';
 
 export async function POST(req: NextRequest) {
   await connectDB();
@@ -47,12 +46,13 @@ export async function POST(req: NextRequest) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedConfirmPassword = await bcrypt.hash(confirmPassword, 10);
 
     const newUser = new User({
       email,
       username,
       password: hashedPassword,
-      confirmPassword,
+      confirmPassword: hashedConfirmPassword,
     });
 
     await newUser.save();
