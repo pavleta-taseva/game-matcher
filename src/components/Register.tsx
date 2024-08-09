@@ -10,7 +10,6 @@ import GoogleSignInElement from '../ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { genderOptions } from '@/src/utils/filterOptions';
 import { useAuth } from '@/src/components/AuthProvider';
-import { useSession } from 'next-auth/react';
 
 enum GenderEnum {
   female = 'female',
@@ -34,8 +33,6 @@ const Register = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const { registerUser } = useAuth();
-  const { data: session } = useSession();
-  console.log('session', session);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
