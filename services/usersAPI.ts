@@ -14,7 +14,7 @@ export const getUsers = async () => {
 
     return usersList || [];
   } catch (error) {
-    console.error('Error searching games:', error);
+    console.error('Error getting users:', error);
     return [];
   }
 };

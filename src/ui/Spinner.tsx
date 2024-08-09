@@ -2,7 +2,6 @@ import React, { CSSProperties } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { LoadingSpinnerProps } from '@/src/types/components';
 import { colors } from '@/assets/styles/colors';
-import { usePathname, useRouter } from 'next/navigation';
 
 const override: CSSProperties = {
   display: 'block',
@@ -11,42 +10,20 @@ const override: CSSProperties = {
 };
 
 const Spinner = ({ loading }: LoadingSpinnerProps) => {
-  const pathName = usePathname();
-  const isGamesPage = pathName === '/games' || pathName === '/';
-
   return (
-    <>
-      {isGamesPage ? (
-        <div className="flex flex-col w-full h-screen rounded-lg self-center items-center justify-start py-12 px-4 bg-secondaryGrey opacity-90 shadow-grey overflow-auto">
-          <CircleLoader
-            color={colors.textColor.primaryLight}
-            loading={loading}
-            cssOverride={override}
-            size={60}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-          <h1 className="text-primaryLight text-xl lg:text-4xl purple-purse-regular mt-4">
-            Loading games...
-          </h1>
-        </div>
-      ) : (
-        <div className="flex flex-col w-full h-fit self-center items-center mt-12 justify-start py-12 px-4 overflow-auto">
-          <CircleLoader
-            color={colors.textColor.primaryLight}
-            loading={loading}
-            cssOverride={override}
-            size={60}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-          <h1 className="text-primaryLight text-xl lg:text-4xl purple-purse-regular mt-4">
-            Loading content...
-          </h1>
-        </div>
-      )
-      }
-    </>
+    <div className="flex flex-col w-full h-fit self-center items-center mt-12 justify-start py-12 px-4 overflow-auto">
+      <CircleLoader
+        color={colors.textColor.primaryLight}
+        loading={loading}
+        cssOverride={override}
+        size={60}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      <h1 className="text-primaryLight text-xl lg:text-4xl purple-purse-regular mt-4">
+        Loading content...
+      </h1>
+    </div>
   );
 };
 

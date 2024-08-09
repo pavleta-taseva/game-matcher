@@ -8,7 +8,7 @@ import ButtonElement from '@/src/ui/ButtonElement';
 import GoogleSignInElement from '@/src/ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { getUsers } from 'services/usersAPI';
-
+import { useAuth } from '@/src/components/AuthProvider';
 interface IFormInput {
   email: string;
   password: string;
@@ -21,8 +21,15 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm<IFormInput>();
+  const { loginUser } = useAuth();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      await loginUser(data.email, data.password);
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  }
 
   useEffect(() => {
     getUsers();
@@ -59,6 +66,7 @@ const Login = () => {
         <InputElement<IFormInput>
           label="Password"
           name="password"
+          type="password"
           register={register}
           validation={{
             required: 'Password is required',

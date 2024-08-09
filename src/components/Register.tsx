@@ -9,6 +9,8 @@ import ButtonElement from '@/src/ui/ButtonElement';
 import GoogleSignInElement from '../ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { genderOptions } from '@/src/utils/filterOptions';
+import { useAuth } from '@/src/components/AuthProvider';
+import { useSession } from 'next-auth/react';
 
 enum GenderEnum {
   female = 'female',
@@ -31,7 +33,18 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const { registerUser } = useAuth();
+  const { data: session } = useSession();
+  console.log('session', session);
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      await registerUser(data.email, data.username, data.password, data.confirmPassword, data.gender);
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  }
+
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <Image

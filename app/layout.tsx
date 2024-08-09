@@ -5,6 +5,8 @@ import Footer from '@/src/ui/Footer';
 import connectDB from 'config/database';
 import AuthProvider from '@/src/components/AuthProvider';
 import ProtectedRoute from '@/src/components/ProtectedRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -55,6 +57,7 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
           <div className="flex flex-col bg-controller font-mono min-h-screen text-primaryLight bg-primaryBlack bg-opacity-50 bg-center bg-cover bg-no-repeat bg-blend-overlay">
             <Navbar />
             <div className="w-full min-h-screen px-2 lg:px-8 py-2">
+              <ToastContainer stacked />
               <ProtectedRoute>
                 {children}
               </ProtectedRoute>
