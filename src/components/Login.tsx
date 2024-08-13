@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import InputElement from '@/src/ui/InputElement';
@@ -9,6 +9,7 @@ import GoogleSignInElement from '@/src/ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { getUsers } from 'services/usersAPI';
 import { useAuth } from '@/src/components/AuthProvider';
+import { BiSolidHide, BiSolidShow } from 'react-icons/bi';
 interface IFormInput {
   email: string;
   password: string;
@@ -22,6 +23,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormInput>();
   const { loginUser } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
@@ -48,7 +50,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="m-auto mt-4 flex w-full flex-col items-center justify-center gap-4 md:w-1/2 lg:w-1/4"
+        className="m-auto mt-4 flex w-full flex-col items-center justify-center gap-4 lg:w-80"
       >
         <InputElement<IFormInput>
           label="Email"
@@ -66,11 +68,19 @@ const Login = () => {
         <InputElement<IFormInput>
           label="Password"
           name="password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           register={register}
           validation={{
             required: 'Password is required',
           }}
+          rightIcon={
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-xl text-primaryDark"
+            >
+              {showPassword ? <BiSolidShow /> : <BiSolidHide />}
+            </span>
+          }
           error={errors.password}
         />
         <ButtonElement

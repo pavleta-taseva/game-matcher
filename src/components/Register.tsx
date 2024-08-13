@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import InputElement from '@/src/ui/InputElement';
@@ -10,6 +10,7 @@ import GoogleSignInElement from '../ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { genderOptions } from '@/src/utils/filterOptions';
 import { useAuth } from '@/src/components/AuthProvider';
+import { BiSolidHide, BiSolidShow } from 'react-icons/bi';
 
 enum GenderEnum {
   female = 'female',
@@ -32,6 +33,8 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm<IFormInput>();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { registerUser } = useAuth();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
@@ -92,7 +95,7 @@ const Register = () => {
         <InputElement<IFormInput>
           label="Password"
           name="password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           register={register}
           validation={{
             required: 'Password is required',
@@ -102,17 +105,25 @@ const Register = () => {
                 'Minimum length is 8 with a mix of letters, numbers and symbols',
             },
           }}
+          rightIcon={
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-xl text-primaryDark"
+            >
+              {showPassword ? <BiSolidShow /> : <BiSolidHide />}
+            </span>
+          }
           error={errors.password}
         />
         {!errors.password && (
-          <div className="mb-4 text-sm text-primaryLight">
+          <div className="mb-4 text-sm text-primaryLight w-full md:w-1/2 lg:w-96">
             Use 8 or more characters with a mix of letters, numbers and symbols
           </div>
         )}
         <InputElement<IFormInput>
           label="Confirm password"
           name="confirmPassword"
-          type="password"
+          type={showConfirmPassword ? 'text' : 'password'}
           register={register}
           validation={{
             required: 'Confirm Password is required',
@@ -124,6 +135,14 @@ const Register = () => {
             validate: (value) =>
               value === watch('password') || 'Passwords do not match',
           }}
+          rightIcon={
+            <span
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="text-xl text-primaryDark"
+            >
+              {showPassword ? <BiSolidShow /> : <BiSolidHide />}
+            </span>
+          }
           error={errors.confirmPassword}
         />
         <SelectFormElement<IFormInput>

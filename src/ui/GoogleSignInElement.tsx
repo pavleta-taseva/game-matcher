@@ -34,7 +34,7 @@ const GoogleSignInElement = ({ content }: GoogleSignInProps) => {
           <div
             key={index}
             onClick={() => signIn(provider.id)}
-            className="mt-4 h-10 w-full rounded-lg bg-primaryLight px-3 py-2 text-base font-bold text-primaryDark outline-none md:w-1/2 lg:w-64"
+            className="mt-4 h-10 w-full rounded-lg bg-primaryLight px-3 py-2 text-base font-bold text-primaryDark outline-none md:w-1/2 lg:w-96"
           >
             <div
               id="g_id_onload"
