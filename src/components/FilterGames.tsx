@@ -60,7 +60,7 @@ const FilterGames = ({
   };
 
   return (
-    <div className="text-lg hidden lg:block lf:flex lg:flex-col lg:w-2/12">
+    <div className="text-lg lf:flex hidden lg:block lg:w-2/12 lg:flex-col">
       <SelectElement
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}

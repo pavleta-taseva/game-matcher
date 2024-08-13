@@ -11,7 +11,7 @@ const override: CSSProperties = {
 
 const Spinner = ({ loading }: LoadingSpinnerProps) => {
   return (
-    <div className="flex flex-col w-full h-fit self-center items-center mt-12 justify-start py-12 px-4 overflow-auto">
+    <div className="mt-12 flex h-fit w-full flex-col items-center justify-start self-center overflow-auto px-4 py-12">
       <CircleLoader
         color={colors.textColor.primaryLight}
         loading={loading}
@@ -20,7 +20,7 @@ const Spinner = ({ loading }: LoadingSpinnerProps) => {
         aria-label="Loading Spinner"
         data-testid="loader"
       />
-      <h1 className="text-primaryLight text-xl lg:text-4xl purple-purse-regular mt-4">
+      <h1 className="purple-purse-regular mt-4 text-xl text-primaryLight lg:text-4xl">
         Loading content...
       </h1>
     </div>

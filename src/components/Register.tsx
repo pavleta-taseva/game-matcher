@@ -36,26 +36,32 @@ const Register = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      await registerUser(data.email, data.username, data.password, data.confirmPassword, data.gender);
+      await registerUser(
+        data.email,
+        data.username,
+        data.password,
+        data.confirmPassword,
+        data.gender
+      );
     } catch (error) {
       console.error('Error registering user:', error);
     }
-  }
+  };
 
   return (
-    <div className="flex flex-col justify-center items-center p-2">
+    <div className="flex flex-col items-center justify-center p-2">
       <Image
         src={'/images/game-match-logo-transparent.webp'}
         alt="Game match logo image"
         width={150}
         height={150}
       />
-      <div className="text-secondaryBlue text-3xl purple-purse-regular mt-2">
+      <div className="purple-purse-regular mt-2 text-3xl text-secondaryBlue">
         Create an account
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col m-auto mt-4 w-full md:w-1/2 lg:w-1/4 justify-center items-center"
+        className="m-auto mt-4 flex w-full flex-col items-center justify-center md:w-1/2 lg:w-1/4"
       >
         <InputElement<IFormInput>
           label="Email"
@@ -99,7 +105,7 @@ const Register = () => {
           error={errors.password}
         />
         {!errors.password && (
-          <div className="text-sm text-primaryLight mb-4">
+          <div className="mb-4 text-sm text-primaryLight">
             Use 8 or more characters with a mix of letters, numbers and symbols
           </div>
         )}
@@ -115,7 +121,8 @@ const Register = () => {
               message:
                 'Minimum length is 8 with a mix of letters, numbers and symbols',
             },
-            validate: (value) => value === watch('password') || 'Passwords do not match',
+            validate: (value) =>
+              value === watch('password') || 'Passwords do not match',
           }}
           error={errors.confirmPassword}
         />
@@ -128,16 +135,24 @@ const Register = () => {
         <ButtonElement
           content="Submit"
           type="submit"
-          disabled={!watch('email') || !watch('username') || !watch('password') || !watch('confirmPassword')}
+          disabled={
+            !watch('email') ||
+            !watch('username') ||
+            !watch('password') ||
+            !watch('confirmPassword')
+          }
         />
       </form>
       <div className="mt-4 text-base">
         Already have an account?{' '}
-        <Link href={'/login'} className="text-secondaryBlue text-base">
+        <Link href={'/login'} className="text-base text-secondaryBlue">
           Log in
         </Link>
       </div>
-      <div className='text-primaryLight text-center mt-4 w-full md:w-1/2 lg:w-64'> ----------- OR ----------- </div>
+      <div className="mt-4 w-full text-center text-primaryLight md:w-1/2 lg:w-64">
+        {' '}
+        ----------- OR -----------{' '}
+      </div>
 
       <GoogleSignInElement content={'Continue with Google'} />
     </div>

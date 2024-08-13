@@ -5,10 +5,10 @@ import { HomeContentProps } from '@/src/types/elements';
 const HomeContent = ({ isFiltered, isSearching }: HomeContentProps) => {
   return (
     <div
-      className={`flex flex-col gap-4 p-8 lg:my-12 text-justify bg-secondaryGrey opacity-90 shadow-grey select-none ${isFiltered || isSearching ? 'hidden' : 'block'} lg:w-8/12`}
+      className={`flex select-none flex-col gap-4 bg-secondaryGrey p-8 text-justify opacity-90 shadow-grey lg:my-12 ${isFiltered || isSearching ? 'hidden' : 'block'} lg:w-8/12`}
     >
-      <div className="text-primaryLight flex flex-row gap-2 justify-center items-center text-2xl purple-purse-regular md:text-3xl text-center">
-        <SiRepublicofgamers className="hidden md:block text-secondaryBlue" />
+      <div className="purple-purse-regular flex flex-row items-center justify-center gap-2 text-center text-2xl text-primaryLight md:text-3xl">
+        <SiRepublicofgamers className="hidden text-secondaryBlue md:block" />
         Welcome to GameMatcher
       </div>
       <p>
@@ -20,7 +20,7 @@ const HomeContent = ({ isFiltered, isSearching }: HomeContentProps) => {
         covered.
       </p>
 
-      <div className="text-primaryLight flex flex-row gap-2 justify-center items-center text-2xl purple-purse-regular md:text-3xl text-center">
+      <div className="purple-purse-regular flex flex-row items-center justify-center gap-2 text-center text-2xl text-primaryLight md:text-3xl">
         How it Works
       </div>
       <p>
@@ -33,7 +33,7 @@ const HomeContent = ({ isFiltered, isSearching }: HomeContentProps) => {
         games tailored to your preferences.
       </p>
 
-      <div className="text-primaryLight flex flex-row gap-2 justify-center items-center text-2xl purple-purse-regular md:text-3xl text-center">
+      <div className="purple-purse-regular flex flex-row items-center justify-center gap-2 text-center text-2xl text-primaryLight md:text-3xl">
         Explore, Discover, and Play
       </div>
       <p>
@@ -44,7 +44,7 @@ const HomeContent = ({ isFiltered, isSearching }: HomeContentProps) => {
         and learn more about each game to help you make an informed decision.
       </p>
 
-      <div className="text-primaryLight flex flex-row gap-2 justify-center items-center text-2xl purple-purse-regular md:text-3xl text-center">
+      <div className="purple-purse-regular flex flex-row items-center justify-center gap-2 text-center text-2xl text-primaryLight md:text-3xl">
         Get Started
       </div>
       <p>

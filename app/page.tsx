@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-auto gap-4">
+      <div className="flex h-auto w-full flex-col gap-4">
         <Search
           setResults={setResults}
           setTotalGamesCount={setTotalGamesCount}
@@ -34,7 +34,7 @@ const HomePage = () => {
           setIsFiltered={setIsFiltered}
         />
 
-        <div className="flex w-full lg:w-11/12 gap-12 md:gap-12 mx-auto justify-center lg:flex-row lg:justify-start lg:gap-8">
+        <div className="mx-auto flex w-full justify-center gap-12 md:gap-12 lg:w-11/12 lg:flex-row lg:justify-start lg:gap-8">
           <FilterGames
             genres={genres}
             currentPage={currentPage}

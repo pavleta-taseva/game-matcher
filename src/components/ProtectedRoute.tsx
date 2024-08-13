@@ -38,7 +38,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     return <Spinner loading={true} />;
   }
 
-  if ((status === 'authenticated' && !isPublicRoute) || (status === 'unauthenticated' && !isPrivateRoute)) {
+  if (
+    (status === 'authenticated' && !isPublicRoute) ||
+    (status === 'unauthenticated' && !isPrivateRoute)
+  ) {
     return <>{children}</>;
   }
 

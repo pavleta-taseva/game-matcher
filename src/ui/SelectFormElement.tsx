@@ -17,15 +17,15 @@ const SelectFormElement = <T extends FieldValues>({
   ...rest
 }: SelectProps<T>) => {
   return (
-    <div className="flex flex-col mb-4 w-full">
-      <label className="self-start text-secondaryBlue text-base mb-2">
+    <div className="mb-4 flex w-full flex-col">
+      <label className="mb-2 self-start text-base text-secondaryBlue">
         {label}
       </label>
       <select
         {...register(name)}
         {...rest}
         defaultValue={options[2]}
-        className="rounded-sm text-primaryDark h-8 mb-4"
+        className="mb-4 h-8 rounded-sm text-primaryDark"
       >
         {options.map((option, index) => (
           <option key={index} value={option}>

@@ -44,19 +44,19 @@ const AllGames = ({
   };
 
   return (
-    <div className="flex flex-col w-full h-full mt-4 lg:mt-0 lg:w-11/12 justify-between self-center">
+    <div className="mt-4 flex h-full w-full flex-col justify-between self-center lg:mt-0 lg:w-11/12">
       <div className="flex flex-col justify-between">
         <PaginationElement
           totalPages={totalPages}
           currentPage={currentPage}
           handleChange={handleChange}
         />
-        <h2 className="text-sm lg:text-xl font-semibold text-secondaryBlue mb-12">
+        <h2 className="font-semibold mb-12 text-sm text-secondaryBlue lg:text-xl">
           Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
         </h2>
       </div>
       {!loading ? (
-        <div className="grid gap-x-2 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-lg justify-items-center place-items-center w-full py-12 px-4 bg-secondaryGrey opacity-90 shadow-grey overflow-auto">
+        <div className="grid w-full grid-cols-1 place-items-center justify-items-center gap-x-2 gap-y-8 overflow-auto rounded-lg bg-secondaryGrey px-4 py-12 opacity-90 shadow-grey md:grid-cols-2 lg:grid-cols-3">
           {gamesList &&
             gamesList?.length > 0 &&
             gamesList?.map(

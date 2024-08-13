@@ -20,8 +20,8 @@ const Games = () => {
   }, []);
 
   return (
-    <div className="w-full h-auto min-h-screen">
-      <div className="flex flex-col w-11/12 h-full mx-auto lg:mt-24">
+    <div className="h-auto min-h-screen w-full">
+      <div className="mx-auto flex h-full w-11/12 flex-col lg:mt-24">
         {gamesList && gamesList?.length > 0 && (
           <AllGames
             gamesList={gamesList}

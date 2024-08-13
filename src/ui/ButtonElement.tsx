@@ -6,7 +6,7 @@ const ButtonElement = ({ content, type, disabled, onClick }: ButtonProps) => {
     <button
       type={type}
       disabled={disabled}
-      className="px-2 border-2 border-neutral-50 rounded-md w-full lg:w-64 h-10 text-base lg:text-xl font-bold bg-primaryBlue text-primaryDark hover:bg-primaryBlack hover:text-primaryLight disabled:opacity-75 disabled:bg-primaryBlue disabled:text-primaryLight"
+      className="border-neutral-50 h-10 w-full rounded-md border-2 bg-primaryBlue px-2 text-base font-bold text-primaryDark hover:bg-primaryBlack hover:text-primaryLight disabled:bg-primaryBlue disabled:text-primaryLight disabled:opacity-75 lg:w-64 lg:text-xl"
       onClick={onClick}
     >
       {content}

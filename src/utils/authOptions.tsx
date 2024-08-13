@@ -31,8 +31,8 @@ export const authOptions = {
           username,
           image: profile.image,
           password: profile.at_hash,
-          confirmPassword: profile.at_hash
-        }
+          confirmPassword: profile.at_hash,
+        };
 
         await User.create(newUser);
       }
@@ -43,6 +43,6 @@ export const authOptions = {
       const user = await User.findOne({ email: session.user.email });
       session.user.id = user._id.toString();
       return session;
-    }
-  }
+    },
+  },
 };

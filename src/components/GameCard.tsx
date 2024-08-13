@@ -56,7 +56,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
           </IconButton>
         }
         title={
-          <span className="text-secondaryBlue text-left text-xl lg:text-2xl">
+          <span className="text-left text-xl text-secondaryBlue lg:text-2xl">
             {game?.name}
           </span>
         }

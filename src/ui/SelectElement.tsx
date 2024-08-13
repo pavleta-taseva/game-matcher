@@ -10,13 +10,13 @@ const SelectElement = ({
     <>
       <label
         htmlFor="categoryFilter"
-        className="text-xl text-secondaryBlue font-semibold mb-4"
+        className="font-semibold mb-4 text-xl text-secondaryBlue"
       >
         Filter Games
       </label>
       <select
         id="categoryFilter"
-        className="w-9/12 mb-4 py-2 px-4 focus:outline-none text-primaryGrey rounded border-transparent text-base outline outline-neutral-700"
+        className="border-transparent outline-neutral-700 mb-4 w-9/12 rounded px-4 py-2 text-base text-primaryGrey outline focus:outline-none"
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
       >

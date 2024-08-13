@@ -25,15 +25,15 @@ const InputElement = <T extends FieldValues>({
   ...rest
 }: InputProps<T>) => {
   return (
-    <div className="flex flex-col mb-4 w-full">
-      <label className="self-start text-secondaryBlue mb-1">{label}</label>
+    <div className="mb-4 flex w-full flex-col">
+      <label className="mb-1 self-start text-secondaryBlue">{label}</label>
       <input
         {...register(name, validation)}
         {...rest}
-        className="rounded-sm h-8 px-2 outline-none text-primaryDark text-base"
+        className="h-8 rounded-sm px-2 text-base text-primaryDark outline-none"
       />
       {error && (
-        <span className="text-primaryRed text-sm mt-2">{error.message}</span>
+        <span className="mt-2 text-sm text-primaryRed">{error.message}</span>
       )}
     </div>
   );

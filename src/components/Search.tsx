@@ -36,7 +36,13 @@ const Search = ({
 
     const searchValue = event.target.value.toString();
 
-    searchGames({ query: searchValue, setResults, setTotalGamesCount, currentPage, genres });
+    searchGames({
+      query: searchValue,
+      setResults,
+      setTotalGamesCount,
+      currentPage,
+      genres,
+    });
     setIsSearching && setIsSearching(true);
     setIsFiltered && setIsFiltered(false);
   };
@@ -54,10 +60,10 @@ const Search = ({
   };
 
   return (
-    <div className="flex flex-col gap-2 justify-start w-full mt-8 mb-4 lg:my-12 lg:ml-12">
+    <div className="mb-4 mt-8 flex w-full flex-col justify-start gap-2 lg:my-12 lg:ml-12">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col lg:flex-row gap-4 lg:w-11/12"
+        className="flex flex-col gap-4 lg:w-11/12 lg:flex-row"
       >
         <SearchElement
           query={query}

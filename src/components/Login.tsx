@@ -29,26 +29,26 @@ const Login = () => {
     } catch (error) {
       console.error('Login failed:', error);
     }
-  }
+  };
 
   useEffect(() => {
     getUsers();
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center p-2">
+    <div className="flex flex-col items-center justify-center p-2">
       <Image
         src={'/images/game-match-logo-transparent.webp'}
         alt="Game match logo image"
         width={150}
         height={150}
       />
-      <div className="text-secondaryBlue text-3xl purple-purse-regular mt-2">
+      <div className="purple-purse-regular mt-2 text-3xl text-secondaryBlue">
         Sign in
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col m-auto gap-4 mt-4 w-full md:w-1/2 lg:w-1/4 justify-center items-center"
+        className="m-auto mt-4 flex w-full flex-col items-center justify-center gap-4 md:w-1/2 lg:w-1/4"
       >
         <InputElement<IFormInput>
           label="Email"
@@ -87,7 +87,7 @@ const Login = () => {
 
       <div className="mt-4 text-base">
         Still not registered?{' '}
-        <Link href={'/register'} className="text-secondaryBlue text-base">
+        <Link href={'/register'} className="text-base text-secondaryBlue">
           Sign up
         </Link>
       </div>

@@ -8,9 +8,9 @@ const SearchElement = ({
   handleChange,
 }: SearchElementProps) => {
   return (
-    <div className="relative flex place-self-start gap-4 w-full lg:w-1/3 lg:justify-start lg:items-center">
+    <div className="relative flex w-full gap-4 place-self-start lg:w-1/3 lg:items-center lg:justify-start">
       <FaSearchPlus
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primaryGrey"
+        className="absolute left-4 top-1/2 -translate-y-1/2 transform text-primaryGrey"
         fontSize={20}
       />
       <input
@@ -19,7 +19,7 @@ const SearchElement = ({
         value={isFiltered ? '' : query}
         onChange={handleChange}
         placeholder="Enter game name or genre..."
-        className="w-full md:w-4/6 lg:w-full h-10 pl-12 border rounded-md outline-none p-2 text-primaryGrey text-sm"
+        className="h-10 w-full rounded-md border p-2 pl-12 text-sm text-primaryGrey outline-none md:w-4/6 lg:w-full"
       />
     </div>
   );
