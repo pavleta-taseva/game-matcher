@@ -27,14 +27,13 @@ export const authOptions = {
       if (!userExists) {
         const username = profile.name || profile.email.split['@'][0];
         const newUser = {
-          googleId: profile.sub,
           email: profile.email,
           username,
           image: profile.image,
           password: profile.at_hash,
           confirmPassword: profile.at_hash
         }
-        
+
         await User.create(newUser);
       }
 

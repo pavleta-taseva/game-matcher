@@ -1,6 +1,6 @@
 'use client';
 
-import React, { JSX } from 'react';
+import React, { JSX, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
 import { signOut, useSession } from 'next-auth/react';
@@ -20,8 +20,14 @@ type NavLink = {
 const Navbar = () => {
   const pathName = usePathname();
   const { data: session } = useSession();
-  const { user, isLoggedIn, logout } = useAuth();
+  const { user, setUser, logout } = useAuth();
   const profileImage = session?.user?.image;
+
+  useEffect(() => {
+    if (session && session.user) {
+      setUser(session.user);
+    }
+  }, [session]);
 
   const handleLogout = async (linkName: string) => {
     if (linkName === 'Logout') await signOut();

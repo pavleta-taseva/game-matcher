@@ -12,6 +12,7 @@ type MainLayoutProps = {
 
 interface AuthContextProps {
     user: any;
+    setUser: (user: any) => void;
     loginUser: (email: string, password: string) => Promise<void>;
     logout: () => void;
     registerUser: (email: string, username: string, password: string, confirmPassword: string, gender: string) => Promise<void>;
@@ -119,7 +120,7 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loginUser, logout, registerUser, isLoading, isLoggedIn }}>
+        <AuthContext.Provider value={{ user, setUser, loginUser, logout, registerUser, isLoading, isLoggedIn }}>
             <SessionProvider>
                 {children}
             </SessionProvider>

@@ -49,7 +49,6 @@ export async function POST(req: NextRequest) {
     const hashedConfirmPassword = await bcrypt.hash(confirmPassword, 10);
 
     const newUser = new User({
-      googleId: '',
       email,
       username,
       password: hashedPassword,
