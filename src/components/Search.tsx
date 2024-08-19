@@ -59,12 +59,12 @@ const Search = ({
   };
 
   return (
-    <div className="mb-4 mt-8 flex w-full lg:w-4/6 self-center flex-col justify-start gap-2 lg:my-12">
+    <div className="mb-4 mt-8 flex w-full flex-col justify-start gap-2 self-center lg:my-12 lg:w-4/6">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="m-auto p-0 align-top font-doHyeon text-4xl sm:text-6xl md:text-6xl leading-none">
+        <div className="w-full text-center p-0 align-top font-doHyeon leading-none text-3xl md:text-4xl lg:text-5.5xl">
           Find your new
         </div>
-        <div className="m-auto p-0 align-top font-doHyeon text-4xl sm:text-6xl md:text-6xl leading-none">
+        <div className="w-full text-center mb-4 p-0 align-top font-doHyeon leading-none text-3xl md:text-4xl lg:text-5.5xl">
           Favorite game
         </div>
         <SearchElement

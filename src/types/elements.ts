@@ -30,3 +30,8 @@ export interface PaginationElementProps {
 export interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
+
+export interface HomeContentProps {
+  isFiltered: boolean;
+  isSearching: boolean;
+}

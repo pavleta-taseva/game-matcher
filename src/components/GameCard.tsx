@@ -67,7 +67,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
       />
       <CardActions
         disableSpacing
-        className="mx-4 md:mx-0 flex flex-row items-center justify-between"
+        className="mx-4 flex flex-row items-center justify-between md:mx-0"
       >
         <div>
           <IconButton aria-label="add to favorites">

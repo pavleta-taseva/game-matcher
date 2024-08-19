@@ -8,24 +8,22 @@ const SearchElement = ({
   handleChange,
 }: SearchElementProps) => {
   return (
-    <div className="flex flex-col md:flex-row gap-2 md:gap-0 items-center justify-center">
-      <div className='flex justify-center items-center'>
+    <div className="flex flex-row self-center pl-12 gap-0">
+      <div className="relative flex items-center justify-center">
         <Image
-          src={'/images/logo-main.webp'}
+          src={'/images/logo.svg'}
           alt="Game match logo image"
           width={170}
           height={170}
+          className="absolute left-[-60px] top-[-10px] w-32 md:left-[-100px] md:top-[-10px] md:w-44"
         />
-      </div>
-
-      <div className='flex justify-center md:justify-start items-center '>
         <input
           name="searchInput"
           type="text"
           value={isFiltered ? '' : query}
           onChange={handleChange}
           placeholder="Enter game or genre..."
-          className="h-12 w-80 md:w-96 md:h-14 py-2 px-4 rounded-lg text-left font-doHyeon text-4xl text-darkPurple placeholder-opacity-100 outline-none placeholder:text-base sm:placeholder:text-2xl placeholder:text-darkPurple placeholder:text-left lg:text-2xl"
+          className="h-12 w-60 rounded-lg bg-primaryLight px-4 py-2 pl-14 text-left font-doHyeon text-4xl text-darkPurple placeholder-opacity-100 outline-none placeholder:text-left placeholder:text-base placeholder:text-darkPurple sm:w-80 sm:placeholder:text-xl md:h-20 md:w-96 lg:text-2xl lg:placeholder:text-2xl"
         />
       </div>
     </div>

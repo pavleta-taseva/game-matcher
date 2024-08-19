@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from '@/src/components/Search';
 import AllGames from '@/src/components/AllGames';
+import HomeContent from '@/src/ui/HomeContent';
 import { GameProps } from '@/src/types/components';
 import { getGenres } from 'services/gamesAPI';
 // import FilterGames from '@/src/components/FilterGames';
@@ -45,6 +46,7 @@ const HomePage = () => {
             />
           )}
         </div>
+        <HomeContent isFiltered={isFiltered} isSearching={isSearching} />
       </div>
     </>
   );

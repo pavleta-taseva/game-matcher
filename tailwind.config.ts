@@ -45,6 +45,7 @@ const config: Config = {
       '3xl': '1.953rem',
       '4xl': '2.441rem',
       '5xl': '3.052rem',
+      '5.5xl': '4.500rem',
       '6xl': '6rem',
       '7xl': '7rem',
     },
