@@ -27,8 +27,8 @@ const PaginationElement = ({
               fontSize: '0.7rem',
             },
             '& .MuiPaginationItem-root.Mui-selected': {
-              color: colors.textColor.secondaryBlue,
-              borderColor: colors.textColor.secondaryBlue,
+              color: colors.textColor.primaryPurple,
+              borderColor: colors.textColor.primaryPurple,
               fontSize: '0.7rem',
             },
             '& .MuiPaginationItem-root:hover': {

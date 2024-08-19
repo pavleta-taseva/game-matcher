@@ -45,7 +45,7 @@ const Login = () => {
         width={150}
         height={150}
       />
-      <div className="purple-purse-regular mt-2 text-3xl text-secondaryBlue">
+      <div className="purple-purse-regular mt-2 text-3xl text-primaryPurple">
         Sign in
       </div>
       <form
@@ -88,7 +88,7 @@ const Login = () => {
           type="submit"
           disabled={!watch('email') || !watch('password')}
         />
-        <Link href={'/'} className="text-base text-secondaryBlue">
+        <Link href={'/'} className="text-base text-primaryPurple">
           Forgot password?
         </Link>
       </form>
@@ -97,7 +97,7 @@ const Login = () => {
 
       <div className="mt-4 text-base">
         Still not registered?{' '}
-        <Link href={'/register'} className="text-base text-secondaryBlue">
+        <Link href={'/register'} className="text-base text-primaryPurple">
           Sign up
         </Link>
       </div>

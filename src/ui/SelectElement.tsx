@@ -10,7 +10,7 @@ const SelectElement = ({
     <>
       <label
         htmlFor="categoryFilter"
-        className="font-semibold mb-4 text-xl text-secondaryBlue"
+        className="font-semibold text-secondaryBlue mb-4 text-xl"
       >
         Filter Games
       </label>

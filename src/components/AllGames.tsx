@@ -13,7 +13,7 @@ const AllGames = ({
   currentPage,
   setCurrentPage,
 }: SearchProps) => {
-  const [countOfGamesPerPage] = useState(30);
+  const [countOfGamesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -51,18 +51,25 @@ const AllGames = ({
           currentPage={currentPage}
           handleChange={handleChange}
         />
-        <h2 className="font-semibold mb-12 text-sm text-secondaryBlue lg:text-xl">
+        <h2 className="font-semibold mb-12 text-sm text-primaryPurple lg:text-xl">
           Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
         </h2>
       </div>
       {!loading ? (
-        <div className="grid w-full grid-cols-1 place-items-center justify-items-center gap-x-2 gap-y-8 overflow-auto rounded-lg bg-secondaryGrey px-4 py-12 opacity-90 shadow-grey md:grid-cols-2 lg:grid-cols-3">
-          {gamesList &&
-            gamesList?.length > 0 &&
-            gamesList?.map(
-              (game) => game?.id && <GameCard key={game?.id} game={game} />
-            )}
-        </div>
+        <>
+          <div className="grid w-full grid-cols-1 place-items-center justify-items-center gap-x-4 gap-y-8 overflow-auto px-4 py-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-2">
+            {gamesList &&
+              gamesList?.length > 0 &&
+              gamesList?.map(
+                (game) => game?.id && <GameCard key={game?.id} game={game} />
+              )}
+          </div>
+          <PaginationElement
+            totalPages={totalPages}
+            currentPage={currentPage}
+            handleChange={handleChange}
+          />
+        </>
       ) : (
         <Spinner loading={loading} />
       )}

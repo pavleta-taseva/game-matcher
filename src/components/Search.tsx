@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchGames } from 'services/gamesAPI';
 import { SearchProps } from '@/src/types/components';
-import ButtonElement from '@/src/ui/ButtonElement';
 import SearchElement from '@/src/ui/SearchElement';
 
 const Search = ({
@@ -60,17 +59,19 @@ const Search = ({
   };
 
   return (
-    <div className="mb-4 mt-8 flex w-full flex-col justify-start gap-2 lg:my-12 lg:ml-12">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 lg:w-11/12 lg:flex-row"
-      >
+    <div className="mb-4 mt-8 flex w-full lg:w-4/6 self-center flex-col justify-start gap-2 lg:my-12">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div className="m-auto p-0 align-top font-doHyeon text-4xl sm:text-6xl md:text-6xl leading-none">
+          Find your new
+        </div>
+        <div className="m-auto p-0 align-top font-doHyeon text-4xl sm:text-6xl md:text-6xl leading-none">
+          Favorite game
+        </div>
         <SearchElement
           query={query}
           isFiltered={isFiltered}
           handleChange={handleChange}
         />
-        <ButtonElement content="Search" type="submit" disabled={!query} />
       </form>
     </div>
   );

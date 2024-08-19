@@ -1,11 +1,6 @@
 import { IconButtonProps } from '@mui/material/IconButton';
 import React, { ChangeEventHandler } from 'react';
 
-export interface HomeContentProps {
-  isFiltered: boolean;
-  isSearching: boolean;
-}
-
 export interface ButtonProps {
   content: string;
   type: 'submit' | 'reset' | 'button' | undefined;

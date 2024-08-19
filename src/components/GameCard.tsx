@@ -1,37 +1,16 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import React from 'react';
+import Link from 'next/link';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { GameDetailsProps } from '../types/components';
-import { ExpandMoreProps } from '../types/elements';
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
 
 const GameCard = ({ game }: GameDetailsProps) => {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   return (
     <Card
       sx={{
@@ -45,30 +24,32 @@ const GameCard = ({ game }: GameDetailsProps) => {
         '&:hover': {
           transform: 'scale(1.05)',
         },
-        backgroundColor: '#040c16',
+        backgroundColor: '#e9f1fb',
         height: '100%',
+        borderRadius: '25px',
       }}
     >
       <CardHeader
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon className="text-primaryLight" />
+            <MoreVertIcon className="text-darkPurple" />
           </IconButton>
         }
         title={
-          <span className="text-left text-xl text-secondaryBlue lg:text-2xl">
+          <span className="text-left text-xl text-darkPurple lg:text-2xl">
             {game?.name}
           </span>
         }
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          height: 'fit-content',
+          height: '150px',
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
+          gap: '10px',
         }}
         subheader={
-          <span className="text-primaryLight">{`Release date: ${new Date(
+          <span className="text-darkPurple">{`Release date: ${new Date(
             game?.released
           ).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -79,59 +60,67 @@ const GameCard = ({ game }: GameDetailsProps) => {
       />
       <CardMedia
         component="img"
-        height="194"
+        height={194}
         image={game?.background_image}
         alt={game?.name}
-        sx={{ height: '194px', objectFit: 'contain' }}
+        sx={{ height: '194px' }}
       />
-      <CardContent sx={{ gap: '20px' }}>
-        <p color="colors-light">
-          <p className="font-bold">Genres:</p>
-          {game?.genres?.map((genre) => genre.name).join(', ') ||
-            'No information'}
-        </p>
-        <p color="colors-light">
-          <p className="font-bold">Platform:</p>
-          {game?.parent_platforms
-            ?.map((detail) => detail.platform.name)
-            .join(', ') || 'No information'}
-        </p>
-        <p color="colors-light">
-          <p className="font-bold">Metascore:</p>
-          {game?.metacritic || 'No information'}
-        </p>
-        <p color="colors-light">
-          <p className="font-bold">Available on:</p>
-          {game?.stores?.map((details) => details.store.name).join(', ') ||
-            'No information'}
-        </p>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon className="text-primaryLight" />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon className="text-primaryLight" />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
+      <CardActions
+        disableSpacing
+        className="mx-4 md:mx-0 flex flex-row items-center justify-between"
+      >
+        <div>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon className="text-darkPurple" />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon className="text-darkPurple" />
+          </IconButton>
+        </div>
+        <div className="cursor-pointer self-center hover:font-bold hover:text-primaryPurple">
+          <Link href={`/games/${game?.id}`} aria-label={'Game details'}>
+            Learn more
+          </Link>
+        </div>
+        {/* <ExpandMore
+          expand={isOpen}
           onClick={handleExpandClick}
-          aria-expanded={expanded}
+          aria-expanded={isOpen}
           aria-label="show more"
         >
-          <ExpandMoreIcon className="text-primaryLight" />
-        </ExpandMore>
+          <ExpandMoreIcon className="text-darkPurple" />
+        </ExpandMore> */}
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <p className="font-bold">Tags:</p>
-          <p>
+      {/* <Collapse in={isOpen} timeout="auto" unmountOnExit>
+        <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div color="colors-light">
+            <p className="font-bold">Genres:</p>
+            {game?.genres?.map((genre) => genre.name).join(', ') ||
+              'No information'}
+          </div>
+          <div color="colors-light">
+            <p className="font-bold">Platform:</p>
+            {game?.parent_platforms
+              ?.map((detail) => detail.platform.name)
+              .join(', ') || 'No information'}
+          </div>
+          <div color="colors-light">
+            <p className="font-bold">Metascore:</p>
+            {game?.metacritic || 'No information'}
+          </div>
+          <div color="colors-light">
+            <p className="font-bold">Available on:</p>
+            {game?.stores?.map((details) => details.store.name).join(', ') ||
+              'No information'}
+          </div>
+          <div color="colors-light">
+            <p className="font-bold">Tags:</p>
             {(game?.tags?.length > 0 &&
               game?.tags?.map((tag) => tag.name).join(', ')) ||
               'No information'}
-          </p>
+          </div>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 };

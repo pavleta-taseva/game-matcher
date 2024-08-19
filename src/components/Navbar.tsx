@@ -1,18 +1,18 @@
 'use client';
 
-import React, { JSX, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
 import { signOut, useSession } from 'next-auth/react';
 import { useAuth } from '@/src/components/AuthProvider';
 import { CgProfile } from 'react-icons/cg';
-import Link from 'next/link';
-import Image from 'next/image';
+import HamburgerMenu from '../ui/HamburgerMenu';
 
 type NavLink = {
   path: string;
   name: string;
-  icon: JSX.Element;
   session: boolean;
   profile?: boolean;
 };
@@ -35,23 +35,32 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex h-32 w-full flex-col items-center justify-between gap-4 bg-primaryBlack py-2 text-3xl sm:text-base md:h-fit md:gap-12 md:p-8 lg:flex-row">
-      <div className="flex w-full items-center md:justify-start lg:w-1/2">
-        <Link href={'/'}>
-          <div className="purple-purse-regular flex flex-row items-center justify-center gap-2 text-3xl text-secondaryBlue">
-            <Image
-              src={'/images/game-match-logo.webp'}
-              alt="Game match logo image"
-              width={60}
-              height={60}
-            />
-            GameMatcher
+    <div className="flex h-32 w-full items-center justify-between gap-4 bg-primaryPurple py-2 font-doHyeon md:h-20 md:gap-12 md:p-8 lg:flex-row">
+      <div className="flex w-full items-center justify-start gap-4">
+        <HamburgerMenu />
+        <Link
+          href={'/games'}
+          aria-label={'All Games'}
+          className="hidden md:block md:text-xl lg:text-2xl"
+        >
+          <div
+            className={`${
+              pathName === '/games'
+                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                : 'flex items-center hover:text-primaryPurple'
+            }`}
+          >
+            All Games
           </div>
         </Link>
       </div>
-      <div className="flex h-14 w-full items-center justify-center gap-4 md:justify-start lg:w-1/2 lg:justify-end">
+
+      <Link href={'/'} className="w-full text-center text-3xl md:text-4xl">
+        GameMatcher
+      </Link>
+      <div className="h-14 w-full items-center justify-center gap-4 sm:hidden md:flex md:justify-start md:text-xl lg:justify-end lg:text-2xl">
         {navLinks.map((link: NavLink, index: number) => (
-          <div key={index} className="text-2xl lg:text-base">
+          <div key={index}>
             {(link.session || link?.profile) && (session || user?.username) && (
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
@@ -59,12 +68,11 @@ const Navbar = () => {
                   className={`${
                     pathName === link.path
                       ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-secondaryBlue'
+                      : 'flex items-center hover:text-primaryPurple'
                   }`}
                 >
-                  {link.icon}
                   <div className="hidden w-fit items-center justify-start sm:block">
-                    <p>{link.name}</p>
+                    {link.name}
                   </div>
                 </div>
               </Link>
@@ -75,12 +83,11 @@ const Navbar = () => {
                   className={`${
                     pathName === link.path
                       ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-secondaryBlue'
+                      : 'flex items-center hover:text-primaryPurple'
                   }`}
                 >
-                  {link.icon}
                   <div className="hidden w-fit items-center justify-start sm:block">
-                    <p>{link.name}</p>
+                    {link.name}
                   </div>
                 </div>
               </Link>

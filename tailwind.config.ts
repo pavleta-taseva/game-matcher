@@ -12,7 +12,12 @@ const config: Config = {
       ...colors.background,
     },
     backgroundImage: {
-      controller: 'url("/images/background.webp")',
+      deepPurple:
+        'linear-gradient(180deg, rgba(33,19,134,1) 0%, rgba(33,19,134,1) 51%, rgba(7,19,36,1) 100%);',
+      linearPurple:
+        'linear-gradient(180deg, rgba(33,19,154,1) 0%, rgba(4,0,54,1) 100%);',
+      footerBackground:
+        'linear-gradient(180deg, rgba(7,19,36,1) 0%, rgba(33,19,134,1) 100%);',
     },
     screens: {
       sm: '640px',
@@ -27,6 +32,7 @@ const config: Config = {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      doHyeon: ['Do Hyeon', 'sans-serif'],
       mono: [
         'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace',
       ],
@@ -39,6 +45,8 @@ const config: Config = {
       '3xl': '1.953rem',
       '4xl': '2.441rem',
       '5xl': '3.052rem',
+      '6xl': '6rem',
+      '7xl': '7rem',
     },
     fontWeight: {
       light: '300',
@@ -47,6 +55,7 @@ const config: Config = {
     },
     boxShadow: {
       grey: '0px 0px 15px grey;',
+      '3xl': '8px -1px 11px -1px rgba(4,0,34,1);',
     },
     animation: {
       'fade-slow': 'fadeOut 3s ease-in-out',

@@ -1,4 +1,4 @@
-import { SearchProps, Genre } from '@/src/types/components';
+import { SearchProps, Genre, FetchingGameProps } from '@/src/types/components';
 
 export const searchGames = async ({
   query,
@@ -32,7 +32,7 @@ export const getGamesByPage = async ({
 }: SearchProps) => {
   try {
     const games = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=30&page=${currentPage}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=32&page=${currentPage}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
     );
 
     if (!games.ok) {
@@ -67,6 +67,26 @@ export const getGenres = async ({ genres, setGenres }: SearchProps) => {
     setGenres && setGenres(getGenresNames || genres);
 
     return getGenresNames || [];
+  } catch (error) {
+    console.error('Error getting games:', error);
+    throw error;
+  }
+};
+
+export const getGameById = async ({ id, setGame }: FetchingGameProps) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/games/${id}?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const currentGame = await response.json();
+
+    if (currentGame) setGame(currentGame);
+
+    return currentGame || {};
   } catch (error) {
     console.error('Error getting games:', error);
     throw error;

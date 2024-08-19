@@ -822,8 +822,23 @@ video {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-controller {
-  background-image: url('/images/background.png');
+.bg-deepPurple {
+  background: rgb(33, 19, 134);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 19, 134, 1) 0%,
+    rgba(33, 19, 134, 1) 51%,
+    rgba(7, 19, 36, 1) 100%
+  );
+}
+
+.bg-linearPurple {
+  background: rgb(33, 19, 154);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 19, 154, 1) 0%,
+    rgba(4, 0, 54, 1) 100%
+  );
 }
 
 .bg-cover {

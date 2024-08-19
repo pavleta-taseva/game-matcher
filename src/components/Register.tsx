@@ -59,7 +59,7 @@ const Register = () => {
         width={150}
         height={150}
       />
-      <div className="purple-purse-regular mt-2 text-3xl text-secondaryBlue">
+      <div className="purple-purse-regular mt-2 text-3xl text-primaryPurple">
         Create an account
       </div>
       <form
@@ -116,7 +116,7 @@ const Register = () => {
           error={errors.password}
         />
         {!errors.password && (
-          <div className="mb-4 text-sm text-primaryLight w-full md:w-1/2 lg:w-96">
+          <div className="mb-4 w-full text-sm text-primaryLight md:w-1/2 lg:w-96">
             Use 8 or more characters with a mix of letters, numbers and symbols
           </div>
         )}
@@ -164,7 +164,7 @@ const Register = () => {
       </form>
       <div className="mt-4 text-base">
         Already have an account?{' '}
-        <Link href={'/login'} className="text-base text-secondaryBlue">
+        <Link href={'/login'} className="text-base text-primaryPurple">
           Log in
         </Link>
       </div>

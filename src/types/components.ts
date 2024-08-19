@@ -76,7 +76,6 @@ export interface SearchProps {
   isFiltered?: boolean;
   setIsFiltered?: (isFiltered: boolean) => void;
 }
-
 export interface CheckboxGroupProps {
   options: string[] | undefined;
   checkBoxValues: string[];
@@ -89,4 +88,9 @@ export interface GameDetailsProps {
 
 export interface LoadingSpinnerProps {
   loading: boolean;
+}
+
+export interface FetchingGameProps {
+  id: string | string[];
+  setGame: (game: GameProps) => void;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaSearchPlus } from 'react-icons/fa';
+import Image from 'next/image';
 import { SearchElementProps } from '@/src/types/elements';
 
 const SearchElement = ({
@@ -8,19 +8,26 @@ const SearchElement = ({
   handleChange,
 }: SearchElementProps) => {
   return (
-    <div className="relative flex w-full gap-4 place-self-start lg:w-1/3 lg:items-center lg:justify-start">
-      <FaSearchPlus
-        className="absolute left-4 top-1/2 -translate-y-1/2 transform text-primaryGrey"
-        fontSize={20}
-      />
-      <input
-        name="searchInput"
-        type="text"
-        value={isFiltered ? '' : query}
-        onChange={handleChange}
-        placeholder="Enter game name or genre..."
-        className="h-10 w-full rounded-md border p-2 pl-12 text-sm text-primaryGrey outline-none md:w-4/6 lg:w-full"
-      />
+    <div className="flex flex-col md:flex-row gap-2 md:gap-0 items-center justify-center">
+      <div className='flex justify-center items-center'>
+        <Image
+          src={'/images/logo-main.webp'}
+          alt="Game match logo image"
+          width={170}
+          height={170}
+        />
+      </div>
+
+      <div className='flex justify-center md:justify-start items-center '>
+        <input
+          name="searchInput"
+          type="text"
+          value={isFiltered ? '' : query}
+          onChange={handleChange}
+          placeholder="Enter game or genre..."
+          className="h-12 w-80 md:w-96 md:h-14 py-2 px-4 rounded-lg text-left font-doHyeon text-4xl text-darkPurple placeholder-opacity-100 outline-none placeholder:text-base sm:placeholder:text-2xl placeholder:text-darkPurple placeholder:text-left lg:text-2xl"
+        />
+      </div>
     </div>
   );
 };

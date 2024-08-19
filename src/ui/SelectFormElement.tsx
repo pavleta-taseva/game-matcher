@@ -18,7 +18,7 @@ const SelectFormElement = <T extends FieldValues>({
 }: SelectProps<T>) => {
   return (
     <div className="mb-4 flex w-full flex-col md:w-1/2 lg:w-96">
-      <label className="mb-2 self-start text-base text-secondaryBlue">
+      <label className="text-secondaryBlue mb-2 self-start text-base">
         {label}
       </label>
       <select

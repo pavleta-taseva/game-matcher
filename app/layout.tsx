@@ -33,7 +33,14 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
           />
           <meta
             name="description"
-            content="Game Matcher is a powerful search engine designed to help you explore a vast database of games and find the perfect match for your gaming interests. Whether you are into action-packed adventures, immersive role-playing games, or challenging puzzles, Game Matcher has you covered."
+            content="Game Matcher is a powerful search engine designed to help you explore a
+            vast database of games and find the perfect match for your gaming
+            interests. Whether you are into action-packed adventures, immersive
+            role-playing games, or challenging puzzles, Game Matcher has you
+            covered.
+            Ready to embark on your gaming journey? Start searching now and discover
+            a world of endless gaming possibilities with Game Matcher. Or you might
+            want to use the filter on below instead."
           />
           <meta name="keywords" content="games, search, gaming, add, lists" />
           <meta name="author" content="Pavleta Taseva" />
@@ -44,20 +51,19 @@ const MainLayout = async ({ children }: MainLayoutProps) => {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap"
-            as="style"
+            href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Purple+Purse&display=swap"
+            rel="stylesheet"
           />
           <script src="https://accounts.google.com/gsi/client" async></script>
           <noscript>
             <link
+              href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Purple+Purse&display=swap"
               rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap"
             />
           </noscript>
         </head>
         <body>
-          <div className="flex min-h-screen flex-col bg-primaryBlack bg-opacity-50 bg-controller bg-cover bg-center bg-no-repeat font-mono text-primaryLight bg-blend-overlay">
+          <div className="flex min-h-screen flex-col bg-opacity-50 bg-deepPurple bg-cover bg-center bg-no-repeat font-mono text-primaryLight bg-blend-overlay">
             <Navbar />
             <div className="min-h-screen w-full px-2 py-2 lg:px-8">
               <ToastContainer stacked />

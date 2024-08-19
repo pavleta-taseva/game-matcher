@@ -1,22 +1,21 @@
 @config "../../tailwind.config.ts";
-@import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Purple+Purse&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply font-mono;
+  @apply font-doHyeon;
 }
 
-p,
-span {
-  /* @apply text-primaryLight; */
+p {
+  @apply text-darkPurple;
   @apply text-base;
 }
 
-.purple-purse-regular {
-  font-family: 'Purple Purse', serif;
+.doHyeon {
+  font-family: 'Do Hyeon', sans-serif;
   font-weight: 400;
   font-style: swap;
 }
