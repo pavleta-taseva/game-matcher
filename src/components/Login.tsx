@@ -10,6 +10,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { getUsers } from 'services/usersAPI';
 import { useAuth } from '@/src/components/AuthProvider';
 import { BiSolidHide, BiSolidShow } from 'react-icons/bi';
+
 interface IFormInput {
   email: string;
   password: string;

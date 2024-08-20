@@ -67,8 +67,7 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         throw new Error(data.message);
       } else {
         localStorage.setItem('token', data.token);
-        const decoded = jwtDecode<JwtPayload>(data.token);
-        setUser(decoded);
+        setUser(data.userData);
         setIsLoading(false);
         setIsLoggedIn(true);
         router.replace('/');

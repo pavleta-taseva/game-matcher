@@ -35,10 +35,19 @@ export async function POST(req: NextRequest) {
       }
     );
 
+    const userData = {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      gender: user.gender,
+      favorites: user.favorites,
+    };
+
     return NextResponse.json(
       {
         message: 'User signed in successfully',
         token,
+        userData,
       },
       { status: 200 }
     );

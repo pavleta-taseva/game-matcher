@@ -19,7 +19,7 @@ type NavLink = {
 
 const Navbar = () => {
   const pathName = usePathname();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { user, setUser, logout } = useAuth();
   const profileImage = session?.user?.image;
 
@@ -30,8 +30,14 @@ const Navbar = () => {
   }, [session]);
 
   const handleLogout = async (linkName: string) => {
-    if (linkName === 'Logout') await signOut();
-    logout();
+    if (linkName === 'Logout' && session) {
+      signOut();
+      localStorage.removeItem('nextauth.message');
+      logout();
+      console.log('Google user signed out');
+    } else if (linkName === 'Logout' && !session) {
+      logout();
+    }
   };
 
   return (
@@ -44,11 +50,10 @@ const Navbar = () => {
           className="hidden md:block md:text-xl lg:text-2xl"
         >
           <div
-            className={`${
-              pathName === '/games'
-                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                : 'flex items-center hover:text-primaryPurple'
-            }`}
+            className={`${pathName === '/games'
+              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+              : 'flex items-center hover:text-primaryPurple'
+              }`}
           >
             All Games
           </div>
@@ -65,11 +70,10 @@ const Navbar = () => {
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
                   onClick={() => handleLogout(link.name)}
-                  className={`${
-                    pathName === link.path
-                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-primaryPurple'
-                  }`}
+                  className={`${pathName === link.path
+                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                    : 'flex items-center hover:text-primaryPurple'
+                    }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
                     {link.name}
@@ -80,11 +84,10 @@ const Navbar = () => {
             {!link.session && !session && !user?.username && (
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
-                  className={`${
-                    pathName === link.path
-                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-primaryPurple'
-                  }`}
+                  className={`${pathName === link.path
+                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                    : 'flex items-center hover:text-primaryPurple'
+                    }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
                     {link.name}
