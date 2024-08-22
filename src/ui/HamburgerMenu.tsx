@@ -14,7 +14,7 @@ const HamburgerMenu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  console.log('isOpen', isOpen);
   return (
     <>
       <label className="relative ml-8 flex h-8 w-10 cursor-pointer flex-col items-center justify-center md:ml-4">
@@ -39,7 +39,7 @@ const HamburgerMenu = () => {
 
           <span className="mt-1.5 block h-1 w-10/12 -translate-y-2.5 -rotate-45 transform self-start rounded-full bg-primaryLight transition-transform duration-300 ease-in-out"></span>
         </label>
-        <nav>
+        <nav onClick={toggleMenu}>
           <ul className="flex flex-col gap-4 py-8">
             {(status === 'authenticated' || isLoggedIn) && (
               <Link href={'/profile'} aria-label={'Profile'}>
