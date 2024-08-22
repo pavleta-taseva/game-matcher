@@ -27,7 +27,7 @@ const InputElement = <T extends FieldValues>({
   ...rest
 }: InputProps<T>) => {
   return (
-    <div className="relative mb-4 flex w-full flex-col md:w-1/2 lg:w-96">
+    <div className="relative mb-4 flex w-full flex-col lg:w-96">
       <label className="text-secondaryBlue mb-1 self-start">{label}</label>
       <input
         {...register(name, validation)}

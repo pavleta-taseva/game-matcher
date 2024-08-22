@@ -51,6 +51,13 @@ export interface GameProps {
   user_game: null;
 }
 
+export interface UserProps {
+  id: string;
+  email: string;
+  username: string;
+  gender: string;
+  favorites: GameProps[];
+}
 export interface Genre {
   games: GameProps[];
   games_count: number;
@@ -59,7 +66,7 @@ export interface Genre {
   name: string;
   slug: string;
 }
-export interface SearchProps {
+export interface GamesProps {
   query?: string;
   results?: GameProps[];
   setResults?: (results: GameProps[]) => void;
@@ -75,6 +82,7 @@ export interface SearchProps {
   setIsSearching?: (isSearching: boolean) => void;
   isFiltered?: boolean;
   setIsFiltered?: (isFiltered: boolean) => void;
+  user?: UserProps;
 }
 export interface CheckboxGroupProps {
   options: string[] | undefined;
@@ -92,5 +100,5 @@ export interface LoadingSpinnerProps {
 
 export interface FetchingGameProps {
   id: string | string[];
-  setGame: (game: GameProps) => void;
+  setGame?: (game: GameProps) => void;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CheckboxGroup from '@/src/ui/CheckboxGroup';
 import SelectElement from '@/src/ui/SelectElement';
-import { SearchProps } from '@/src/types/components';
+import { GamesProps } from '@/src/types/components';
 import { searchGames } from 'services/gamesAPI';
 import {
   operatingSystems,
@@ -17,7 +17,7 @@ const FilterGames = ({
   isSearching,
   isFiltered,
   setIsFiltered,
-}: SearchProps) => {
+}: GamesProps) => {
   const [checkBoxValues, setCheckBoxValues] = useState<string[]>(genres || []);
   const [selectedOption, setSelectedOption] = useState<string>('Genres');
 

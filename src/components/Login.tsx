@@ -51,7 +51,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="m-auto mt-4 flex w-full flex-col items-center justify-center gap-4 lg:w-80"
+        className="m-auto mt-4 flex w-full flex-col items-center justify-center gap-4 md:w-1/2 lg:w-80"
       >
         <InputElement<IFormInput>
           label="Email"

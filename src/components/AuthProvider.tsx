@@ -1,10 +1,10 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { SessionProvider } from 'next-auth/react';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { useSession, signOut } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -24,6 +24,7 @@ interface AuthContextProps {
   ) => Promise<void>;
   isLoading: boolean;
   isLoggedIn: boolean;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -37,6 +38,7 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }: MainLayoutProps) => {
+  const { data: session, status } = useSession();
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,12 +46,24 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
+
+    if (status === 'loading') {
+      setIsLoading(true);
+    } else if (status === 'authenticated' && session?.user) {
+      setUser(session.user);
+      setIsLoading(false);
+      setIsLoggedIn(true);
+    } else if (token) {
       const decoded = jwtDecode<JwtPayload>(token);
       setUser(decoded);
+      setIsLoading(false);
+      setIsLoggedIn(true);
+    } else {
+      setUser(null);
+      setIsLoading(false);
+      setIsLoggedIn(false);
     }
-    setIsLoading(false);
-  }, []);
+  }, [session, status, isLoggedIn]);
 
   const loginUser = async (email: string, password: string) => {
     setIsLoading(true);
@@ -67,7 +81,8 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         throw new Error(data.message);
       } else {
         localStorage.setItem('token', data.token);
-        setUser(data.userData);
+        const decoded = jwtDecode<JwtPayload>(data.token);
+        setUser(decoded);
         setIsLoading(false);
         setIsLoggedIn(true);
         router.replace('/');
@@ -91,17 +106,19 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
     gender: string
   ) => {
     setIsLoading(true);
+    const newUser = {
+      email,
+      username,
+      password,
+      confirmPassword,
+      gender,
+    }
+
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          username,
-          password,
-          confirmPassword,
-          gender,
-        }),
+        body: JSON.stringify(newUser),
       });
 
       const data = await response.json();
@@ -111,14 +128,13 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         throw new Error(data.message);
       } else {
         localStorage.setItem('token', data.token);
-        const decoded = jwtDecode<JwtPayload>(data.token);
-        setUser(decoded);
+        setUser(data.newUser);
         toast.success('Signed up successfully!');
         setIsLoading(false);
         setIsLoggedIn(true);
         router.replace('/');
       }
-      return data.user;
+      return data.newUser;
     } catch (error) {
       setIsLoading(false);
       if (error instanceof Error) {
@@ -129,10 +145,18 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
+  const logout = async () => {
+    router.replace('/login');
     setUser(null);
     setIsLoggedIn(false);
+
+    if (session) {
+      await signOut();
+      localStorage.removeItem('nextauth.message');
+    } else {
+      localStorage.removeItem('token');
+    }
+
   };
 
   return (
@@ -145,9 +169,10 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         registerUser,
         isLoading,
         isLoggedIn,
+        setIsLoggedIn,
       }}
     >
-      <SessionProvider>{children}</SessionProvider>
+      {children}
     </AuthContext.Provider>
   );
 };

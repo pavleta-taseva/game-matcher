@@ -8,7 +8,7 @@ const SearchElement = ({
   handleChange,
 }: SearchElementProps) => {
   return (
-    <div className="flex flex-row self-center pl-12 gap-0">
+    <div className="flex flex-row gap-0 self-center pl-12">
       <div className="relative flex items-center justify-center">
         <Image
           src={'/images/logo.svg'}

@@ -19,8 +19,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isUserLoggedIn = !!session?.user || isLoggedIn;
   const isPrivateRoute = privateRoutes.includes(pathName);
   const isPublicRoute = publicRoutes.includes(pathName);
-  console.log('session', session);
   console.log('isUserLoggedIn', isUserLoggedIn);
+  console.log('check', !isUserLoggedIn && isPrivateRoute);
   const handleRedirect = () => {
     if (isUserLoggedIn && isPublicRoute) {
       router.replace('/');

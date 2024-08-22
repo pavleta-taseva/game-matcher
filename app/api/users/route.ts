@@ -3,7 +3,7 @@
 import connectDB from 'config/database';
 import User from 'models/User';
 
-export const GET = async (request: Request) => {
+export const GET = async () => {
   try {
     await connectDB();
     const users = await User.find({});

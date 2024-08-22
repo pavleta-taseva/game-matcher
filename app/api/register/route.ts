@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'my-secret-key';
 export async function POST(req: NextRequest) {
   await connectDB();
   const body = await req.json();
-  const { email, username, password, confirmPassword } = body;
+  const { email, username, password, confirmPassword, gender } = body;
 
   if (!email || !username || !password || !confirmPassword) {
     return NextResponse.json(
@@ -51,14 +51,22 @@ export async function POST(req: NextRequest) {
     const newUser = new User({
       email,
       username,
+      gender,
       password: hashedPassword,
       confirmPassword: hashedConfirmPassword,
+      favorites: [],
     });
 
     await newUser.save();
 
     const token = jwt.sign(
-      { userId: newUser._id, email: newUser.email, username: newUser.username },
+      {
+        userId: newUser._id,
+        email: newUser.email,
+        username: newUser.username,
+        favorites: newUser.favorites,
+        gender: newUser.gender,
+      },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -67,6 +75,7 @@ export async function POST(req: NextRequest) {
       {
         message: 'User registered successfully',
         token,
+        newUser,
       },
       { status: 201 }
     );

@@ -16,7 +16,7 @@ export const navLinks = [
     session: false,
   },
   {
-    path: '/logout',
+    path: '/#',
     name: 'Logout',
     session: true,
     profile: true,

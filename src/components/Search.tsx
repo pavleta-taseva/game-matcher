@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchGames } from 'services/gamesAPI';
-import { SearchProps } from '@/src/types/components';
+import { GamesProps } from '@/src/types/components';
 import SearchElement from '@/src/ui/SearchElement';
 
 const Search = ({
@@ -12,7 +12,7 @@ const Search = ({
   setIsSearching,
   isFiltered,
   setIsFiltered,
-}: SearchProps) => {
+}: GamesProps) => {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
@@ -61,10 +61,10 @@ const Search = ({
   return (
     <div className="mb-4 mt-8 flex w-full flex-col justify-start gap-2 self-center lg:my-12 lg:w-4/6">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="w-full text-center p-0 align-top font-doHyeon leading-none text-3xl md:text-4xl lg:text-5.5xl">
+        <div className="w-full p-0 text-center align-top font-doHyeon text-3xl leading-none md:text-4xl lg:text-5.5xl">
           Find your new
         </div>
-        <div className="w-full text-center mb-4 p-0 align-top font-doHyeon leading-none text-3xl md:text-4xl lg:text-5.5xl">
+        <div className="mb-4 w-full p-0 text-center align-top font-doHyeon text-3xl leading-none md:text-4xl lg:text-5.5xl">
           Favorite game
         </div>
         <SearchElement

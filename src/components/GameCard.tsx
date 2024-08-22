@@ -8,9 +8,13 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useAuth } from '@/src/components/AuthProvider';
 import { GameDetailsProps } from '../types/components';
+import { addFavoriteGamesToUser } from 'services/userAPI';
 
 const GameCard = ({ game }: GameDetailsProps) => {
+  const { user } = useAuth();
+
   return (
     <Card
       sx={{
@@ -67,16 +71,25 @@ const GameCard = ({ game }: GameDetailsProps) => {
       />
       <CardActions
         disableSpacing
-        className="mx-4 flex flex-row items-center justify-between md:mx-0"
+        className="mx-4 flex flex-row items-center justify-between md:mx-2"
       >
-        <div>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon className="text-darkPurple" />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon className="text-darkPurple" />
-          </IconButton>
-        </div>
+        {user ? (
+          <div>
+            <IconButton
+              aria-label="add to favorites"
+              onClick={() =>
+                addFavoriteGamesToUser(user.id, game.id.toString())
+              }
+            >
+              <FavoriteIcon className="text-darkPurple" />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon className="text-darkPurple" />
+            </IconButton>
+          </div>
+        ) : (
+          <div></div>
+        )}
         <div className="cursor-pointer self-center hover:font-bold hover:text-primaryPurple">
           <Link href={`/games/${game?.id}`} aria-label={'Game details'}>
             Learn more

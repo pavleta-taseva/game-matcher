@@ -116,7 +116,7 @@ const Register = () => {
           error={errors.password}
         />
         {!errors.password && (
-          <div className="mb-4 w-full text-sm text-primaryLight md:w-1/2 lg:w-96">
+          <div className="mb-4 w-full text-sm text-primaryLight lg:w-96">
             Use 8 or more characters with a mix of letters, numbers and symbols
           </div>
         )}
@@ -168,7 +168,7 @@ const Register = () => {
           Log in
         </Link>
       </div>
-      <div className="mt-4 w-full text-center text-primaryLight md:w-1/2 lg:w-64">
+      <div className="mt-4 w-full text-center text-primaryLight lg:w-64">
         {' '}
         ----------- OR -----------{' '}
       </div>

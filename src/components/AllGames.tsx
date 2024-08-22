@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
 import Spinner from '@/src/ui/Spinner';
 import PaginationElement from '@/src/ui/PaginationElement';
-import { SearchProps } from '@/src/types/components';
+import { GamesProps } from '@/src/types/components';
 import { getGamesByPage } from 'services/gamesAPI';
 
 const AllGames = ({
@@ -12,7 +12,7 @@ const AllGames = ({
   setTotalGamesCount,
   currentPage,
   setCurrentPage,
-}: SearchProps) => {
+}: GamesProps) => {
   const [countOfGamesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);

@@ -17,7 +17,7 @@ const SelectFormElement = <T extends FieldValues>({
   ...rest
 }: SelectProps<T>) => {
   return (
-    <div className="mb-4 flex w-full flex-col md:w-1/2 lg:w-96">
+    <div className="mb-4 flex w-full flex-col lg:w-96">
       <label className="text-secondaryBlue mb-2 self-start text-base">
         {label}
       </label>
@@ -26,6 +26,7 @@ const SelectFormElement = <T extends FieldValues>({
         {...rest}
         defaultValue={options[2]}
         className="mb-4 h-8 rounded-sm text-primaryDark"
+        name='gender'
       >
         {options.map((option, index) => (
           <option key={index} value={option}>

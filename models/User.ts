@@ -24,14 +24,13 @@ const UserSchema = new Schema(
       type: String,
     },
     gender: {
-      enum: ['female', 'male', 'other'],
+      type: String,
     },
-    favorites: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Game',
-      },
-    ],
+    favorites: {
+      type: [String],
+      default: [],
+      required: false,
+    },
   },
   {
     timestamps: true,

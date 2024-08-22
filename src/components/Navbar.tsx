@@ -19,8 +19,8 @@ type NavLink = {
 
 const Navbar = () => {
   const pathName = usePathname();
-  const { data: session, status } = useSession();
-  const { user, setUser, logout } = useAuth();
+  const { data: session } = useSession();
+  const { user, setUser, logout, setIsLoggedIn } = useAuth();
   const profileImage = session?.user?.image;
 
   useEffect(() => {
@@ -29,21 +29,19 @@ const Navbar = () => {
     }
   }, [session]);
 
-  const handleLogout = async (linkName: string) => {
-    if (linkName === 'Logout' && session) {
-      signOut();
-      localStorage.removeItem('nextauth.message');
+  const handleLogout = (linkName: string) => {
+    if (linkName === 'Logout') {
       logout();
-      console.log('Google user signed out');
-    } else if (linkName === 'Logout' && !session) {
-      logout();
+      setIsLoggedIn(false);
     }
   };
 
   return (
     <div className="flex h-32 w-full items-center justify-between gap-4 bg-primaryPurple py-2 font-doHyeon md:h-20 md:gap-12 md:p-8 lg:flex-row">
       <div className="flex w-full items-center justify-start gap-4">
-        <HamburgerMenu />
+        <div className="md:hidden">
+          <HamburgerMenu />
+        </div>
         <Link
           href={'/games'}
           aria-label={'All Games'}
@@ -56,6 +54,20 @@ const Navbar = () => {
               }`}
           >
             All Games
+          </div>
+        </Link>
+        <Link
+          href={'/categories'}
+          aria-label={'All Games'}
+          className="hidden md:block md:text-xl lg:text-2xl"
+        >
+          <div
+            className={`${pathName === '/games'
+              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+              : 'flex items-center hover:text-primaryPurple'
+              }`}
+          >
+            Categories
           </div>
         </Link>
       </div>
@@ -97,7 +109,7 @@ const Navbar = () => {
             )}
           </div>
         ))}
-        <>
+        <div className="hidden md:block">
           <Link href={'/profile'} aria-label={'Profile'}>
             <div className="group/item relative">
               {session && session.user ? (
@@ -116,7 +128,7 @@ const Navbar = () => {
               </span>
             </div>
           </Link>
-        </>
+        </div>
       </div>
     </div>
   );

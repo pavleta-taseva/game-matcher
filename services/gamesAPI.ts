@@ -1,10 +1,11 @@
-import { SearchProps, Genre, FetchingGameProps } from '@/src/types/components';
+import { GamesProps, Genre, FetchingGameProps } from '@/src/types/components';
+import { getUserById } from './userAPI';
 
 export const searchGames = async ({
   query,
   setResults,
   setTotalGamesCount,
-}: SearchProps) => {
+}: GamesProps) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/games?search=${query}&ordering=-rating&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
@@ -29,7 +30,7 @@ export const getGamesByPage = async ({
   setGamesList,
   setTotalGamesCount,
   currentPage,
-}: SearchProps) => {
+}: GamesProps) => {
   try {
     const games = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/games?page_size=32&page=${currentPage}&key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
@@ -50,7 +51,7 @@ export const getGamesByPage = async ({
   }
 };
 
-export const getGenres = async ({ genres, setGenres }: SearchProps) => {
+export const getGenres = async ({ genres, setGenres }: GamesProps) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/genres?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`
@@ -84,9 +85,28 @@ export const getGameById = async ({ id, setGame }: FetchingGameProps) => {
     }
     const currentGame = await response.json();
 
-    if (currentGame) setGame(currentGame);
+    if (currentGame && setGame) setGame(currentGame);
 
     return currentGame || {};
+  } catch (error) {
+    console.error('Error getting games:', error);
+    throw error;
+  }
+};
+
+export const getFavoriteGamesByUser = async ({
+  setGamesList,
+  setTotalGamesCount,
+  user,
+}: GamesProps) => {
+  try {
+    if (user) {
+      const currentUser = await getUserById(user.id);
+      setGamesList && setGamesList(currentUser?.favorites || []);
+      setTotalGamesCount &&
+        setTotalGamesCount(currentUser?.favorites?.length ?? 0);
+      return currentUser?.favorites || [];
+    }
   } catch (error) {
     console.error('Error getting games:', error);
     throw error;

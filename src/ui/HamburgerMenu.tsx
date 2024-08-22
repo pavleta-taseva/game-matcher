@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import { useAuth } from '@/src/components/AuthProvider';
+import { useSession } from 'next-auth/react';
+import { CgProfile } from 'react-icons/cg';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session, status } = useSession();
+  const { user, logout, isLoggedIn, setIsLoggedIn } = useAuth();
+  const profileImage = session?.user?.image;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  console.log('status', status);
+  console.log('isLoggedIn HAMBURGER', isLoggedIn);
   return (
     <>
       <label className="relative ml-8 flex h-8 w-10 cursor-pointer flex-col items-center justify-center md:ml-4">
@@ -34,6 +42,31 @@ const HamburgerMenu = () => {
         </label>
         <nav>
           <ul className="flex flex-col gap-4 py-8">
+            {(status === 'authenticated' || isLoggedIn) && (
+              <Link href={'/profile'} aria-label={'Profile'}>
+                <div className="group/item relative">
+                  {session && session.user ? (
+                    <div className='flex justify-start items-center gap-2'>
+                      <Image
+                        alt="User Image"
+                        className="rounded-full"
+                        src={profileImage || ''}
+                        width={30}
+                        height={30}
+                      />
+                      <div className='text-xl'>{session.user?.name?.split(' ')[0]}</div>
+                    </div>
+                  ) : (
+                    user?.username && (
+                      <div className='flex justify-start items-center gap-2'>
+                        <CgProfile className="text-2xl" />
+                        <div className='text-xl'>{user?.username?.split(' ')[0]}</div>
+                      </div>
+                    )
+                  )}
+                </div>
+              </Link>
+            )}
             <Link
               href={'/games'}
               aria-label={'All Games'}
@@ -43,11 +76,51 @@ const HamburgerMenu = () => {
             </Link>
             <Link
               href={'/categories'}
-              aria-label={'All Games'}
+              aria-label={'Categories'}
               className="w-full text-2xl hover:text-primaryPurple"
             >
               Categories
             </Link>
+            {(session?.user || !isLoggedIn) && (
+              <>
+                <Link
+                  href={'/register'}
+                  aria-label={'Sign Up'}
+                  className="w-full text-2xl hover:text-primaryPurple"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href={'/login'}
+                  aria-label={'Login'}
+                  className="w-full text-2xl hover:text-primaryPurple"
+                >
+                  Login
+                </Link>
+              </>
+            )}
+            {(session?.user || status === 'authenticated' || isLoggedIn) && (
+              <>
+                <Link
+                  href={'/favorites'}
+                  aria-label={'Favorites'}
+                  className="w-full text-2xl hover:text-primaryPurple"
+                >
+                  Favorites
+                </Link>
+                <Link
+                  href={'#'}
+                  aria-label={'Logout'}
+                  className="w-full text-2xl hover:text-primaryPurple"
+                  onClick={() => {
+                    logout();
+                    setIsLoggedIn(false);
+                  }}
+                >
+                  Logout
+                </Link>
+              </>
+            )}
           </ul>
         </nav>
       </aside>
