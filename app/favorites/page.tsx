@@ -12,7 +12,7 @@ const FavoritesPage = () => {
   const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { user } = useAuth();
-  console.log('user from favorites', user);
+
   useEffect(() => {
     getFavoriteGamesByUser({
       setGamesList,

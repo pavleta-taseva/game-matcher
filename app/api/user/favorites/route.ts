@@ -9,7 +9,7 @@ export const PUT = async (request: NextRequest) => {
   await connectDB();
   const body = await request.json();
   const { userId, game } = body;
-  console.log('userid', userId);
+
   try {
     const user = await User.findByIdAndUpdate(
       userId,

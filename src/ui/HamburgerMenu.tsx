@@ -14,8 +14,7 @@ const HamburgerMenu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  console.log('status', status);
-  console.log('isLoggedIn HAMBURGER', isLoggedIn);
+
   return (
     <>
       <label className="relative ml-8 flex h-8 w-10 cursor-pointer flex-col items-center justify-center md:ml-4">
@@ -81,7 +80,7 @@ const HamburgerMenu = () => {
             >
               Categories
             </Link>
-            {(session?.user || !isLoggedIn) && (
+            {(!session?.user || status !== 'authenticated' || !isLoggedIn) && (
               <>
                 <Link
                   href={'/register'}
