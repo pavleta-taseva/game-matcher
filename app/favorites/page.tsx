@@ -8,18 +8,18 @@ import { getFavoriteGamesByUser } from 'services/gamesAPI';
 import { useAuth } from '@/src/components/AuthProvider';
 
 const FavoritesPage = () => {
-  const [gamesList, setGamesList] = useState<GameProps[]>();
+  const [gamesList, setGamesList] = useState<GameProps[]>([]);
   const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { user } = useAuth();
-
+  
   useEffect(() => {
     getFavoriteGamesByUser({
       setGamesList,
       setTotalGamesCount,
       user,
     });
-  }, []);
+  }, [gamesList?.length]);
 
   return (
     <div className="h-auto min-h-screen w-full">

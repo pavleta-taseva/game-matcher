@@ -14,7 +14,7 @@ const HamburgerMenu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  console.log('isOpen', isOpen);
+
   return (
     <>
       <label className="relative ml-8 flex h-8 w-10 cursor-pointer flex-col items-center justify-center md:ml-4">
@@ -45,7 +45,7 @@ const HamburgerMenu = () => {
               <Link href={'/profile'} aria-label={'Profile'}>
                 <div className="group/item relative">
                   {session && session.user ? (
-                    <div className='flex justify-start items-center gap-2'>
+                    <div className="flex items-center justify-start gap-2">
                       <Image
                         alt="User Image"
                         className="rounded-full"
@@ -53,13 +53,17 @@ const HamburgerMenu = () => {
                         width={30}
                         height={30}
                       />
-                      <div className='text-xl'>{session.user?.name?.split(' ')[0]}</div>
+                      <div className="text-xl">
+                        {session.user?.name?.split(' ')[0]}
+                      </div>
                     </div>
                   ) : (
                     user?.username && (
-                      <div className='flex justify-start items-center gap-2'>
+                      <div className="flex items-center justify-start gap-2">
                         <CgProfile className="text-2xl" />
-                        <div className='text-xl'>{user?.username?.split(' ')[0]}</div>
+                        <div className="text-xl">
+                          {user?.username?.split(' ')[0]}
+                        </div>
                       </div>
                     )
                   )}

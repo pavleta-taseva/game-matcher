@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -8,12 +8,31 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { MdDeleteForever } from 'react-icons/md';
 import { useAuth } from '@/src/components/AuthProvider';
 import { GameDetailsProps } from '../types/components';
 import { addFavoriteGamesToUser } from 'services/userAPI';
+import { getFavoriteGameById } from 'services/gamesAPI';
+import { useRouter, usePathname } from 'next/navigation';
 
 const GameCard = ({ game }: GameDetailsProps) => {
   const { user } = useAuth();
+  const router = useRouter();
+  const pathName = usePathname();
+  const [isOwner, setIsOwner] = useState<boolean>(false);
+
+  const getCurrentGame = async () => {
+    const currentGame = await getFavoriteGameById({
+      id: game.id.toString() || [],
+    });
+    setIsOwner(currentGame?.addedBy?.includes(user.id));
+  };
+  //TODO: Add remove favorite card functionality
+  //TODO: Make favorites page to update after changes in the array length
+  //TODO: Test and fix adding and creating of a new game by different user when game already exists in the DB
+  useEffect(() => {
+    getCurrentGame();
+  }, []);
 
   return (
     <Card
@@ -75,13 +94,18 @@ const GameCard = ({ game }: GameDetailsProps) => {
       >
         {user ? (
           <div>
-            <IconButton
-              aria-label="add to favorites"
-              onClick={() =>
-                addFavoriteGamesToUser(user.id, game.id.toString())
-              }
-            >
-              <FavoriteIcon className="text-darkPurple" />
+            <IconButton aria-label="add to favorites">
+              {pathName === '/favorites' ? (
+                <MdDeleteForever className="text-2xl text-primaryDark" />
+              ) : (
+                <FavoriteIcon
+                  onClick={() => {
+                    addFavoriteGamesToUser(user.id, game.id.toString(), game);
+                    router.replace('/favorites');
+                  }}
+                  className={`text-2xl ${isOwner ? 'text-primaryRed' : 'text-primaryDark'}`}
+                />
+              )}
             </IconButton>
             <IconButton aria-label="share">
               <ShareIcon className="text-darkPurple" />

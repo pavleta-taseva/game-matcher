@@ -94,6 +94,24 @@ export const getGameById = async ({ id, setGame }: FetchingGameProps) => {
   }
 };
 
+export const getFavoriteGameById = async ({
+  id,
+  setGame,
+}: FetchingGameProps) => {
+  try {
+    const response = await fetch(`/api/games/${id}`);
+
+    const currentGame = await response.json();
+
+    if (currentGame && setGame) setGame(currentGame);
+
+    return currentGame || {};
+  } catch (error) {
+    console.error('Error getting games:', error);
+    throw error;
+  }
+};
+
 export const getFavoriteGamesByUser = async ({
   setGamesList,
   setTotalGamesCount,
@@ -102,10 +120,20 @@ export const getFavoriteGamesByUser = async ({
   try {
     if (user) {
       const currentUser = await getUserById(user.id);
-      setGamesList && setGamesList(currentUser?.favorites || []);
-      setTotalGamesCount &&
-        setTotalGamesCount(currentUser?.favorites?.length ?? 0);
-      return currentUser?.favorites || [];
+      const userFavGames = currentUser?.favorites;
+      let favorites = [];
+
+      for (let id of userFavGames) {
+        const fetchGame = await getGameById({ id });
+
+        if (fetchGame) {
+          favorites.push(fetchGame);
+        }
+      }
+
+      setGamesList && setGamesList(favorites || []);
+      setTotalGamesCount && setTotalGamesCount(favorites?.length ?? 0);
+      return favorites || [];
     }
   } catch (error) {
     console.error('Error getting games:', error);

@@ -3,12 +3,12 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import HamburgerMenu from '../ui/HamburgerMenu';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/src/utils/navlinks';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useAuth } from '@/src/components/AuthProvider';
 import { CgProfile } from 'react-icons/cg';
-import HamburgerMenu from '../ui/HamburgerMenu';
 
 type NavLink = {
   path: string;
@@ -49,8 +49,8 @@ const Navbar = () => {
         >
           <div
             className={`${pathName === '/games'
-              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-              : 'flex items-center hover:text-primaryPurple'
+                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                : 'flex items-center hover:text-primaryPurple'
               }`}
           >
             All Games
@@ -63,8 +63,8 @@ const Navbar = () => {
         >
           <div
             className={`${pathName === '/games'
-              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-              : 'flex items-center hover:text-primaryPurple'
+                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                : 'flex items-center hover:text-primaryPurple'
               }`}
           >
             Categories
@@ -83,8 +83,8 @@ const Navbar = () => {
                 <div
                   onClick={() => handleLogout(link.name)}
                   className={`${pathName === link.path
-                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                    : 'flex items-center hover:text-primaryPurple'
+                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                      : 'flex items-center hover:text-primaryPurple'
                     }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
@@ -97,8 +97,8 @@ const Navbar = () => {
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
                   className={`${pathName === link.path
-                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                    : 'flex items-center hover:text-primaryPurple'
+                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                      : 'flex items-center hover:text-primaryPurple'
                     }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">

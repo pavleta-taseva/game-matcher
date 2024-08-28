@@ -112,7 +112,7 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
       password,
       confirmPassword,
       gender,
-    }
+    };
 
     try {
       const response = await fetch('/api/register', {
@@ -156,7 +156,6 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
     } else {
       localStorage.removeItem('token');
     }
-
   };
 
   return (

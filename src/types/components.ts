@@ -49,6 +49,7 @@ export interface GameProps {
   tba: boolean;
   updated: string;
   user_game: null;
+  addedBy: [];
 }
 
 export interface UserProps {
@@ -92,6 +93,7 @@ export interface CheckboxGroupProps {
 
 export interface GameDetailsProps {
   game: GameProps;
+  id: string;
 }
 
 export interface LoadingSpinnerProps {
