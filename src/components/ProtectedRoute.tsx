@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { useAuth } from '@/src/components/AuthProvider';
 import Spinner from '../ui/Spinner';
 
-const privateRoutes = ['/profile', '/favorites', '/logout'];
+const privateRoutes = ['/profile', '/logout'];
 const publicRoutes = ['/login', '/register'];
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {

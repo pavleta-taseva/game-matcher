@@ -131,9 +131,11 @@ export const getFavoriteGamesByUser = async ({
         }
       }
 
-      setGamesList && setGamesList(favorites || []);
-      setTotalGamesCount && setTotalGamesCount(favorites?.length ?? 0);
-      return favorites || [];
+      if(favorites.length > 0) {
+        setGamesList && setGamesList(favorites);
+        setTotalGamesCount && setTotalGamesCount(favorites?.length ?? 0);
+        return favorites || [];
+      }
     }
   } catch (error) {
     console.error('Error getting games:', error);

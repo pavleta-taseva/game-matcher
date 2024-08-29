@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
-import Spinner from '@/src/ui/Spinner';
 import PaginationElement from '@/src/ui/PaginationElement';
 import { GamesProps } from '@/src/types/components';
 import { getGamesByPage } from 'services/gamesAPI';
+import { useAuth } from '@/src/components/AuthProvider';
 
 const AllGames = ({
   gamesList,
@@ -15,7 +15,7 @@ const AllGames = ({
 }: GamesProps) => {
   const [countOfGamesPerPage] = useState(32);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { isLoading } = useAuth();
 
   useEffect(() => {
     if (totalGamesCount && gamesList) {
@@ -23,12 +23,6 @@ const AllGames = ({
       setTotalPages(pagesCount);
     }
   }, [totalGamesCount]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, [loading]);
 
   const handleChange = async (
     event: React.ChangeEvent<unknown>,
@@ -55,7 +49,7 @@ const AllGames = ({
           Items found: {totalGamesCount && totalGamesCount.toLocaleString('en')}
         </h2>
       </div>
-      {!loading ? (
+      {!isLoading && (
         <>
           <div className="grid w-full grid-cols-1 place-items-center justify-items-center gap-x-4 gap-y-8 overflow-auto px-4 py-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-2">
             {gamesList &&
@@ -70,8 +64,6 @@ const AllGames = ({
             handleChange={handleChange}
           />
         </>
-      ) : (
-        <Spinner loading={loading} />
       )}
     </div>
   );
