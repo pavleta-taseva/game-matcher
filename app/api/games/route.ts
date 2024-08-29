@@ -60,12 +60,7 @@ export async function POST(req: NextRequest) {
       existingGame.addedBy.push(userId);
       await Promise.all([existingGame.save(), currentUser.save()]);
 
-      return NextResponse.json(
-        {
-          message: 'Game already added to the list',
-        },
-        { status: 400 }
-      );
+      return NextResponse.json(existingGame, { status: 200 });
     }
   } catch (error) {
     console.error('Error adding game:', error);

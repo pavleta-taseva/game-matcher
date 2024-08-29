@@ -29,7 +29,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
   };
   //TODO: Add remove favorite card functionality
   //TODO: Make favorites page to update after changes in the array length
-  //TODO: Test and fix adding and creating of a new game by different user when game already exists in the DB
+
   useEffect(() => {
     getCurrentGame();
   }, []);
