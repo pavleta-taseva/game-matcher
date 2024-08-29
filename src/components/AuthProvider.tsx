@@ -23,6 +23,7 @@ interface AuthContextProps {
     gender: string
   ) => Promise<void>;
   isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
   isLoggedIn: boolean;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
@@ -167,6 +168,7 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         logout,
         registerUser,
         isLoading,
+        setIsLoading,
         isLoggedIn,
         setIsLoggedIn,
       }}

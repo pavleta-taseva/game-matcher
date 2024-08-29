@@ -84,6 +84,7 @@ export interface GamesProps {
   isFiltered?: boolean;
   setIsFiltered?: (isFiltered: boolean) => void;
   user?: UserProps;
+  setIsLoading?: (isLoading: boolean) => void;
 }
 export interface CheckboxGroupProps {
   options: string[] | undefined;

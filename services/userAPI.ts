@@ -35,6 +35,10 @@ export const addFavoriteGamesToUser = async (
     if (!apiDomain) return [];
     const id = gameId.toString();
     const gameDetails = await getGameById({ id });
+    const currentUser = await getUserById(userId);
+    const usersFavorites = currentUser?.favorites?.includes(id);
+
+    if (usersFavorites) return;
 
     if (id && gameDetails) {
       const createGameDocument = await fetch(`/api/games`, {
@@ -51,6 +55,40 @@ export const addFavoriteGamesToUser = async (
       }
 
       return response.gameData || {};
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('An unknown error occurred');
+    }
+  }
+};
+
+export const removeFavoriteGameFromUser = async (
+  userId: string,
+  gameId: string
+) => {
+  try {
+    if (!apiDomain) return [];
+    const id = gameId.toString();
+    const currentUser = await getUserById(userId);
+
+    if (id) {
+      const updateUserRequest = await fetch(`/api/user/${userId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currentUser, id }),
+      });
+      const response = await updateUserRequest.json();
+
+      if (!updateUserRequest.ok || updateUserRequest.status !== 200) {
+        toast.error(response?.message);
+      } else {
+        toast.success(response?.message);
+      }
+
+      return response.favorites || [];
     }
   } catch (error) {
     if (error instanceof Error) {

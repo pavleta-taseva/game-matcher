@@ -11,20 +11,29 @@ const Favorites = () => {
   const [gamesList, setGamesList] = useState<GameProps[]>([]);
   const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, setIsLoading } = useAuth();
 
   useEffect(() => {
-    getFavoriteGamesByUser({
-      setGamesList,
-      setTotalGamesCount,
-      user,
-    });
-  }, [gamesList?.length]);
+    const fetchFavoriteGames = async () => {
+      try {
+        await getFavoriteGamesByUser({
+          setGamesList,
+          setTotalGamesCount,
+          user,
+          setIsLoading
+        });
+      } catch (error) {
+        console.error('Error fetching favorite games:', error);
+      }
+    };
+
+    fetchFavoriteGames();
+  }, [isLoading, gamesList?.length]);
 
   return (
     <div className="h-auto min-h-screen w-full">
       <div className="mx-auto flex h-full w-11/12 flex-col lg:mt-24">
-        {!isLoading && gamesList && gamesList?.length > 0 && (
+        {!isLoading && gamesList.length > 0 && (
           <AllGames
             gamesList={gamesList}
             setGamesList={setGamesList}
@@ -34,7 +43,8 @@ const Favorites = () => {
             setCurrentPage={setCurrentPage}
           />
         )}
-        {isLoading && gamesList?.length <= 0 && (
+
+        {!isLoading && gamesList?.length === 0 && (
           <div className="mt-12 flex flex-col items-center justify-center">
             <div className="text-center text-xl text-primaryLight md:text-2xl lg:text-4xl">
               Your favorites list is empty

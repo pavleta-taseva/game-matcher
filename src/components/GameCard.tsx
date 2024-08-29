@@ -11,7 +11,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { MdDeleteForever } from 'react-icons/md';
 import { useAuth } from '@/src/components/AuthProvider';
 import { GameDetailsProps } from '../types/components';
-import { addFavoriteGamesToUser } from 'services/userAPI';
+import { addFavoriteGamesToUser, removeFavoriteGameFromUser } from 'services/userAPI';
 import { getFavoriteGameById } from 'services/gamesAPI';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -27,12 +27,12 @@ const GameCard = ({ game }: GameDetailsProps) => {
     });
     setIsOwner(currentGame?.addedBy?.includes(user.id));
   };
-  //TODO: Add remove favorite card functionality
-  //TODO: Make favorites page to update after changes in the array length
 
   useEffect(() => {
     getCurrentGame();
   }, []);
+
+  //TODO: Update favorites page after adding removing games
 
   return (
     <Card
@@ -96,7 +96,12 @@ const GameCard = ({ game }: GameDetailsProps) => {
           <div>
             <IconButton aria-label="add to favorites">
               {pathName === '/favorites' ? (
-                <MdDeleteForever className="text-2xl text-primaryDark" />
+                <MdDeleteForever
+                  onClick={() => {
+                    removeFavoriteGameFromUser(user.id, game.id.toString());
+                    router.replace('/favorites');
+                  }}
+                  className="text-2xl text-primaryDark" />
               ) : (
                 <FavoriteIcon
                   onClick={() => {
