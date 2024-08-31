@@ -130,7 +130,7 @@ export const getFavoriteGamesByUser = async ({
           favorites.push(fetchGame);
         }
       }
-      
+
       if (favorites.length > 0) {
         setGamesList && setGamesList(favorites);
         setTotalGamesCount && setTotalGamesCount(favorites?.length ?? 0);

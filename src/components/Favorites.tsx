@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '@/src/components/AuthProvider';
 
 const Favorites = () => {
-  const { isLoading, gamesList, setGamesList, totalGamesCount, setTotalGamesCount } = useAuth();
+  const { isLoading, gamesList, setGamesList, setTotalGamesCount } = useAuth();
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   return (
@@ -13,7 +13,7 @@ const Favorites = () => {
         <AllGames
           gamesList={gamesList}
           setGamesList={setGamesList}
-          totalGamesCount={totalGamesCount}
+          totalGamesCount={gamesList?.length ?? 0}
           setTotalGamesCount={setTotalGamesCount}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
