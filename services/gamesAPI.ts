@@ -116,7 +116,6 @@ export const getFavoriteGamesByUser = async ({
   setGamesList,
   setTotalGamesCount,
   user,
-  setIsLoading,
 }: GamesProps) => {
   try {
     if (user) {
@@ -131,13 +130,12 @@ export const getFavoriteGamesByUser = async ({
           favorites.push(fetchGame);
         }
       }
-
+      
       if (favorites.length > 0) {
         setGamesList && setGamesList(favorites);
         setTotalGamesCount && setTotalGamesCount(favorites?.length ?? 0);
-        setIsLoading && setIsLoading(false);
-        return favorites || [];
       }
+      return favorites || [];
     }
   } catch (error) {
     console.error('Error getting games:', error);

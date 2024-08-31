@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,28 +11,33 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { MdDeleteForever } from 'react-icons/md';
 import { useAuth } from '@/src/components/AuthProvider';
 import { GameDetailsProps } from '../types/components';
-import { addFavoriteGamesToUser, removeFavoriteGameFromUser } from 'services/userAPI';
-import { getFavoriteGameById } from 'services/gamesAPI';
+import {
+  addFavoriteGamesToUser,
+  removeFavoriteGameFromUser,
+} from 'services/userAPI';
 import { useRouter, usePathname } from 'next/navigation';
 
 const GameCard = ({ game }: GameDetailsProps) => {
-  const { user } = useAuth();
-  const router = useRouter();
+  const { user, gamesList, setGamesList } = useAuth();
   const pathName = usePathname();
+  const router = useRouter();
   const [isOwner, setIsOwner] = useState<boolean>(false);
 
-  const getCurrentGame = async () => {
-    const currentGame = await getFavoriteGameById({
-      id: game.id.toString() || [],
-    });
-    setIsOwner(currentGame?.addedBy?.includes(user.id));
-  };
-
   useEffect(() => {
-    getCurrentGame();
-  }, []);
+    const isFavorite = gamesList.some(g => g.id === game.id);
+    setIsOwner(isFavorite);
+  }, [gamesList, game.id]);
 
-  //TODO: Update favorites page after adding removing games
+  const handleAddFavorite = useCallback(async () => {
+    await addFavoriteGamesToUser(user.id, game.id.toString(), game);
+    setGamesList([...gamesList, game]);
+    router.replace('/favorites');
+  }, [user.id, game, gamesList, setGamesList]);
+
+  const handleRemoveFavorite = useCallback(async () => {
+    await removeFavoriteGameFromUser(user.id, game.id.toString(), setGamesList);
+    setGamesList(gamesList.filter(g => g.id !== game.id));
+  }, [user.id, game.id, gamesList, setGamesList]);
 
   return (
     <Card
@@ -97,17 +102,12 @@ const GameCard = ({ game }: GameDetailsProps) => {
             <IconButton aria-label="add to favorites">
               {pathName === '/favorites' ? (
                 <MdDeleteForever
-                  onClick={() => {
-                    removeFavoriteGameFromUser(user.id, game.id.toString());
-                    router.replace('/favorites');
-                  }}
-                  className="text-2xl text-primaryDark" />
+                  onClick={handleRemoveFavorite}
+                  className="text-2xl text-primaryDark"
+                />
               ) : (
                 <FavoriteIcon
-                  onClick={() => {
-                    addFavoriteGamesToUser(user.id, game.id.toString(), game);
-                    router.replace('/favorites');
-                  }}
+                  onClick={handleAddFavorite}
                   className={`text-2xl ${isOwner ? 'text-primaryRed' : 'text-primaryDark'}`}
                 />
               )}
@@ -124,45 +124,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
             Learn more
           </Link>
         </div>
-        {/* <ExpandMore
-          expand={isOpen}
-          onClick={handleExpandClick}
-          aria-expanded={isOpen}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon className="text-darkPurple" />
-        </ExpandMore> */}
       </CardActions>
-      {/* <Collapse in={isOpen} timeout="auto" unmountOnExit>
-        <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div color="colors-light">
-            <p className="font-bold">Genres:</p>
-            {game?.genres?.map((genre) => genre.name).join(', ') ||
-              'No information'}
-          </div>
-          <div color="colors-light">
-            <p className="font-bold">Platform:</p>
-            {game?.parent_platforms
-              ?.map((detail) => detail.platform.name)
-              .join(', ') || 'No information'}
-          </div>
-          <div color="colors-light">
-            <p className="font-bold">Metascore:</p>
-            {game?.metacritic || 'No information'}
-          </div>
-          <div color="colors-light">
-            <p className="font-bold">Available on:</p>
-            {game?.stores?.map((details) => details.store.name).join(', ') ||
-              'No information'}
-          </div>
-          <div color="colors-light">
-            <p className="font-bold">Tags:</p>
-            {(game?.tags?.length > 0 &&
-              game?.tags?.map((tag) => tag.name).join(', ')) ||
-              'No information'}
-          </div>
-        </CardContent>
-      </Collapse> */}
     </Card>
   );
 };

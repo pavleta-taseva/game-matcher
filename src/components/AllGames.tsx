@@ -55,7 +55,14 @@ const AllGames = ({
             {gamesList &&
               gamesList?.length > 0 &&
               gamesList?.map(
-                (game) => game?.id && <GameCard key={game?.id} game={game} id={game?.id.toString()} />
+                (game) =>
+                  game?.id && (
+                    <GameCard
+                      key={game?.id}
+                      game={game}
+                      id={game?.id.toString()}
+                    />
+                  )
               )}
           </div>
           <PaginationElement

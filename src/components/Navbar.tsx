@@ -48,10 +48,11 @@ const Navbar = () => {
           className="hidden md:block md:text-xl lg:text-2xl"
         >
           <div
-            className={`${pathName === '/games'
+            className={`${
+              pathName === '/games'
                 ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
                 : 'flex items-center hover:text-primaryPurple'
-              }`}
+            }`}
           >
             All Games
           </div>
@@ -62,10 +63,11 @@ const Navbar = () => {
           className="hidden md:block md:text-xl lg:text-2xl"
         >
           <div
-            className={`${pathName === '/games'
+            className={`${
+              pathName === '/games'
                 ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
                 : 'flex items-center hover:text-primaryPurple'
-              }`}
+            }`}
           >
             Categories
           </div>
@@ -82,10 +84,11 @@ const Navbar = () => {
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
                   onClick={() => handleLogout(link.name)}
-                  className={`${pathName === link.path
+                  className={`${
+                    pathName === link.path
                       ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
                       : 'flex items-center hover:text-primaryPurple'
-                    }`}
+                  }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
                     {link.name}
@@ -96,10 +99,11 @@ const Navbar = () => {
             {!link.session && !session && !user?.username && (
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
-                  className={`${pathName === link.path
+                  className={`${
+                    pathName === link.path
                       ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
                       : 'flex items-center hover:text-primaryPurple'
-                    }`}
+                  }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
                     {link.name}

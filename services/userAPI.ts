@@ -53,7 +53,6 @@ export const addFavoriteGamesToUser = async (
       } else {
         toast.success(response?.message);
       }
-
       return response.gameData || {};
     }
   } catch (error) {
@@ -67,7 +66,8 @@ export const addFavoriteGamesToUser = async (
 
 export const removeFavoriteGameFromUser = async (
   userId: string,
-  gameId: string
+  gameId: string,
+  setGamesList: (results: GameProps[]) => void
 ) => {
   try {
     if (!apiDomain) return [];
@@ -87,7 +87,7 @@ export const removeFavoriteGameFromUser = async (
       } else {
         toast.success(response?.message);
       }
-
+      setGamesList(response.favorites);
       return response.favorites || [];
     }
   } catch (error) {

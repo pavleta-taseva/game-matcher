@@ -1,10 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { getFavoriteGamesByUser } from 'services/gamesAPI';
 import { useSession, signOut } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { GameProps } from '../types/components';
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -26,6 +28,10 @@ interface AuthContextProps {
   setIsLoading: (isLoading: boolean) => void;
   isLoggedIn: boolean;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
+  gamesList: GameProps[];
+  setGamesList: (results: GameProps[]) => void;
+  totalGamesCount: number;
+  setTotalGamesCount: (totalGamesCount: number) => void;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -43,6 +49,8 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [gamesList, setGamesList] = useState<GameProps[]>([]);
+  const [totalGamesCount, setTotalGamesCount] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -65,6 +73,22 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
       setIsLoggedIn(false);
     }
   }, [session, status, isLoggedIn]);
+
+  useEffect(() => {
+    const fetchFavoriteGames = async () => {
+      try {
+        await getFavoriteGamesByUser({
+          setGamesList,
+          setTotalGamesCount,
+          user,
+        });
+      } catch (error) {
+        console.error('Error fetching favorite games:', error);
+      }
+    };
+
+    fetchFavoriteGames();
+  }, [isLoading]);
 
   const loginUser = async (email: string, password: string) => {
     setIsLoading(true);
@@ -171,6 +195,10 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         setIsLoading,
         isLoggedIn,
         setIsLoggedIn,
+        gamesList,
+        setGamesList,
+        totalGamesCount,
+        setTotalGamesCount
       }}
     >
       {children}
