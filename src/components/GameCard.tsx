@@ -26,18 +26,18 @@ const GameCard = ({ game }: GameDetailsProps) => {
   useEffect(() => {
     const isFavorite = gamesList.some(g => g.id === game.id);
     setIsOwner(isFavorite);
-  }, [gamesList, game.id]);
+  }, [gamesList, game?.id]);
 
   const handleAddFavorite = useCallback(async () => {
-    await addFavoriteGamesToUser(user.id, game.id.toString(), game);
+    await addFavoriteGamesToUser(user.id, game?.id.toString(), game);
     setGamesList([...gamesList, game]);
     router.replace('/favorites');
-  }, [user.id, game, gamesList, setGamesList]);
+  }, [user?.id, game, gamesList, setGamesList]);
 
   const handleRemoveFavorite = useCallback(async () => {
     await removeFavoriteGameFromUser(user.id, game.id.toString(), setGamesList);
-    setGamesList(gamesList.filter(g => g.id !== game.id));
-  }, [user.id, game.id, gamesList, setGamesList]);
+    setGamesList(gamesList.filter(g => g.id !== game?.id));
+  }, [user?.id, game?.id, gamesList, setGamesList]);
 
   return (
     <Card

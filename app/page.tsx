@@ -43,6 +43,12 @@ const HomePage = () => {
             setCurrentPage={setCurrentPage}
           />
         )}
+
+        {results?.length === 0 && isSearching && isSearching && (
+          <div className='flex w-full justify-center items-center mt-12 text-primaryPurple text-xl md:text-4xl'>
+            Sorry, no games found
+          </div>
+        )}
       </div>
       <HomeContent isFiltered={isFiltered} isSearching={isSearching} />
     </div>

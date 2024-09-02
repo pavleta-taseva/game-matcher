@@ -2,16 +2,22 @@ import { IconButtonProps } from '@mui/material/IconButton';
 import React, { ChangeEventHandler } from 'react';
 
 export interface ButtonProps {
-  content: string;
+  content: React.ReactNode;
   type: 'submit' | 'reset' | 'button' | undefined;
   disabled?: boolean;
   onClick?: React.MouseEventHandler;
+  width?: number;
+  height?: number;
+  color?: string;
+  background?: string;
 }
 
 export interface SearchElementProps {
   query: string;
   isFiltered: boolean | undefined;
   handleChange: ChangeEventHandler<HTMLInputElement> | undefined;
+  handleSearch: ChangeEventHandler<HTMLInputElement> | undefined;
+  handleSubmit: React.MouseEventHandler | undefined;
 }
 
 export interface SelectElementProps {
