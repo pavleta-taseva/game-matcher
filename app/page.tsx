@@ -45,7 +45,7 @@ const HomePage = () => {
         )}
 
         {results?.length === 0 && isSearching && isSearching && (
-          <div className='flex w-full justify-center items-center mt-12 text-primaryPurple text-xl md:text-4xl'>
+          <div className="mt-12 flex w-full items-center justify-center text-xl text-primaryPurple md:text-4xl">
             Sorry, no games found
           </div>
         )}

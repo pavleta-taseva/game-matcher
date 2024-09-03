@@ -24,7 +24,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
   const [isOwner, setIsOwner] = useState<boolean>(false);
 
   useEffect(() => {
-    const isFavorite = gamesList.some(g => g.id === game.id);
+    const isFavorite = gamesList.some((g) => g.id === game.id);
     setIsOwner(isFavorite);
   }, [gamesList, game?.id]);
 
@@ -36,7 +36,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
 
   const handleRemoveFavorite = useCallback(async () => {
     await removeFavoriteGameFromUser(user.id, game.id.toString(), setGamesList);
-    setGamesList(gamesList.filter(g => g.id !== game?.id));
+    setGamesList(gamesList.filter((g) => g.id !== game?.id));
   }, [user?.id, game?.id, gamesList, setGamesList]);
 
   return (

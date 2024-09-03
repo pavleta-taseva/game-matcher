@@ -1,7 +1,16 @@
 import React from 'react';
 import { ButtonProps } from '@/src/types/elements';
 
-const SearchButtonElement = ({ content, type, disabled, onClick, width, height, color, background }: ButtonProps) => {
+const SearchButtonElement = ({
+  content,
+  type,
+  disabled,
+  onClick,
+  width,
+  height,
+  color,
+  background,
+}: ButtonProps) => {
   return (
     <button
       type={type}

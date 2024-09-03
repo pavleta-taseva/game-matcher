@@ -198,7 +198,7 @@ const AuthProvider = ({ children }: MainLayoutProps) => {
         gamesList,
         setGamesList,
         totalGamesCount,
-        setTotalGamesCount
+        setTotalGamesCount,
       }}
     >
       {children}

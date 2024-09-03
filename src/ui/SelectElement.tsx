@@ -7,7 +7,7 @@ const SelectElement = ({
   setSelectedOption,
 }: SelectElementProps) => {
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <label
         htmlFor="categoryFilter"
         className="font-semibold text-secondaryBlue mb-4 text-xl"
@@ -16,7 +16,7 @@ const SelectElement = ({
       </label>
       <select
         id="categoryFilter"
-        className="border-transparent outline-neutral-700 mb-4 w-9/12 rounded px-4 py-2 text-base text-primaryGrey outline focus:outline-none"
+        className="border-transparent outline-neutral-700 mb-4 w-full rounded px-4 py-2 text-base text-primaryGrey outline focus:outline-none"
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
       >
@@ -26,7 +26,7 @@ const SelectElement = ({
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 

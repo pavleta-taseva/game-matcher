@@ -71,6 +71,13 @@ const HamburgerMenu = () => {
               </Link>
             )}
             <Link
+              href={'/'}
+              aria-label={'Home'}
+              className="w-full text-2xl hover:text-primaryPurple"
+            >
+              Home
+            </Link>
+            <Link
               href={'/games'}
               aria-label={'All Games'}
               className="w-full text-2xl hover:text-primaryPurple"
