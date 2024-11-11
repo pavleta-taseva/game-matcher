@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectDB from 'config/database';
 import User from 'models/User';
 import Game from 'models/Game';
+import { revalidatePath } from 'next/cache';
 
 export const GET = async (request: NextRequest) => {
   await connectDB();
@@ -51,7 +52,7 @@ export const PUT = async (request: NextRequest) => {
       },
       { new: true }
     );
-
+    revalidatePath('/favorites', 'page');
     return new NextResponse(JSON.stringify(userUpdated), {
       status: 200,
     });

@@ -1,12 +1,13 @@
 export interface GameProps {
   added: number;
-  background_image: string;
+  background_image: string | undefined;
   esrb_rating: { id: number; name: string; slug: string };
   genres: [{ id: number; name: string; slug: string; games_count: number }];
   id: number;
   metacritic: number;
   name: string;
   parent_platforms: [{ platform: { id: number; name: string; slug: string } }];
+  website: string;
   platforms: [
     {
       platform: {

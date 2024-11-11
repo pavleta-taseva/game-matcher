@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AllGames from '@/src/components/AllGames';
-import Link from 'next/link';
 import { useAuth } from '@/src/components/AuthProvider';
+import Link from 'next/link';
 
 const Favorites = () => {
   const { isLoading, gamesList, setGamesList, setTotalGamesCount } = useAuth();

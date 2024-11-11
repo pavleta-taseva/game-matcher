@@ -55,10 +55,10 @@ const AllGames = ({
             {gamesList &&
               gamesList?.length > 0 &&
               gamesList?.map(
-                (game) =>
+                (game, index) =>
                   game?.id && (
                     <GameCard
-                      key={game?.id}
+                      key={game?.id || index}
                       game={game}
                       id={game?.id.toString()}
                     />

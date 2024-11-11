@@ -89,7 +89,7 @@ const GameCard = ({ game }: GameDetailsProps) => {
       <CardMedia
         component="img"
         height={194}
-        image={game?.background_image}
+        image={game?.background_image || ''}
         alt={game?.name}
         sx={{ height: '194px' }}
       />
