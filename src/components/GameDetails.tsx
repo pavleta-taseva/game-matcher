@@ -21,27 +21,29 @@ const GameDetails = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-background-primaryBlack text-textColor-primaryLight font-doHyeon">
+    <div className="bg-background-primaryBlack text-textColor-primaryLight min-h-screen w-full font-doHyeon">
       <div
-        className="relative w-full h-[400px] flex items-center justify-center bg-cover bg-center rounded-b-3xl"
+        className="relative flex h-[400px] w-full items-center justify-center rounded-b-3xl bg-cover bg-center"
         style={{
           backgroundImage: `url(${game?.background_image || '/images/default-game.jpg'})`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background-darkPurple to-transparent opacity-80 rounded-b-3xl"></div>
-        <h1 className="relative text-5xl lg:text-6xl font-bold text-textColor-primaryPurple">
+        <div className="bg-gradient-to-b from-background-darkPurple to-transparent absolute inset-0 rounded-b-3xl opacity-80"></div>
+        <h1 className="text-textColor-primaryPurple relative text-5xl font-bold lg:text-6xl">
           {game?.name || 'Game Title'}
         </h1>
       </div>
 
-      <div className="flex flex-col lg:flex-row w-11/12 mx-auto mt-8 gap-8">
-        <div className="flex w-full lg:w-3/4 bg-background-secondaryGrey p-6 rounded-3xl shadow-lg">
+      <div className="mx-auto mt-8 flex w-11/12 flex-col gap-8 lg:flex-row">
+        <div className="bg-background-secondaryGrey shadow-lg flex w-full rounded-3xl p-6 lg:w-3/4">
           <div className="flex flex-col gap-4 text-xl">
             <div className="flex flex-col items-start gap-2">
-              <h2 className="text-3xl font-semibold mb-4">Game Details</h2>
-              <p className="text-primaryRed font-semibold text-xl">Official webpage:</p>
+              <h2 className="font-semibold mb-4 text-3xl">Game Details</h2>
+              <p className="font-semibold text-xl text-primaryRed">
+                Official webpage:
+              </p>
               <Link
-                className="text-primaryPurple underline hover:text-lightPurple"
+                className="hover:text-lightPurple text-primaryPurple underline"
                 href={game?.website || '#'}
                 target="_blank"
               >
@@ -50,14 +52,15 @@ const GameDetails = () => {
             </div>
 
             <div className="flex flex-col items-start gap-2">
-              <p className="text-primaryRed font-semibold text-xl">Genres:</p>
+              <p className="font-semibold text-xl text-primaryRed">Genres:</p>
               <span>
-                {game?.genres?.map((genre) => genre.name).join(', ') || 'No information'}
+                {game?.genres?.map((genre) => genre.name).join(', ') ||
+                  'No information'}
               </span>
             </div>
 
             <div className="flex flex-col items-start gap-2">
-              <p className="text-primaryRed font-semibold text-xl">Platform:</p>
+              <p className="font-semibold text-xl text-primaryRed">Platform:</p>
               <span>
                 {game?.parent_platforms
                   ?.map((detail) => detail.platform.name)
@@ -66,22 +69,27 @@ const GameDetails = () => {
             </div>
 
             <div className="flex flex-col items-start gap-2">
-              <p className="text-primaryRed font-semibold text-xl">Metascore:</p>
+              <p className="font-semibold text-xl text-primaryRed">
+                Metascore:
+              </p>
               <span className="text-primaryLight">
                 {game?.metacritic || 'No information'}
               </span>
             </div>
 
             <div className="flex flex-col items-start gap-2">
-              <p className="text-primaryRed font-semibold text-xl">Available on:</p>
+              <p className="font-semibold text-xl text-primaryRed">
+                Available on:
+              </p>
               <span>
-                {game?.stores?.map((details) => details.store.name).join(', ') ||
-                  'No information'}
+                {game?.stores
+                  ?.map((details) => details.store.name)
+                  .join(', ') || 'No information'}
               </span>
             </div>
 
             <div className="flex flex-col items-start gap-2 text-justify">
-              <p className="text-primaryRed font-semibold text-xl">Tags:</p>
+              <p className="font-semibold text-xl text-primaryRed">Tags:</p>
               <span>
                 {(game?.tags &&
                   game?.tags?.length > 0 &&
@@ -92,20 +100,20 @@ const GameDetails = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/4 flex flex-col gap-4 mt-8">
-          <div className="w-full h-64 bg-background-secondaryGrey rounded-3xl shadow-lg overflow-hidden">
+        <div className="mt-8 flex w-full flex-col gap-4 lg:w-1/4">
+          <div className="bg-background-secondaryGrey shadow-lg h-64 w-full overflow-hidden rounded-3xl">
             <img
               src={game?.background_image || '/images/default-game.jpg'}
               alt={game?.name || 'Game Thumbnail'}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
 
-          <div className="w-full p-4 bg-background-secondaryGrey rounded-3xl shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">More Information</h3>
+          <div className="bg-background-secondaryGrey shadow-lg w-full rounded-3xl p-4">
+            <h3 className="font-semibold mb-2 text-xl">More Information</h3>
             <Link
               href={game?.website || '#'}
-              className="text-primaryPurple underline hover:text-lightPurple"
+              className="hover:text-lightPurple text-primaryPurple underline"
               target="_blank"
             >
               Visit Official Website
