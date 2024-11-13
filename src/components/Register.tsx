@@ -9,7 +9,7 @@ import ButtonElement from '@/src/ui/ButtonElement';
 import GoogleSignInElement from '../ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { genderOptions } from '@/src/utils/filterOptions';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import { BiSolidHide, BiSolidShow } from 'react-icons/bi';
 
 enum GenderEnum {

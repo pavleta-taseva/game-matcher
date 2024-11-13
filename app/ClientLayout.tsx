@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import AuthProvider from '@/src/components/AuthProvider';
+import AuthProvider from '@/../context/AuthProvider';
 import '@/assets/styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { ToastContainer } from 'react-toastify';

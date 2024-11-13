@@ -3,7 +3,7 @@ import GameCard from './GameCard';
 import PaginationElement from '@/src/ui/PaginationElement';
 import { GamesProps } from '@/src/types/components';
 import { getGamesByPage } from 'services/gamesAPI';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 
 const AllGames = ({
   gamesList,

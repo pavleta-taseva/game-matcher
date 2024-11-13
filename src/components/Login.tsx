@@ -8,7 +8,7 @@ import ButtonElement from '@/src/ui/ButtonElement';
 import GoogleSignInElement from '@/src/ui/GoogleSignInElement';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { getUsers } from 'services/usersAPI';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import { BiSolidHide, BiSolidShow } from 'react-icons/bi';
 
 interface IFormInput {

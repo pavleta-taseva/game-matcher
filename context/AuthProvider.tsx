@@ -6,7 +6,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
-import { GameProps } from '../types/components';
+import { GameProps } from '@/src/types/components';
 
 type MainLayoutProps = {
   children: React.ReactNode;

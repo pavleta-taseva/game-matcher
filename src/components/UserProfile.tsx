@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useAuth } from './AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const UserProfile = () => {
-  const { user, gamesList, logout } = useAuth();
+  const { user, gamesList } = useAuth();
   const { data: session } = useSession();
 
   return (

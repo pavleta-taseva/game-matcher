@@ -9,7 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { MdDeleteForever } from 'react-icons/md';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import { GameDetailsProps } from '../types/components';
 import {
   addFavoriteGamesToUser,
@@ -29,13 +29,13 @@ const GameCard = ({ game }: GameDetailsProps) => {
   }, [gamesList, game?.id]);
 
   const handleAddFavorite = useCallback(async () => {
-    await addFavoriteGamesToUser(user.id, game?.id.toString(), game);
+    await addFavoriteGamesToUser(user?.id || user?.userId, game?.id.toString(), game);
     setGamesList([...gamesList, game]);
     router.replace('/favorites');
   }, [user?.id, game, gamesList, setGamesList]);
 
   const handleRemoveFavorite = useCallback(async () => {
-    await removeFavoriteGameFromUser(user.id, game.id.toString(), setGamesList);
+    await removeFavoriteGameFromUser(user?.id || user?.userId, game.id.toString(), setGamesList);
     setGamesList(gamesList.filter((g) => g.id !== game?.id));
   }, [user?.id, game?.id, gamesList, setGamesList]);
 

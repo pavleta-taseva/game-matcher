@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import { useSession } from 'next-auth/react';
 import { CgProfile } from 'react-icons/cg';
 import Link from 'next/link';

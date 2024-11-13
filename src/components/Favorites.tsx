@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AllGames from '@/src/components/AllGames';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import Link from 'next/link';
 
 const Favorites = () => {

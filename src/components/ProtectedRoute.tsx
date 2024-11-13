@@ -3,20 +3,21 @@
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { useAuth } from '@/src/components/AuthProvider';
+import { useAuth } from '@/../context/AuthProvider';
 import Spinner from '../ui/Spinner';
 
-const privateRoutes = ['/profile', '/logout'];
+const privateRoutes = ['/profile', '/logout', '/favorites'];
 const publicRoutes = ['/login', '/register'];
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
+
   const router = useRouter();
   const pathName = usePathname();
   const [isRedirecting, setIsRedirecting] = useState(status === 'loading');
 
-  const isUserLoggedIn = !!session?.user || isLoggedIn;
+  const isUserLoggedIn = !!session?.user || isLoggedIn || user?.userId;
   const isPrivateRoute = privateRoutes.includes(pathName);
   const isPublicRoute = publicRoutes.includes(pathName);
 
@@ -41,8 +42,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (
-    (status === 'authenticated' && !isPublicRoute) ||
-    (status === 'unauthenticated' && !isPrivateRoute)
+    ((user?.userId || status === 'authenticated') && !isPublicRoute) ||
+    ((!user?.userId || status === 'unauthenticated') && !isPrivateRoute)
   ) {
     return <>{children}</>;
   }
