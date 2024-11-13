@@ -79,7 +79,7 @@ const Search = ({
         <div className="w-full p-0 text-center align-top font-doHyeon text-3xl leading-none md:text-4xl lg:text-5.5xl">
           Find your new
         </div>
-        <div className="mb-4 w-full p-0 text-center align-top font-doHyeon text-3xl leading-none md:text-4xl lg:text-5.5xl">
+        <div className="mb-4 w-full p-0 text-center align-top font-doHyeon text-3xl leading-none text-primaryRed md:text-4xl lg:text-5.5xl">
           Favorite game
         </div>
         <SearchElement
