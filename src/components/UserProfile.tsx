@@ -16,7 +16,7 @@ const UserProfile = () => {
         <div className="flex flex-col items-center">
           <div className="relative mb-4 h-32 w-32">
             <Image
-              src={user?.image || '/images/default-avatar.png'}
+              src={user?.image || '/images/default-picture.png'}
               alt={user?.username || 'User Avatar'}
               width={128}
               height={128}
