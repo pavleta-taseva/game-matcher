@@ -9,8 +9,6 @@ import { revalidatePath } from 'next/cache';
 export const GET = async (request: NextRequest) => {
   await connectDB();
   const userId = request.nextUrl.pathname.split('/')[3];
-  console.log('userId', userId);
-  console.log('request.nextUrl.pathname', request.nextUrl.pathname);
   try {
     const user = await User.findById(userId);
     return new NextResponse(JSON.stringify(user), {

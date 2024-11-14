@@ -49,8 +49,8 @@ const Navbar = () => {
         >
           <div
             className={`${pathName === '/games'
-                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                : 'flex items-center hover:text-primaryPurple'
+              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+              : 'flex items-center hover:text-primaryPurple'
               }`}
           >
             All Games
@@ -63,8 +63,8 @@ const Navbar = () => {
         >
           <div
             className={`${pathName === '/games'
-                ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                : 'flex items-center hover:text-primaryPurple'
+              ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+              : 'flex items-center hover:text-primaryPurple'
               }`}
           >
             Categories
@@ -83,8 +83,8 @@ const Navbar = () => {
                 <div
                   onClick={() => handleLogout(link.name)}
                   className={`${pathName === link.path
-                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-primaryPurple'
+                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                    : 'flex items-center hover:text-primaryPurple'
                     }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
@@ -97,8 +97,8 @@ const Navbar = () => {
               <Link key={index} href={link.path} aria-label={link.name}>
                 <div
                   className={`${pathName === link.path
-                      ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
-                      : 'flex items-center hover:text-primaryPurple'
+                    ? 'flex items-center border-b-0 border-primaryLight sm:border-b-2'
+                    : 'flex items-center hover:text-primaryPurple'
                     }`}
                 >
                   <div className="hidden w-fit items-center justify-start sm:block">
@@ -110,7 +110,7 @@ const Navbar = () => {
           </div>
         ))}
         <div className="hidden md:block">
-          <Link href={'/profile'} aria-label={'Profile'}>
+          <Link href={`/user/${user?.userId || user?.id}`} aria-label={'Profile'}>
             <div className="group/item relative">
               {session && session.user ? (
                 <Image
