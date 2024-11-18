@@ -42,7 +42,7 @@ const HamburgerMenu = () => {
         <nav onClick={toggleMenu}>
           <ul className="flex flex-col gap-4 py-8">
             {(status === 'authenticated' || isLoggedIn) && (
-              <Link href={'/profile'} aria-label={'Profile'}>
+              <Link href={`/user/${user?.userId || user?.id}`} aria-label={'Profile'}>
                 <div className="group/item relative">
                   {session && session.user ? (
                     <div className="flex items-center justify-start gap-2">
